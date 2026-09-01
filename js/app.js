@@ -54,7 +54,22 @@ function initMobileDrawer() {
     if (e.target === drawer) closeDrawer();
   });
 
-  document.querySelectorAll('.nav-drawer-link').forEach(link => {
+  document.querySelectorAll('.nav-accordion-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const content = btn.nextElementSibling;
+      const arrow = btn.querySelector('.nav-accordion-arrow');
+      if (content) {
+        content.classList.toggle('hidden');
+      }
+      if (arrow) {
+        arrow.classList.toggle('rotate-180');
+      }
+    });
+  });
+
+  document.querySelectorAll('.nav-drawer-link:not(.nav-accordion-btn), .nav-accordion-content a').forEach(link => {
     link.addEventListener('click', closeDrawer);
   });
 }
@@ -91,18 +106,18 @@ function initPaymentGateway() {
 
   // Pricing Matrix per Currency & Tier
   const pricingData = {
-    USD: { symbol: '$', select: 5000, prive: 15000, bespoke: 25000 },
-    INR: { symbol: '₹', select: 350000, prive: 1050000, bespoke: 1800000 },
-    GBP: { symbol: '£', select: 4000, prive: 12000, bespoke: 20000 },
-    EUR: { symbol: '€', select: 4600, prive: 13800, bespoke: 23000 },
-    AED: { symbol: 'AED ', select: 18500, prive: 55000, bespoke: 92000 }
+    USD: { symbol: '$', select: 4500, prive: 7500, bespoke: 15000 },
+    INR: { symbol: '₹', select: 300000, prive: 500000, bespoke: 1000000 },
+    GBP: { symbol: '£', select: 3600, prive: 6000, bespoke: 12000 },
+    EUR: { symbol: '€', select: 4100, prive: 6800, bespoke: 13800 },
+    AED: { symbol: 'AED ', select: 16500, prive: 27500, bespoke: 55000 }
   };
 
   let state = {
     selectedTier: 'select',
-    tierTitle: 'Vows for Eternity Select',
+    tierTitle: 'Prithvi: The Earth Tier',
     currency: 'USD',
-    amount: 5000,
+    amount: 4500,
     selectedTab: 'card'
   };
 

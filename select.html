@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vows for Eternity Select | Curated Matchmaking Memberships</title>
+  <meta name="description" content="Vows for Eternity Select is the core of VFE: curated memberships for accomplished individuals who are serious about finding a life partner.">
+  
+  <!-- Preload Core Fonts -->
+  <link rel="preload" href="fonts/a42d76047022ac09-s.p.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="fonts/f95b6d9c1f133891-s.p.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="fonts/4cfd3e1bc9222a5d-s.p.ttf" as="font" type="font/ttf" crossorigin>
+
+  <!-- Core Tailwind & Stylesheets -->
+  <link rel="stylesheet" href="css/93ed2a90ee3dfcc7.css">
+  <link rel="stylesheet" href="css/luxury-custom.css?v=2">
+</head>
+<body class="bg-[#FAF5EE] text-[#332B45] antialiased">
+
+  <!-- =========================================================================
+       STICKY HEADER BAR
+       ========================================================================= -->
+  <header class="hero-header-bar">
+    <button id="openDrawerBtn" class="p-2 text-white hover:text-[#C5A880] focus:outline-none cursor-pointer" aria-label="Open Menu">
+      <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+
+    <a href="index.html" class="inline-block transition-transform duration-300 hover:scale-[1.02]">
+      <img src="images/vfe-logo.webp" alt="Vows for Eternity logo" class="h-10 md:h-14 w-auto object-contain">
+    </a>
+
+    <a href="#tiers" class="text-white text-xs md:text-sm font-mulish-bold uppercase tracking-widest hover:text-[#C5A880] transition-colors cursor-pointer trigger-payment-modal" data-tier="select">
+      BEGIN YOUR JOURNEY
+    </a>
+  </header>
+
+  <!-- =========================================================================
+       LEFT NAVIGATION DRAWER
+       ========================================================================= -->
+  <div id="mobileNavDrawer" class="nav-drawer-backdrop">
+    <div class="nav-drawer-content">
+      
+      <div class="flex items-center justify-between pb-6">
+        <button id="closeDrawerBtn" class="text-white hover:text-[#C5A880] p-1 focus:outline-none cursor-pointer" aria-label="Close Menu">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="space-y-1">
+        <a href="index.html#about" class="nav-drawer-link">ABOUT US</a>
+        
+        <!-- OUR MEMBERSHIPS Accordion -->
+        <div class="nav-drawer-accordion">
+          <button type="button" class="nav-drawer-link w-full text-left focus:outline-none cursor-pointer nav-accordion-btn text-[#C5A880]">
+            <span>OUR MEMBERSHIPS</span>
+            <svg class="w-4 h-4 transition-transform duration-300 transform nav-accordion-arrow rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="nav-accordion-content pl-4 space-y-2 py-2">
+            <a href="select.html" class="block text-xs uppercase tracking-widest text-[#C5A880] font-bold py-1.5 transition-colors font-sans">
+              &bull; Vows for Eternity Select
+            </a>
+            <a href="prive.html" class="block text-xs uppercase tracking-widest text-white/90 hover:text-[#C5A880] py-1.5 transition-colors font-sans">
+              &bull; Vows for Eternity Privé
+            </a>
+          </div>
+        </div>
+
+        <a href="index.html#pride" class="nav-drawer-link">PRIDE BY VOWS FOR ETERNITY</a>
+        <a href="#tiers" class="nav-drawer-link trigger-payment-modal" data-tier="select">BEGIN YOUR JOURNEY</a>
+        <a href="index.html#faq" class="nav-drawer-link">FREQUENTLY ASKED QUESTIONS (FAQ'S)</a>
+        <a href="index.html#substance" class="nav-drawer-link">WOMEN OF SUBSTANCE</a>
+        <a href="index.html#media" class="nav-drawer-link">MEDIA</a>
+
+        <div class="nav-drawer-divider"></div>
+
+        <a href="index.html#login" class="nav-drawer-link nav-drawer-gold-link">MEMBER LOGIN</a>
+      </nav>
+
+    </div>
+  </div>
+
+  <main>
+    <!-- =========================================================================
+         TOP HERO SECTION (HIGH CONTRAST & PROPER SCALE)
+         ========================================================================= -->
+    <div style="position: relative; width: 100%; min-height: 480px; background-image: url('images/background-image.webp'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; padding: 8rem 1.5rem 4rem; overflow: hidden;">
+      
+      <!-- Contrast Enhancing Gradient Overlay -->
+      <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(63, 14, 11, 0.7) 0%, rgba(29, 24, 76, 0.8) 100%);"></div>
+      
+      <div style="position: relative; z-index: 10; max-width: 900px; margin: 0 auto;">
+        <span style="font-family: 'mulishBold', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #C5A880; display: block; margin-bottom: 0.75rem;">
+          CURATED MEMBERSHIPS
+        </span>
+        <h1 style="font-family: 'metropolitanParliament', 'Playfair Display', Georgia, serif; font-size: 3.25rem; sm:font-size: 4rem; color: #FFFFFF; font-weight: normal; margin-top: 0; margin-bottom: 0.75rem; letter-spacing: 0.04em; text-shadow: 0 4px 20px rgba(0,0,0,0.6);">
+          Vows for Eternity Select
+        </h1>
+        <p style="font-family: 'timesRoman', 'Times New Roman', Georgia, serif; font-size: 1.65rem; color: #EBDDCB; font-style: italic; letter-spacing: 0.03em; margin: 0; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+          Different Journeys. One Intention.
+        </p>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         EDITORIAL INTRODUCTION
+         ========================================================================= -->
+    <section class="py-16 md:py-20 bg-[#FAF5EE] text-center border-b border-[#E8E0D5]">
+      <div class="luxury-container max-w-4xl mx-auto px-4">
+        
+        <p class="font-times-roman text-lg sm:text-xl text-[#332B45] leading-relaxed mb-6">
+          Vows for Eternity Select is the core of Vows for Eternity: curated memberships for accomplished individuals who are serious about finding a life partner and want a process that reflects that seriousness.
+        </p>
+
+        <p class="font-times-roman text-base sm:text-lg text-[#554D66] leading-relaxed max-w-3xl mx-auto mb-6">
+          What differs across tiers is how much guidance you want, how wide your search extends, and who leads the process.
+        </p>
+
+        <p class="font-times-roman text-base sm:text-lg text-[#554D66] italic leading-relaxed max-w-3xl mx-auto">
+          Not every tier is offered to every applicant. Following your introductory call, we recommend the one that best reflects your profile, life stage, and goals.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         MEMBERSHIP TIERS (PRITHVI, TEJAS, VYOM) WITH PROPER SPACING
+         ========================================================================= -->
+    <section id="tiers" class="py-24 bg-[#FFFFFF]">
+      <div class="luxury-container">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="text-xs tracking-[0.25em] uppercase text-[#5a1713] font-semibold">Select Programs</span>
+          <h2 class="text-3xl md:text-5xl font-metropolitan text-[#1d184c] mt-2 mb-4">
+            Membership Tiers
+          </h2>
+        </div>
+
+        <div class="max-w-5xl mx-auto">
+          
+          <!-- 1. PRITHVI TIER -->
+          <div style="margin-bottom: 3.5rem; background-color: #FAF5EE; border: 1px solid #E8E0D5; padding: 2.5rem 3rem; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.06);">
+            <div class="flex flex-col md:flex-row md:items-baseline justify-between border-b border-[#E8E0D5] pb-6 mb-6">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-[#C5A880] block mb-1">THE EARTH TIER</span>
+                <h3 class="font-metropolitan text-2xl sm:text-3xl text-[#5a1713]">PRITHVI</h3>
+                <p class="font-times-roman italic text-base text-[#554D66] mt-1">A thoughtful beginning.</p>
+              </div>
+              <div class="mt-4 md:mt-0 text-left md:text-right">
+                <span class="text-xs uppercase tracking-wider text-[#888888] block">Membership Investment</span>
+                <span class="font-metropolitan text-2xl font-bold text-[#5a1713]">USD 4,500 <span class="text-sm font-sans font-normal text-[#666666]">/ INR 3,00,000 + GST</span></span>
+              </div>
+            </div>
+
+            <p class="font-times-roman text-base sm:text-lg text-[#332B45] leading-relaxed mb-6">
+              Prithvi offers a personalised, concierge led search for those seeking an intentional approach to finding a life partner.
+            </p>
+
+            <div class="mb-8">
+              <h4 class="font-mulish-bold text-xs uppercase tracking-widest text-[#1d184c] mb-4">The Experience:</h4>
+              <ul class="space-y-2 text-sm font-sans text-[#444444]">
+                <li class="flex items-start"><span class="text-[#C5A880] mr-2 font-bold">✓</span> A 60 minute discovery conversation with your Match Concierge to understand your story, values and aspirations.</li>
+                <li class="flex items-start"><span class="text-[#C5A880] mr-2 font-bold">✓</span> A dedicated Match Concierge who guides your search from start to finish.</li>
+                <li class="flex items-start"><span class="text-[#C5A880] mr-2 font-bold">✓</span> Carefully curated profiles, shared only when there is a meaningful fit.</li>
+                <li class="flex items-start"><span class="text-[#C5A880] mr-2 font-bold">✓</span> Access to members within the Prithvi membership tier.</li>
+              </ul>
+            </div>
+
+            <div class="bg-[#FFFFFF] border border-[#E8E0D5] p-4 rounded text-xs font-sans text-[#666666] space-y-1 mb-8">
+              <div><strong>Success Fee:</strong> INR 1,50,000 + GST | USD 2,250</div>
+              <div><strong>Annual Renewal (Optional):</strong> INR 1,00,000 + GST | USD 1,500</div>
+            </div>
+
+            <button class="btn-start-conversation trigger-payment-modal" data-tier="select">
+              Apply for Prithvi
+            </button>
+          </div>
+
+          <!-- 2. TEJAS TIER -->
+          <div style="margin-bottom: 3.5rem; background-color: #FAF5EE; border: 2px solid #5a1713; padding: 2.5rem 3rem; border-radius: 4px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); position: relative;">
+            <div class="flex flex-col md:flex-row md:items-baseline justify-between border-b border-[#E8E0D5] pb-6 mb-6">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-[#5a1713] block mb-1">THE FIRE TIER</span>
+                <h3 class="font-metropolitan text-2xl sm:text-3xl text-[#5a1713]">TEJAS</h3>
+                <p class="font-times-roman italic text-base text-[#554D66] mt-1">A more guided journey. For those who want a partner, not just a platform.</p>
+              </div>
+              <div class="mt-4 md:mt-0 text-left md:text-right">
+                <span class="text-xs uppercase tracking-wider text-[#888888] block">Membership Investment</span>
+                <span class="font-metropolitan text-2xl font-bold text-[#5a1713]">USD 7,500 <span class="text-sm font-sans font-normal text-[#666666]">/ INR 5,00,000 + GST</span></span>
+              </div>
+            </div>
+
+            <p class="font-times-roman text-base sm:text-lg text-[#332B45] leading-relaxed mb-6">
+              Tejas is designed for those seeking a collaborative search. Alongside your dedicated Match Concierge, you benefit from the guidance of our Head of Client Success, with regular opportunities to reflect and refine your search as it unfolds.
+            </p>
+
+            <div class="mb-8">
+              <h4 class="font-mulish-bold text-xs uppercase tracking-widest text-[#1d184c] mb-4">The Experience:</h4>
+              <ul class="space-y-2 text-sm font-sans text-[#444444]">
+                <li class="flex items-start"><span class="text-[#5a1713] mr-2 font-bold">✓</span> A 90 minute conversation with your Match Concierge to understand your story, values and aspirations.</li>
+                <li class="flex items-start"><span class="text-[#5a1713] mr-2 font-bold">✓</span> Your search is led by a dedicated Match Concierge.</li>
+                <li class="flex items-start"><span class="text-[#5a1713] mr-2 font-bold">✓</span> Carefully curated profiles, shared only when there is a meaningful fit.</li>
+                <li class="flex items-start"><span class="text-[#5a1713] mr-2 font-bold">✓</span> Quarterly check-ins with the Head of Client Success to reflect on your search.</li>
+                <li class="flex items-start"><span class="text-[#5a1713] mr-2 font-bold">✓</span> Access to members within the Tejas and Prithvi membership tiers.</li>
+              </ul>
+            </div>
+
+            <div class="bg-[#FFFFFF] border border-[#E8E0D5] p-4 rounded text-xs font-sans text-[#666666] space-y-1 mb-8">
+              <div><strong>Success Fee:</strong> INR 2,50,000 + GST | USD 3,750</div>
+              <div><strong>Annual Renewal (Optional):</strong> INR 2,00,000 + GST | USD 2,500</div>
+            </div>
+
+            <button class="btn-start-conversation trigger-payment-modal" data-tier="prive">
+              Apply for Tejas
+            </button>
+          </div>
+
+          <!-- 3. VYOM TIER -->
+          <div style="margin-bottom: 3.5rem; background-color: #FAF5EE; border: 1px solid #E8E0D5; padding: 2.5rem 3rem; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.06);">
+            <div class="flex flex-col md:flex-row md:items-baseline justify-between border-b border-[#E8E0D5] pb-6 mb-6">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-[#C5A880] block mb-1">THE SPACE TIER</span>
+                <h3 class="font-metropolitan text-2xl sm:text-3xl text-[#5a1713]">VYOM</h3>
+                <p class="font-times-roman italic text-base text-[#554D66] mt-1">A deeper partnership.</p>
+              </div>
+              <div class="mt-4 md:mt-0 text-left md:text-right">
+                <span class="text-xs uppercase tracking-wider text-[#888888] block">Membership Investment</span>
+                <span class="font-metropolitan text-2xl font-bold text-[#5a1713]">USD 15,000 <span class="text-sm font-sans font-normal text-[#666666]">/ INR 10,00,000 + GST</span></span>
+              </div>
+            </div>
+
+            <p class="font-times-roman text-base sm:text-lg text-[#332B45] leading-relaxed mb-6">
+              Vyom is the highest level of partnership within Vows for Eternity Select. Your journey begins with a two hour conversation with Founder, Anuradda Gupta. From there, the Head of Client Success personally leads and oversees your search.
+            </p>
+
+            <div class="mb-8">
+              <h4 class="font-mulish-bold text-xs uppercase tracking-widest text-[#1d184c] mb-4">The Experience:</h4>
+              <ul class="space-y-2 text-sm font-sans text-[#444444]">
+                <li class="flex items-start"><span class="text-[#C5A880] mr-2 font-bold">✓</span> A two hour conversation with Founder, Anuradda Gupta, to understand your story, values and aspirations.</li>
+                <li class="flex items-start"><span class="text-[#C5A880] mr-2 font-bold">✓</span> Your search is personally led by the Head of Client Success.</li>
+                <li class="flex items-start"><span class="text-[#C5A880] mr-2 font-bold">✓</span> Carefully curated profiles, shared only when there is a meaningful fit.</li>
+                <li class="flex items-start"><span class="text-[#C5A880] mr-2 font-bold">✓</span> A session with a relationship coach when needed.</li>
+                <li class="flex items-start"><span class="text-[#C5A880] mr-2 font-bold">✓</span> Access to the entire Vows for Eternity Select membership base.</li>
+              </ul>
+            </div>
+
+            <div class="bg-[#FFFFFF] border border-[#E8E0D5] p-4 rounded text-xs font-sans text-[#666666] space-y-1 mb-8">
+              <div><strong>Success Fee:</strong> INR 5,00,000 + GST | USD 7,500</div>
+              <div><strong>Annual Renewal (Optional):</strong> INR 3,00,000 + GST | USD 4,500</div>
+            </div>
+
+            <button class="btn-start-conversation trigger-payment-modal" data-tier="bespoke">
+              Apply for Vyom
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         CALL TO ACTION BANNER (SEAMLESS DARK ARTWORK MATCHING FOOTER)
+         ========================================================================= -->
+    <section style="position: relative; padding: 6rem 1.5rem 5rem; text-align: center; background-image: url('images/common-footer.webp'); background-size: cover; background-position: center top; background-repeat: no-repeat; overflow: hidden;">
+      
+      <div style="position: relative; z-index: 10; max-width: 800px; margin: 0 auto;">
+        <h3 style="font-family: 'metropolitanParliament', 'Playfair Display', Georgia, serif; font-size: 2.75rem; color: #FFFFFF; font-weight: normal; margin-top: 0; margin-bottom: 1rem; text-shadow: 0 4px 15px rgba(0,0,0,0.6);">
+          Not sure which tier fits?
+        </h3>
+        <p style="font-family: 'timesRoman', 'Times New Roman', Georgia, serif; font-size: 1.35rem; color: #EBDDCB; font-style: italic; margin-bottom: 2.5rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+          Start with a conversation. Let us figure it out together.
+        </p>
+        <button class="trigger-payment-modal" data-tier="select" style="display: inline-block; background-color: #C5A880; color: #3F0E0B; font-family: 'mulishBold', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 1rem 2.5rem; border: none; border-radius: 2px; cursor: pointer; transition: all 0.25s ease; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);">
+          BOOK A CONSULT
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       REAL TARGET FOOTER
+       ========================================================================= -->
+  <footer class="real-footer">
+    <div class="luxury-container">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-6 space-y-2 text-xs leading-relaxed">
+          <div>
+            <a href="index.html" class="footer-nav-link">Home</a> <span class="footer-sep">|</span>
+            <a href="index.html#about" class="footer-nav-link">About Us</a> <span class="footer-sep">|</span>
+            <a href="select.html" class="footer-nav-link text-[#C5A880]">Vows for Eternity Select</a> <span class="footer-sep">|</span>
+          </div>
+          <div>
+            <a href="prive.html" class="footer-nav-link">Vows for Eternity Privé</a> <span class="footer-sep">|</span>
+            <a href="index.html#substance" class="footer-nav-link">Women of Substance</a> <span class="footer-sep">|</span>
+            <a href="index.html#blogs" class="footer-nav-link">Blogs</a> <span class="footer-sep">|</span>
+          </div>
+          <div>
+            <a href="index.html#press" class="footer-nav-link">Press Release</a> <span class="footer-sep">|</span>
+            <a href="index.html#faq" class="footer-nav-link">FAQ</a> <span class="footer-sep">|</span>
+            <a href="#tiers" class="footer-nav-link">Begin Your Journey</a> <span class="footer-sep">|</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-3 text-center my-6 lg:my-0">
+          <a href="index.html" class="inline-block">
+            <img src="images/vfe-logo.webp" alt="Vows for Eternity Logo" class="h-16 md:h-20 w-auto mx-auto brightness-200">
+          </a>
+        </div>
+
+        <div class="lg:col-span-3 text-right space-y-4">
+          <div class="flex items-center justify-end space-x-2">
+            <a href="#" class="social-square-badge">f</a>
+            <a href="#" class="social-square-badge">in</a>
+            <a href="#" class="social-square-badge">📷</a>
+          </div>
+
+          <div class="text-xs uppercase tracking-wider text-white/90 font-medium">
+            NEW YORK <span class="footer-sep">|</span> MUMBAI <span class="footer-sep">|</span> NEW DELHI
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating Widgets -->
+  <div class="floating-actions-container">
+    <a href="https://wa.me/919820000000" target="_blank" class="floating-circle-btn btn-whatsapp-green" aria-label="WhatsApp Concierge">
+      <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.143 4.174 4.286-1.124z"/></svg>
+    </a>
+    <a href="#tiers" class="floating-circle-btn btn-chat-purple trigger-payment-modal" data-tier="select" aria-label="Private Inquiry">
+      <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+    </a>
+  </div>
+
+  <!-- Embedded Luxury Payment Modal -->
+  <div id="paymentModal" class="payment-modal-backdrop" role="dialog" aria-modal="true">
+    <div class="payment-modal-card">
+      <div class="payment-header">
+        <div>
+          <span class="text-xs uppercase tracking-[0.2em] font-semibold text-[#5a1713] block">Secure Concierge Checkout</span>
+          <h3 class="text-xl font-metropolitan text-[#1d184c]">Vows for Eternity Select Membership</h3>
+        </div>
+        <button id="closePaymentModal" class="text-2xl text-gray-500 hover:text-[#5a1713]" aria-label="Close Checkout">&times;</button>
+      </div>
+
+      <div class="p-6 md:p-8">
+        <div id="paymentFormSection">
+          <div class="mb-6">
+            <div class="flex items-center justify-between mb-2">
+              <label class="text-xs uppercase font-bold tracking-wider text-[#332B45]">Select Membership Tier</label>
+              <select id="paymentCurrency" class="text-xs border border-[#E8E0D5] bg-white text-[#1d184c] px-2 py-1 rounded outline-none">
+                <option value="USD" selected>USD ($)</option>
+                <option value="INR">INR (₹)</option>
+                <option value="GBP">GBP (£)</option>
+                <option value="EUR">EUR (€)</option>
+                <option value="AED">AED (د.إ)</option>
+              </select>
+            </div>
+
+            <div class="tier-selector-group">
+              <div class="tier-option selected" data-tier="select">
+                <div class="tier-name text-xs uppercase font-bold text-[#1d184c]">Prithvi</div>
+                <div class="tier-price font-metropolitan font-bold text-[#5a1713] text-lg">$4,500</div>
+              </div>
+              <div class="tier-option" data-tier="prive">
+                <div class="tier-name text-xs uppercase font-bold text-[#1d184c]">Tejas</div>
+                <div class="tier-price font-metropolitan font-bold text-[#5a1713] text-lg">$7,500</div>
+              </div>
+              <div class="tier-option" data-tier="bespoke">
+                <div class="tier-name text-xs uppercase font-bold text-[#1d184c]">Vyom</div>
+                <div class="tier-price font-metropolitan font-bold text-[#5a1713] text-lg">$15,000</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="payment-tabs">
+            <button class="payment-tab-btn active" data-tab="card">Credit / Debit Card</button>
+            <button class="payment-tab-btn" data-tab="upi">UPI / NetBanking</button>
+            <button class="payment-tab-btn" data-tab="wire">Wire Transfer</button>
+          </div>
+
+          <form id="luxuryPaymentForm">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label class="block text-xs uppercase font-bold tracking-wider text-[#332B45] mb-1" for="clientFullName">Full Name</label>
+                <input type="text" id="clientFullName" class="luxury-input" placeholder="Eleanor Vance" required>
+              </div>
+              <div>
+                <label class="block text-xs uppercase font-bold tracking-wider text-[#332B45] mb-1" for="clientEmail">Email</label>
+                <input type="email" id="clientEmail" class="luxury-input" placeholder="e.vance@company.com" required>
+              </div>
+            </div>
+
+            <div class="payment-tab-pane" data-tab-pane="card">
+              <div class="mb-4">
+                <div class="flex justify-between items-center mb-1">
+                  <label class="block text-xs uppercase font-bold tracking-wider text-[#332B45]" for="cardNumber">Card Number</label>
+                  <span id="cardBrandIcon" class="text-xs text-[#888888] font-bold">💳 CARD</span>
+                </div>
+                <input type="text" id="cardNumber" class="luxury-input" placeholder="4000 1234 5678 9010" maxlength="19" required>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-xs uppercase font-bold tracking-wider text-[#332B45] mb-1" for="cardExpiry">Expiry (MM / YY)</label>
+                  <input type="text" id="cardExpiry" class="luxury-input" placeholder="08 / 28" maxlength="7" required>
+                </div>
+                <div>
+                  <label class="block text-xs uppercase font-bold tracking-wider text-[#332B45] mb-1" for="cardCvc">CVC</label>
+                  <input type="password" id="cardCvc" class="luxury-input" placeholder="•••" maxlength="4" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="payment-tab-pane" data-tab-pane="upi" style="display: none;">
+              <div class="mb-4">
+                <label class="block text-xs uppercase font-bold tracking-wider text-[#332B45] mb-1" for="upiId">UPI ID</label>
+                <input type="text" id="upiId" class="luxury-input" placeholder="username@okhdfcbank">
+              </div>
+            </div>
+
+            <div class="payment-tab-pane" data-tab-pane="wire" style="display: none;">
+              <div class="p-4 bg-[#FAF6F0] rounded border border-[#E8E0D5] mb-4 text-xs font-mono text-[#444444]">
+                <div><strong>Beneficiary:</strong> VOWS FOR ETERNITY LLC</div>
+                <div><strong>Bank:</strong> J.P. Morgan Private Bank</div>
+                <div><strong>SWIFT / BIC:</strong> CHASUS33</div>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full btn-start-conversation py-4 text-sm tracking-widest mt-4">
+              PROCEED TO SECURE PAYMENT &mdash; <span id="finalPayAmount">$4,500</span>
+            </button>
+          </form>
+        </div>
+
+        <div id="paymentLoadingSection" class="text-center py-12" style="display: none;">
+          <div class="spinner-luxury"></div>
+          <h4 class="font-metropolitan text-xl text-[#1d184c] mb-2">Authorizing Transaction</h4>
+          <p class="font-times-roman text-sm text-[#777777]">Communicating securely with banking gateway...</p>
+        </div>
+
+        <div id="paymentSuccessSection" class="text-center py-8" style="display: none;">
+          <div class="inline-block border-2 border-dashed border-[#C5A880] text-[#5a1713] px-4 py-1 text-xs font-bold tracking-widest uppercase mb-4">CONFIRMED</div>
+          <h3 class="font-metropolitan text-2xl text-[#1d184c] mb-2">Welcome to Vows for Eternity</h3>
+          <p class="font-times-roman text-[#555555] text-sm mb-6">Your dedicated senior advisor will reach out confidentially within 24 hours.</p>
+
+          <div class="bg-[#FFFFFF] border border-[#C5A880] p-4 rounded text-left text-xs space-y-2 mb-6">
+            <div class="flex justify-between"><span>Member:</span> <strong id="receiptName">Eleanor Vance</strong></div>
+            <div class="flex justify-between"><span>Ref ID:</span> <strong id="receiptReference" class="text-[#5a1713]">VFE-918234</strong></div>
+            <div class="flex justify-between"><span>Tier:</span> <strong id="receiptPlan">Prithvi: The Earth Tier</strong></div>
+            <div class="flex justify-between"><span>Amount Paid:</span> <strong id="receiptAmount" class="text-[#5a1713]">$4,500</strong></div>
+            <div class="flex justify-between"><span>Date:</span> <span id="receiptDate">September 2, 2026</span></div>
+          </div>
+
+          <button id="finishReceiptBtn" class="btn-start-conversation w-full">RETURN TO PORTAL</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

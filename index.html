@@ -13,7 +13,7 @@
 
   <!-- Core Tailwind & Stylesheets -->
   <link rel="stylesheet" href="css/93ed2a90ee3dfcc7.css">
-  <link rel="stylesheet" href="css/luxury-custom.css">
+  <link rel="stylesheet" href="css/luxury-custom.css?v=2">
 </head>
 <body class="bg-[#FAF5EE] text-[#332B45] antialiased">
 
@@ -62,12 +62,23 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
           </svg>
         </a>
-        <a href="#memberships" class="nav-drawer-link">
-          OUR MEMBERSHIPS
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </a>
+        <!-- OUR MEMBERSHIPS Accordion -->
+        <div class="nav-drawer-accordion">
+          <button type="button" class="nav-drawer-link w-full text-left focus:outline-none cursor-pointer nav-accordion-btn">
+            <span>OUR MEMBERSHIPS</span>
+            <svg class="w-4 h-4 transition-transform duration-300 transform nav-accordion-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="nav-accordion-content hidden pl-4 space-y-2 py-2">
+            <a href="select.html" class="block text-xs uppercase tracking-widest text-white/90 hover:text-[#C5A880] py-1.5 transition-colors font-sans">
+              &bull; Vows for Eternity Select
+            </a>
+            <a href="prive.html" class="block text-xs uppercase tracking-widest text-white/90 hover:text-[#C5A880] py-1.5 transition-colors font-sans">
+              &bull; Vows for Eternity Privé
+            </a>
+          </div>
+        </div>
         <a href="#pride" class="nav-drawer-link">PRIDE BY VOWS FOR ETERNITY</a>
         <a href="#memberships" class="nav-drawer-link trigger-payment-modal" data-tier="select">BEGIN YOUR JOURNEY</a>
         <a href="#faq" class="nav-drawer-link">FREQUENTLY ASKED QUESTIONS (FAQ'S)</a>
@@ -223,82 +234,135 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           
-          <!-- Tier 1: VFE Select -->
+          <!-- Tier 1: Prithvi -->
           <div class="bg-[#FAF5EE] border border-[#E8E0D5] p-8 flex flex-col justify-between rounded">
             <div>
-              <span class="text-xs tracking-[0.2em] uppercase font-bold text-[#C5A880] block mb-2">Signature Search</span>
+              <span class="text-xs tracking-[0.2em] uppercase font-bold text-[#C5A880] block mb-2">Prithvi: The Earth Tier</span>
               <h3 class="font-metropolitan text-2xl text-[#1d184c] mb-3">VFE Select</h3>
               <p class="text-sm font-times-roman text-[#666666] mb-6 leading-relaxed">
-                Comprehensive bespoke matchmaking for discerning individuals seeking compatible global partners.
+                Personalised, concierge-led search for an intentional approach to finding a life partner.
               </p>
               
               <div class="my-6 pb-6 border-b border-[#E8E0D5]">
                 <span class="text-xs text-[#888888] uppercase tracking-wider block">Investment</span>
-                <span class="text-3xl font-metropolitan font-bold text-[#5a1713]">$5,000 <span class="text-sm font-sans font-normal text-[#666666]">/ ₹3,50,000</span></span>
+                <span class="text-3xl font-metropolitan font-bold text-[#5a1713]">$4,500 <span class="text-sm font-sans font-normal text-[#666666]">/ ₹3,00,000 (+ GST)</span></span>
               </div>
 
               <ul class="space-y-3 text-xs font-sans text-[#444444] mb-8">
-                <li class="flex items-center"><span class="text-[#C5A880] mr-2">✓</span> Dedicated Senior Matchmaker</li>
-                <li class="flex items-center"><span class="text-[#C5A880] mr-2">✓</span> Verified Background &amp; Credential Vetting</li>
-                <li class="flex items-center"><span class="text-[#C5A880] mr-2">✓</span> Multi-City Cross-Border Search</li>
+                <li class="flex items-center"><span class="text-[#C5A880] mr-2">✓</span> 60-Minute Discovery Consultation</li>
+                <li class="flex items-center"><span class="text-[#C5A880] mr-2">✓</span> Dedicated Match Concierge Guidance</li>
+                <li class="flex items-center"><span class="text-[#C5A880] mr-2">✓</span> Access to Prithvi Membership Base</li>
               </ul>
             </div>
 
             <button class="w-full btn-start-conversation trigger-payment-modal" data-tier="select">
-              Apply for Select
+              Apply for Prithvi
             </button>
           </div>
 
-          <!-- Tier 2: VFE Privé -->
+          <!-- Tier 2: Tejas -->
           <div class="bg-[#FFFFFF] border-2 border-[#5a1713] p-8 flex flex-col justify-between rounded shadow-lg relative">
             <div>
-              <span class="text-xs tracking-[0.2em] uppercase font-bold text-[#5a1713] block mb-2">Ultra-High Net Worth</span>
-              <h3 class="font-metropolitan text-2xl text-[#1d184c] mb-3">VFE Privé</h3>
+              <span class="text-xs tracking-[0.2em] uppercase font-bold text-[#5a1713] block mb-2">Tejas: The Fire Tier</span>
+              <h3 class="font-metropolitan text-2xl text-[#1d184c] mb-3">VFE Select</h3>
               <p class="text-sm font-times-roman text-[#666666] mb-6 leading-relaxed">
-                Directly overseen by Founder Anuradha Gupta. Tailored for industrialists, celebrities, and global family offices.
+                Guided collaborative search with regular strategy check-ins as your journey unfolds.
               </p>
               
               <div class="my-6 pb-6 border-b border-[#E8E0D5]">
                 <span class="text-xs text-[#888888] uppercase tracking-wider block">Investment</span>
-                <span class="text-3xl font-metropolitan font-bold text-[#5a1713]">$15,000 <span class="text-sm font-sans font-normal text-[#666666]">/ ₹10,50,000</span></span>
+                <span class="text-3xl font-metropolitan font-bold text-[#5a1713]">$7,500 <span class="text-sm font-sans font-normal text-[#666666]">/ ₹5,00,000 (+ GST)</span></span>
               </div>
 
               <ul class="space-y-3 text-xs font-sans text-[#444444] mb-8">
-                <li class="flex items-center"><span class="text-[#5a1713] mr-2">✓</span> Direct Representation by Anuradha Gupta</li>
-                <li class="flex items-center"><span class="text-[#5a1713] mr-2">✓</span> Global Offline Headhunting &amp; Scouting</li>
-                <li class="flex items-center"><span class="text-[#5a1713] mr-2">✓</span> Complete Anonymity &amp; NDA Protection</li>
+                <li class="flex items-center"><span class="text-[#5a1713] mr-2">✓</span> 90-Minute Discovery Consultation</li>
+                <li class="flex items-center"><span class="text-[#5a1713] mr-2">✓</span> Quarterly Head of Client Success Check-ins</li>
+                <li class="flex items-center"><span class="text-[#5a1713] mr-2">✓</span> Access to Tejas &amp; Prithvi Membership Tiers</li>
               </ul>
             </div>
 
             <button class="w-full btn-start-conversation trigger-payment-modal" data-tier="prive">
-              Join VFE Privé
+              Apply for Tejas
             </button>
           </div>
 
-          <!-- Tier 3: Bespoke Retainer -->
+          <!-- Tier 3: Vyom -->
           <div class="bg-[#FAF5EE] border border-[#E8E0D5] p-8 flex flex-col justify-between rounded">
             <div>
-              <span class="text-xs tracking-[0.2em] uppercase font-bold text-[#C5A880] block mb-2">International Concierge</span>
-              <h3 class="font-metropolitan text-2xl text-[#1d184c] mb-3">Bespoke Retainer</h3>
+              <span class="text-xs tracking-[0.2em] uppercase font-bold text-[#C5A880] block mb-2">Vyom: The Space Tier</span>
+              <h3 class="font-metropolitan text-2xl text-[#1d184c] mb-3">VFE Select</h3>
               <p class="text-sm font-times-roman text-[#666666] mb-6 leading-relaxed">
-                Unlimited global representation across London, New York, Dubai, Singapore, and Mumbai.
+                Highest-level partnership with deep executive oversight and dedicated relationship coaching.
               </p>
               
               <div class="my-6 pb-6 border-b border-[#E8E0D5]">
                 <span class="text-xs text-[#888888] uppercase tracking-wider block">Investment</span>
-                <span class="text-3xl font-metropolitan font-bold text-[#5a1713]">$25,000 <span class="text-sm font-sans font-normal text-[#666666]">/ ₹18,00,000</span></span>
+                <span class="text-3xl font-metropolitan font-bold text-[#5a1713]">$15,000 <span class="text-sm font-sans font-normal text-[#666666]">/ ₹10,00,000 (+ GST)</span></span>
               </div>
 
               <ul class="space-y-3 text-xs font-sans text-[#444444] mb-8">
-                <li class="flex items-center"><span class="text-[#C5A880] mr-2">✓</span> 360° Comprehensive Advisory Panel</li>
-                <li class="flex items-center"><span class="text-[#C5A880] mr-2">✓</span> Dedicated Travel &amp; Flight Match Meetings</li>
-                <li class="flex items-center"><span class="text-[#C5A880] mr-2">✓</span> Infinite Curated Introductions</li>
+                <li class="flex items-center"><span class="text-[#C5A880] mr-2">✓</span> 2-Hour Consultation with Founder Anuradda Gupta</li>
+                <li class="flex items-center"><span class="text-[#C5A880] mr-2">✓</span> Personally Led by Head of Client Success</li>
+                <li class="flex items-center"><span class="text-[#C5A880] mr-2">✓</span> Access to Entire VFE Select Membership Base</li>
               </ul>
             </div>
 
             <button class="w-full btn-start-conversation trigger-payment-modal" data-tier="bespoke">
-              Request Retainer
+              Apply for Vyom
             </button>
+          </div>
+
+        </div>
+
+        <!-- Full-Width Rectangular VFE Privé Section (Ultra-High Net Worth Tier) -->
+        <div style="margin-top: 3rem; background: linear-gradient(135deg, #3F0E0B 0%, #5A1713 50%, #2E0A09 100%); color: #FFFFFF; padding: 2.5rem 3rem; border-radius: 4px; border: 2px solid #C5A880; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35); position: relative; overflow: hidden;">
+          
+          <!-- Decorative Background Watermark -->
+          <div style="position: absolute; right: -2.5rem; bottom: -2.5rem; opacity: 0.12; pointer-events: none;">
+            <img src="images/vfe-logo.webp" alt="VFE Logo watermark" style="width: 18rem; height: auto; filter: brightness(2);">
+          </div>
+
+          <div style="position: relative; z-index: 10; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem;">
+            
+            <!-- Left Details -->
+            <div style="flex: 1 1 500px; max-width: 700px;">
+              <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #C5A880; display: block; margin-bottom: 0.5rem; font-family: 'mulishBold', sans-serif;">
+                VFE Privé: Ultra-High Net Worth Tier
+              </span>
+              <h3 style="font-family: 'metropolitanParliament', 'Playfair Display', Georgia, serif; font-size: 2.5rem; color: #FFFFFF; margin-top: 0; margin-bottom: 0.75rem; font-weight: normal;">
+                VFE Privé
+              </h3>
+              <p style="font-family: 'timesRoman', 'Times New Roman', Georgia, serif; font-size: 1.1rem; color: rgba(255, 255, 255, 0.9); line-height: 1.6; margin-bottom: 1.5rem;">
+                Directly overseen by Founder Anuradda Gupta for industrialists, celebrities, and global family offices.
+              </p>
+
+              <!-- 3 Column Horizontal Features -->
+              <div style="display: flex; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 1.25rem;">
+                <div style="flex: 1 1 200px; display: flex; align-items: center; font-size: 0.8rem; color: rgba(255, 255, 255, 0.95); font-family: 'mulishRegular', sans-serif;">
+                  <span style="color: #C5A880; margin-right: 0.5rem; font-weight: bold; font-size: 1rem;">✓</span> Direct Representation by Founder Anuradda Gupta
+                </div>
+                <div style="flex: 1 1 200px; display: flex; align-items: center; font-size: 0.8rem; color: rgba(255, 255, 255, 0.95); font-family: 'mulishRegular', sans-serif;">
+                  <span style="color: #C5A880; margin-right: 0.5rem; font-weight: bold; font-size: 1rem;">✓</span> Global Offline Headhunting &amp; Active Scouting
+                </div>
+                <div style="flex: 1 1 200px; display: flex; align-items: center; font-size: 0.8rem; color: rgba(255, 255, 255, 0.95); font-family: 'mulishRegular', sans-serif;">
+                  <span style="color: #C5A880; margin-right: 0.5rem; font-weight: bold; font-size: 1rem;">✓</span> Complete Anonymity &amp; Strict NDA Protection
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Investment & Action Button -->
+            <div style="flex: 0 0 auto; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 1.5rem; min-width: 260px;">
+              <span style="font-size: 0.7rem; color: #C5A880; text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 0.25rem; font-weight: bold;">INVESTMENT</span>
+              <div style="font-family: 'metropolitanParliament', 'Playfair Display', Georgia, serif; font-size: 1.85rem; font-weight: bold; color: #FFFFFF; margin-bottom: 0.25rem;">
+                Bespoke / On Request
+              </div>
+              <span style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.75); margin-bottom: 1.5rem; font-family: 'mulishRegular', sans-serif;">(From $15,000 / ₹10,50,000)</span>
+
+              <button class="trigger-payment-modal" data-tier="prive" style="display: inline-block; background-color: #C5A880; color: #3F0E0B; font-family: 'mulishBold', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.9rem 2.2rem; border: none; border-radius: 2px; cursor: pointer; transition: all 0.25s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); text-align: center;">
+                JOIN VFE PRIVÉ
+              </button>
+            </div>
+
           </div>
 
         </div>
@@ -319,12 +383,12 @@
         <!-- Left Navigation Links (6 Columns) -->
         <div class="lg:col-span-6 space-y-2 text-xs leading-relaxed">
           <div>
-            <a href="#" class="footer-nav-link">Home</a> <span class="footer-sep">|</span>
-            <a href="#" class="footer-nav-link">About Us</a> <span class="footer-sep">|</span>
-            <a href="#" class="footer-nav-link">Vows for Eternity Select</a> <span class="footer-sep">|</span>
+            <a href="index.html" class="footer-nav-link">Home</a> <span class="footer-sep">|</span>
+            <a href="index.html#about" class="footer-nav-link">About Us</a> <span class="footer-sep">|</span>
+            <a href="select.html" class="footer-nav-link">Vows for Eternity Select</a> <span class="footer-sep">|</span>
           </div>
           <div>
-            <a href="#" class="footer-nav-link">Vows for Eternity Privé</a> <span class="footer-sep">|</span>
+            <a href="prive.html" class="footer-nav-link">Vows for Eternity Privé</a> <span class="footer-sep">|</span>
             <a href="#" class="footer-nav-link">Women of Substance</a> <span class="footer-sep">|</span>
             <a href="#" class="footer-nav-link">Blogs</a> <span class="footer-sep">|</span>
           </div>
@@ -433,16 +497,16 @@
 
             <div class="tier-selector-group">
               <div class="tier-option selected" data-tier="select">
-                <div class="tier-name text-xs uppercase font-bold text-[#1d184c]">VFE Select</div>
-                <div class="tier-price font-metropolitan font-bold text-[#5a1713] text-lg">$5,000</div>
+                <div class="tier-name text-xs uppercase font-bold text-[#1d184c]">Prithvi</div>
+                <div class="tier-price font-metropolitan font-bold text-[#5a1713] text-lg">$4,500</div>
               </div>
               <div class="tier-option" data-tier="prive">
-                <div class="tier-name text-xs uppercase font-bold text-[#1d184c]">VFE Privé</div>
-                <div class="tier-price font-metropolitan font-bold text-[#5a1713] text-lg">$15,000</div>
+                <div class="tier-name text-xs uppercase font-bold text-[#1d184c]">Tejas</div>
+                <div class="tier-price font-metropolitan font-bold text-[#5a1713] text-lg">$7,500</div>
               </div>
               <div class="tier-option" data-tier="bespoke">
-                <div class="tier-name text-xs uppercase font-bold text-[#1d184c]">Bespoke</div>
-                <div class="tier-price font-metropolitan font-bold text-[#5a1713] text-lg">$25,000</div>
+                <div class="tier-name text-xs uppercase font-bold text-[#1d184c]">Vyom</div>
+                <div class="tier-price font-metropolitan font-bold text-[#5a1713] text-lg">$15,000</div>
               </div>
             </div>
           </div>
@@ -505,7 +569,7 @@
             </div>
 
             <button type="submit" class="w-full btn-start-conversation py-4 text-sm tracking-widest mt-4">
-              PROCEED TO SECURE PAYMENT &mdash; <span id="finalPayAmount">$5,000</span>
+              PROCEED TO SECURE PAYMENT &mdash; <span id="finalPayAmount">$4,500</span>
             </button>
 
           </form>
