@@ -1,0 +1,447 @@
+/* ==========================================================================
+   VOWS FOR ETERNITY - LUXURY BRAND THEME & EXACT REPLICA STYLESHEET
+   ========================================================================== */
+
+:root {
+  --color-canvas: #FAF5EE;
+  --color-canvas-alt: #F7F2EA;
+  --color-burgundy: #5A1713;
+  --color-burgundy-dark: #3F0E0B;
+  --color-navy: #1D184C;
+  --color-charcoal: #332B45;
+  --color-gold: #C5A880;
+  --color-gold-dark: #9E8357;
+  --color-gold-light: #EBDDCB;
+  --color-border: #E8E0D5;
+  --font-serif-display: 'metropolitanParliament', 'Playfair Display', Georgia, serif;
+  --font-serif-body: 'timesRoman', 'Times New Roman', Georgia, serif;
+  --font-serif-bold: 'timesBold', 'Times New Roman', Georgia, serif;
+  --font-sans: 'mulishRegular', 'Mulish', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans-medium: 'mulishMedium', 'Mulish', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans-bold: 'mulishBold', 'Mulish', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Base Reset */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--color-canvas);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-canvas);
+  overflow-x: hidden;
+}
+
+/* Typography Utility Classes */
+.font-metropolitan {
+  font-family: var(--font-serif-display) !important;
+}
+.font-times-roman {
+  font-family: var(--font-serif-body) !important;
+}
+.font-times-bold {
+  font-family: var(--font-serif-bold) !important;
+}
+.font-mulish {
+  font-family: var(--font-sans) !important;
+}
+.font-mulish-medium {
+  font-family: var(--font-sans-medium) !important;
+}
+.font-mulish-bold {
+  font-family: var(--font-sans-bold) !important;
+}
+
+/* Global Container Constraints */
+.luxury-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .luxury-container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+/* Dynamic Header Bar (Matching media_1788283863722.png & media_1788283884673.png) */
+.hero-header-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 50;
+  padding: 1.1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(197, 168, 128, 0.45);
+  background-color: transparent;
+  transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.hero-header-bar.scrolled {
+  background-color: #5a1713 !important; /* Solid deep burgundy on scroll */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-bottom-color: var(--color-gold);
+}
+
+/* Top Banner Image Fold (Watercolor artwork) */
+.top-banner-fold {
+  width: 100%;
+  height: 400px;
+  background-image: url('../images/background-image.webp');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 768px) {
+  .top-banner-fold {
+    height: 480px;
+  }
+}
+
+/* Hero Section with Watercolor Background */
+.hero-section-fold {
+  position: relative;
+  min-height: 520px;
+  background-image: url('../images/background-image.webp');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1.5rem;
+}
+
+.btn-start-conversation {
+  display: inline-block;
+  background-color: var(--color-burgundy);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 0.9rem 2.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-start-conversation:hover {
+  background-color: #3F0E0B;
+  border-color: var(--color-gold);
+  transform: translateY(-1px);
+}
+
+.btn-some-more {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--color-burgundy);
+  border: 1px solid var(--color-burgundy);
+  border-radius: 6px;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.btn-some-more:hover {
+  background-color: var(--color-burgundy);
+  color: #FFFFFF;
+}
+
+/* Left Navigation Drawer (Screenshot 2) */
+.nav-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.nav-drawer-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-drawer-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 88%;
+  max-width: 420px;
+  background-color: #5a1713;
+  color: #FFFFFF;
+  padding: 2.5rem 2.5rem 3rem;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  box-shadow: 10px 0 40px rgba(0, 0, 0, 0.4);
+}
+
+.nav-drawer-backdrop.open .nav-drawer-content {
+  transform: translateX(0);
+}
+
+.nav-drawer-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.9rem 0;
+  transition: color 0.2s ease;
+}
+
+.nav-drawer-link:hover {
+  color: var(--color-gold);
+}
+
+.nav-drawer-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 1.5rem 0;
+}
+
+.nav-drawer-gold-link {
+  color: var(--color-gold) !important;
+  font-weight: 600;
+}
+
+/* Real Site Footer */
+.real-footer {
+  background-image: url('../images/common-footer.webp');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: #FFFFFF;
+  padding: 4rem 2rem 2.5rem;
+  position: relative;
+}
+
+.footer-nav-link {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-family: var(--font-serif-body);
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.footer-nav-link:hover {
+  opacity: 1;
+  color: var(--color-gold);
+}
+
+.footer-sep {
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0.35rem;
+  font-size: 0.75rem;
+}
+
+/* Social Icon Badges */
+.social-square-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: #B8804A;
+  color: #FFFFFF;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.social-square-badge:hover {
+  transform: translateY(-2px);
+  background-color: #C5A880;
+}
+
+/* Floating Actions (Bottom Right) */
+.floating-actions-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 1.5rem;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.floating-circle-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  transition: transform 0.25s ease;
+}
+
+.floating-circle-btn:hover {
+  transform: scale(1.08);
+}
+
+.btn-whatsapp-green {
+  background-color: #25D366;
+  color: #FFFFFF;
+}
+
+.btn-chat-purple {
+  background-color: #3B1B36;
+  color: #FFFFFF;
+}
+
+/* Modal & Tier Styles */
+.payment-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 14, 51, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.payment-modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.payment-modal-card {
+  background: #FAF5EE;
+  border: 1px solid var(--color-gold);
+  border-radius: 4px;
+  width: 100%;
+  max-width: 680px;
+  max-height: 92vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.payment-header {
+  background: linear-gradient(135deg, #FAF6F0 0%, #F2EAE3 100%);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tier-selector-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.tier-option {
+  border: 1px solid var(--color-border);
+  background: #FFFFFF;
+  padding: 1rem 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.tier-option.selected {
+  border-color: var(--color-burgundy);
+  background: #FAF6F0;
+  box-shadow: 0 0 0 1px var(--color-burgundy);
+}
+
+.payment-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1.75rem;
+}
+
+.payment-tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 0.85rem 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #666666;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.payment-tab-btn.active {
+  color: var(--color-burgundy);
+  border-bottom-color: var(--color-burgundy);
+  background: rgba(90, 23, 19, 0.04);
+}
+
+.luxury-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--color-charcoal);
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.spinner-luxury {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(197, 168, 128, 0.3);
+  border-top-color: var(--color-burgundy);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+  margin: 2rem auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

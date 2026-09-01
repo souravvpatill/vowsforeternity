@@ -1,0 +1,14 @@
+# OS & System Files
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.swp
+
+# Node / Scratch
+node_modules/
+__pycache__/
