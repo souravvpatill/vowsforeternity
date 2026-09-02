@@ -13,7 +13,7 @@
 
   <!-- Core Tailwind & Stylesheets -->
   <link rel="stylesheet" href="css/93ed2a90ee3dfcc7.css">
-  <link rel="stylesheet" href="css/luxury-custom.css?v=5">
+  <link rel="stylesheet" href="css/luxury-custom.css?v=6">
 
   <style>
     /* =========================================================================
@@ -154,17 +154,19 @@
       color: #332B45;
       padding: 0.45rem 0;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
       outline: none;
     }
 
     .faq-nav-btn:hover {
       color: #5A1713;
+      transform: translateX(6px);
     }
 
     .faq-nav-btn.active {
       color: #5A1713 !important;
       font-weight: 700 !important;
+      transform: translateX(4px);
     }
 
     /* Celestial Gold Sparkle Illustration on Left Margin */
@@ -175,8 +177,8 @@
       pointer-events: none;
     }
 
-    /* Right Column Area */
-    .faq-main-column {
+    /* Right Main Content Area */
+    .faq-content-area {
       flex: 1;
       min-width: 0;
     }
@@ -210,11 +212,18 @@
       line-height: 1.2;
     }
 
-    /* Accordion Item Styling */
+    /* Accordion Item Styling & Open-on-Hover Micro-Animations */
     .faq-accordion-item {
       border: none;
-      padding: 0.15rem 0;
+      padding: 0.25rem 0.6rem;
       position: relative;
+      border-radius: 4px;
+      transition: background-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .faq-accordion-item:hover,
+    .faq-accordion-item.active {
+      background-color: rgba(250, 245, 238, 0.7);
     }
 
     .faq-question-btn {
@@ -225,25 +234,26 @@
       text-align: left;
       background: transparent;
       border: none;
-      padding: 0.95rem 0;
+      padding: 0.85rem 0;
       cursor: pointer;
       font-family: 'mulishBold', sans-serif;
       font-size: 1.05rem;
       font-weight: 700;
       color: #1d184c;
-      transition: color 0.2s ease;
+      transition: color 0.25s ease, transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
       gap: 1.5rem;
     }
 
-    .faq-question-btn:hover {
+    .faq-accordion-item:hover .faq-question-btn {
       color: #5A1713;
+      transform: translateX(4px);
     }
 
     .faq-chevron-icon {
       width: 18px;
       height: 18px;
       color: #5A1713;
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
       flex-shrink: 0;
     }
 
@@ -254,7 +264,7 @@
     .faq-answer-pane {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      transition: max-height 0.38s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
       opacity: 0;
     }
 
@@ -281,6 +291,13 @@
       background-repeat: no-repeat;
       margin: 0.15rem 0 0.4rem;
       opacity: 0.85;
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .faq-accordion-item:hover .faq-gold-divider,
+    .faq-accordion-item.active .faq-gold-divider {
+      opacity: 1;
+      transform: scaleX(1.01);
     }
 
     .faq-bottom-banner-wrap {
@@ -1199,29 +1216,50 @@
 
   <script src="js/app.js"></script>
   <script>
-    // Exclusive Accordion Toggle: only ONE FAQ item can be open at a time
-    document.querySelectorAll('.faq-question-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const currentItem = btn.closest('.faq-accordion-item');
-        const isCurrentlyActive = currentItem.classList.contains('active');
-        const currentPane = currentItem.querySelector('.faq-answer-pane');
+    // Exclusive Accordion Controller: Open on Hover + Click Toggle
+    function openFaqItem(currentItem) {
+      if (!currentItem) return;
+      const currentPane = currentItem.querySelector('.faq-answer-pane');
+      const btn = currentItem.querySelector('.faq-question-btn');
 
-        // Close ALL accordion items across all groups
-        document.querySelectorAll('.faq-accordion-item').forEach(item => {
+      // Close ALL accordion items across all groups
+      document.querySelectorAll('.faq-accordion-item').forEach(item => {
+        if (item !== currentItem) {
           item.classList.remove('active');
           const btnElem = item.querySelector('.faq-question-btn');
           const paneElem = item.querySelector('.faq-answer-pane');
           if (btnElem) btnElem.setAttribute('aria-expanded', 'false');
           if (paneElem) paneElem.style.maxHeight = null;
-        });
-
-        // If the clicked item was NOT active, open it exclusively
-        if (!isCurrentlyActive) {
-          currentItem.classList.add('active');
-          btn.setAttribute('aria-expanded', 'true');
-          currentPane.style.maxHeight = currentPane.scrollHeight + "px";
         }
       });
+
+      // Open target item
+      currentItem.classList.add('active');
+      if (btn) btn.setAttribute('aria-expanded', 'true');
+      if (currentPane) currentPane.style.maxHeight = currentPane.scrollHeight + "px";
+    }
+
+    document.querySelectorAll('.faq-accordion-item').forEach(item => {
+      // Open on Hover
+      item.addEventListener('mouseenter', () => {
+        openFaqItem(item);
+      });
+
+      // Click Toggle (for touch / manual click)
+      const btn = item.querySelector('.faq-question-btn');
+      if (btn) {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (item.classList.contains('active')) {
+            item.classList.remove('active');
+            btn.setAttribute('aria-expanded', 'false');
+            const pane = item.querySelector('.faq-answer-pane');
+            if (pane) pane.style.maxHeight = null;
+          } else {
+            openFaqItem(item);
+          }
+        });
+      }
     });
 
     // Anchor Navigation & ScrollSpy Controller
