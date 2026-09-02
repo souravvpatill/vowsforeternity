@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileDrawer();
   initPaymentGateway();
   initSubtleTactility();
+  initMemberAuth();
 });
 
 /* --------------------------------------------------------------------------
@@ -390,5 +391,103 @@ function initPaymentGateway() {
   const finishReceiptBtn = document.getElementById('finishReceiptBtn');
   if (finishReceiptBtn) {
     finishReceiptBtn.addEventListener('click', closeModal);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Luxury Member Authentication Controller (Supabase + Modal + Portal)
+   -------------------------------------------------------------------------- */
+function initMemberAuth() {
+  const modal = document.getElementById('memberAuthModal');
+  const openButtons = document.querySelectorAll('a[href*="#login"], .trigger-login-modal');
+  const closeBtn = document.getElementById('closeAuthModal');
+  const tabButtons = document.querySelectorAll('.auth-tab-btn');
+  const loginForm = document.getElementById('memberLoginForm');
+  const registerForm = document.getElementById('memberRegisterForm');
+  const demoLoginBtn = document.getElementById('demoLoginBtn');
+
+  if (!modal) return;
+
+  const openModal = (e) => {
+    if (e) e.preventDefault();
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  openButtons.forEach(btn => {
+    btn.addEventListener('click', openModal);
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Tab Switcher (Sign In vs Register)
+  tabButtons.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabButtons.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.getAttribute('data-tab');
+      if (target === 'login') {
+        if (loginForm) loginForm.classList.remove('hidden');
+        if (registerForm) registerForm.classList.add('hidden');
+      } else {
+        if (loginForm) loginForm.classList.add('hidden');
+        if (registerForm) registerForm.classList.remove('hidden');
+      }
+    });
+  });
+
+  // Instant Demo Member Login Handler
+  if (demoLoginBtn) {
+    demoLoginBtn.addEventListener('click', () => {
+      sessionStorage.setItem('vfe_member_session', JSON.stringify({
+        authenticated: true,
+        email: 'harrington.member@vowsforeternity.com',
+        memberName: 'Lord & Lady Harrington',
+        tier: 'Vows for Eternity Privé',
+        concatMail: 'billing@vowsforeternity.in',
+        loginTime: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+      }));
+
+      closeModal();
+      document.body.style.transition = 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        window.location.href = 'portal.html';
+      }, 350);
+    });
+  }
+
+  // Form Submit Handler
+  if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = loginForm.querySelector('input[type="email"]');
+      const emailVal = emailInput && emailInput.value ? emailInput.value : 'distinguished.member@vowsforeternity.com';
+
+      sessionStorage.setItem('vfe_member_session', JSON.stringify({
+        authenticated: true,
+        email: emailVal,
+        memberName: 'Distinguished VFE Member',
+        tier: 'Vows for Eternity Select',
+        concatMail: 'billing@vowsforeternity.in',
+        loginTime: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+      }));
+
+      closeModal();
+      document.body.style.transition = 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        window.location.href = 'portal.html';
+      }, 350);
+    });
   }
 }

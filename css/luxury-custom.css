@@ -959,3 +959,125 @@ button:active,
 .faq-chevron-icon {
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
+
+/* =========================================================================
+   LUXURY MEMBER AUTHENTICATION & LOGIN MODAL
+   ========================================================================= */
+.member-auth-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  background: rgba(18, 6, 5, 0.75);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s ease;
+}
+
+.member-auth-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.member-auth-card {
+  width: 100%;
+  max-width: 480px;
+  background: linear-gradient(175deg, rgba(63, 14, 11, 0.96) 0%, rgba(90, 23, 19, 0.98) 60%, rgba(46, 10, 9, 0.99) 100%);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  border-radius: 12px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(197, 160, 89, 0.15);
+  padding: 2.5rem;
+  color: #FAF5EE;
+  transform: scale(0.92) translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  position: relative;
+}
+
+.member-auth-backdrop.open .member-auth-card {
+  transform: scale(1) translateY(0);
+}
+
+.auth-tab-btn {
+  font-family: 'mulishRegular', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(250, 245, 238, 0.6);
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid transparent;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.auth-tab-btn.active {
+  color: #C5A059;
+  border-bottom-color: #C5A059;
+}
+
+.auth-input-field {
+  width: 100%;
+  background: rgba(250, 245, 238, 0.06);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  color: #FAF5EE;
+  font-family: 'mulishRegular', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.auth-input-field:focus {
+  border-color: #C5A059;
+  background: rgba(250, 245, 238, 0.1);
+  box-shadow: 0 0 12px rgba(197, 160, 89, 0.25);
+}
+
+.auth-submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #C5A059 0%, #B8804A 100%);
+  color: #3F0E0B;
+  font-family: 'mulishBold', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.95rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.auth-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(197, 160, 89, 0.4);
+}
+
+.auth-demo-btn {
+  width: 100%;
+  background: rgba(250, 245, 238, 0.08);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  color: #FAF5EE;
+  font-family: 'mulishRegular', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.auth-demo-btn:hover {
+  background: rgba(197, 160, 89, 0.2);
+  border-color: #C5A059;
+  color: #C5A059;
+}

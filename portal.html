@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Portal | Vows for Eternity</title>
+  <meta name="description" content="Confidential Member Portal & Matchmaking Concierge Dashboard for Vows for Eternity members.">
+  
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <!-- Core Tailwind & Stylesheets -->
+  <link rel="stylesheet" href="css/93ed2a90ee3dfcc7.css">
+  <link rel="stylesheet" href="css/luxury-custom.css?v=10">
+
+  <style>
+    /* Standardized Footer & Bottom Watercolor Transition Banner */
+    .faq-bottom-banner-wrap {
+      position: relative;
+      width: 100%;
+      margin-top: -3rem;
+      background-color: #FAF5EE;
+    }
+    .faq-bottom-banner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+      background: linear-gradient(to bottom, #FAF5EE 0%, rgba(250, 245, 238, 0.8) 50%, transparent 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .faq-bottom-banner-img {
+      width: 100%;
+      height: auto;
+      max-height: 280px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 100%);
+    }
+    .real-footer {
+      background-color: #5A1713 !important;
+      color: #FAF5EE !important;
+      padding: 3rem 1.5rem 2.5rem !important;
+      font-family: var(--font-sans), sans-serif !important;
+    }
+    .footer-nav-link {
+      color: #FAF5EE;
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+    .footer-nav-link:hover {
+      color: #C5A059;
+    }
+    .footer-sep {
+      color: rgba(197, 160, 89, 0.5);
+      margin: 0 0.3rem;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body class="bg-[#FAF5EE] text-[#332B45] antialiased">
+
+  <!-- =========================================================================
+       FIXED HEADER BAR
+       ========================================================================= -->
+  <header class="hero-header-bar scrolled">
+    <!-- Left: Iris Rotation Morphing Hamburger Button -->
+    <div class="flex-1 flex items-center justify-start">
+      <button id="openDrawerBtn" class="luxury-hamburger-btn" aria-label="Open Menu">
+        <div class="hamburger-icon-wrap">
+          <span class="line line-1"></span>
+          <span class="line line-2"></span>
+          <span class="line line-3"></span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Center: Gold Monogram Logo -->
+    <div class="flex-none text-center">
+      <a href="index.html" class="inline-block transition-transform duration-300 hover:scale-[1.02]">
+        <img src="images/vfe-logo.webp" alt="Vows for Eternity logo" class="header-logo-img mx-auto">
+      </a>
+    </div>
+
+    <!-- Right: Logout & Concierge Link -->
+    <div class="flex-1 flex items-center justify-end gap-4">
+      <button id="logoutBtn" class="text-[#C5A059] text-xs md:text-sm font-mulish-bold uppercase tracking-widest hover:text-white transition-colors cursor-pointer">
+        LOG OUT
+      </button>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       LEFT NAVIGATION DRAWER
+       ========================================================================= -->
+  <div id="mobileNavDrawer" class="nav-drawer-backdrop">
+    <div class="nav-drawer-content">
+      <div>
+        <div class="flex items-center justify-between pb-8">
+          <button id="closeDrawerBtn" class="luxury-hamburger-btn active" aria-label="Close Menu">
+            <div class="hamburger-icon-wrap">
+              <span class="line line-1"></span>
+              <span class="line line-2"></span>
+              <span class="line line-3"></span>
+            </div>
+          </button>
+        </div>
+
+        <nav class="space-y-1">
+          <a href="portal.html" class="nav-drawer-link text-[#C5A880] font-bold">
+            <span><span class="nav-drawer-item-num">01 /</span>MEMBER DASHBOARD</span>
+            <span class="nav-drawer-link-arrow">&rarr;</span>
+          </a>
+          <a href="index.html#about" class="nav-drawer-link">
+            <span><span class="nav-drawer-item-num">02 /</span>ABOUT US</span>
+            <span class="nav-drawer-link-arrow">&rarr;</span>
+          </a>
+          <a href="select.html" class="nav-drawer-link">
+            <span><span class="nav-drawer-item-num">03 /</span>VOWS FOR ETERNITY SELECT</span>
+            <span class="nav-drawer-link-arrow">&rarr;</span>
+          </a>
+          <a href="prive.html" class="nav-drawer-link">
+            <span><span class="nav-drawer-item-num">04 /</span>VOWS FOR ETERNITY PRIVÉ</span>
+            <span class="nav-drawer-link-arrow">&rarr;</span>
+          </a>
+          <a href="faqs.html" class="nav-drawer-link">
+            <span><span class="nav-drawer-item-num">05 /</span>FREQUENTLY ASKED QUESTIONS</span>
+            <span class="nav-drawer-link-arrow">&rarr;</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="pt-6">
+        <div class="nav-drawer-divider"></div>
+        <button id="drawerLogoutBtn" class="nav-drawer-link nav-drawer-gold-link w-full text-left">
+          <span>LOG OUT</span>
+          <span class="nav-drawer-link-arrow">&rarr;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main class="pt-28 pb-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <!-- Welcome Member Banner Card -->
+      <div class="bg-gradient-to-br from-[#5A1713] via-[#3F0E0B] to-[#2E0A09] border border-[#C5A059]/40 rounded-xl p-8 sm:p-10 text-[#FAF5EE] shadow-2xl mb-12 relative overflow-hidden">
+        <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#C5A059]/20 border border-[#C5A059]/40 rounded-full text-xs font-sans uppercase tracking-widest text-[#C5A059] mb-3">
+              <span class="w-2 h-2 rounded-full bg-[#C5A059] animate-pulse"></span>
+              Confidential Member Portal
+            </div>
+            <h1 id="welcomeMemberName" class="text-3xl sm:text-4xl font-serif text-[#FAF5EE] font-normal tracking-tight">
+              Welcome, Distinguished Member
+            </h1>
+            <p id="memberEmailText" class="text-sm text-[#FAF5EE]/70 font-sans mt-1">
+              harrington.member@vowsforeternity.com
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <div class="bg-black/30 border border-[#C5A059]/30 rounded-lg p-4 text-center min-w-[140px]">
+              <div class="text-[0.7rem] uppercase tracking-wider text-[#C5A059] font-sans">Active Tier</div>
+              <div id="memberTierBadge" class="text-sm font-bold text-[#FAF5EE] font-serif mt-0.5">
+                Vows for Eternity Privé
+              </div>
+            </div>
+            <div class="bg-black/30 border border-[#C5A059]/30 rounded-lg p-4 text-center min-w-[140px]">
+              <div class="text-[0.7rem] uppercase tracking-wider text-[#C5A059] font-sans">Verification</div>
+              <div class="text-sm font-bold text-emerald-400 font-serif mt-0.5 flex items-center justify-center gap-1">
+                <span>✓</span> Verified VIP
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard 3-Column Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Left 2 Cols: Confidential Matches & Concierge -->
+        <div class="lg:col-span-2 space-y-8">
+          
+          <!-- Confidential Candidate Recommendations -->
+          <div class="bg-[#FAF5EE] border border-[#C5A059]/30 rounded-xl p-6 sm:p-8 shadow-sm">
+            <div class="flex items-center justify-between border-b border-[#C5A059]/20 pb-4 mb-6">
+              <div>
+                <h2 class="text-xl font-serif text-[#5A1713] font-normal">Curated Match Recommendations</h2>
+                <p class="text-xs text-[#5A1713]/70 font-sans mt-0.5">Handpicked & vetted by Senior Matchmakers</p>
+              </div>
+              <span class="text-xs font-sans uppercase tracking-widest text-[#C5A059] font-bold bg-[#5A1713]/5 px-3 py-1 rounded-full">
+                2 Active Profiles
+              </span>
+            </div>
+
+            <div class="space-y-4">
+              <!-- Profile Card 1 -->
+              <div class="border border-[#C5A059]/30 rounded-lg p-5 bg-white/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all hover:border-[#C5A059]">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-full bg-[#5A1713] text-[#C5A059] flex items-center justify-center font-serif text-lg font-bold flex-shrink-0">
+                    C-I
+                  </div>
+                  <div>
+                    <h3 class="font-serif text-base text-[#5A1713] font-semibold">Candidate Ref: #VFE-8842</h3>
+                    <p class="text-xs text-[#332B45]/70 font-sans">Corporate Executive & Founder &bull; New York & London</p>
+                    <span class="inline-block text-[0.7rem] text-amber-800 bg-amber-50 px-2 py-0.5 rounded mt-1 font-sans">
+                      Under Private Mutual Consideration
+                    </span>
+                  </div>
+                </div>
+                <button class="text-xs font-mulish-bold uppercase tracking-widest px-4 py-2 bg-[#5A1713] text-[#FAF5EE] rounded hover:bg-[#3F0E0B] transition-colors whitespace-nowrap">
+                  Request Introduction
+                </button>
+              </div>
+
+              <!-- Profile Card 2 -->
+              <div class="border border-[#C5A059]/30 rounded-lg p-5 bg-white/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all hover:border-[#C5A059]">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-full bg-[#5A1713] text-[#C5A059] flex items-center justify-center font-serif text-lg font-bold flex-shrink-0">
+                    C-II
+                  </div>
+                  <div>
+                    <h3 class="font-serif text-base text-[#5A1713] font-semibold">Candidate Ref: #VFE-9103</h3>
+                    <p class="text-xs text-[#332B45]/70 font-sans">Surgeon & Philanthropist &bull; Mumbai & Dubai</p>
+                    <span class="inline-block text-[0.7rem] text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded mt-1 font-sans">
+                      Concierge Review Completed
+                    </span>
+                  </div>
+                </div>
+                <button class="text-xs font-mulish-bold uppercase tracking-widest px-4 py-2 bg-[#5A1713] text-[#FAF5EE] rounded hover:bg-[#3F0E0B] transition-colors whitespace-nowrap">
+                  View Profile Summary
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment & Official Billing History -->
+          <div class="bg-[#FAF5EE] border border-[#C5A059]/30 rounded-xl p-6 sm:p-8 shadow-sm">
+            <div class="flex items-center justify-between border-b border-[#C5A059]/20 pb-4 mb-6">
+              <div>
+                <h2 class="text-xl font-serif text-[#5A1713] font-normal">Official Billing & Invoices</h2>
+                <p class="text-xs text-[#5A1713]/70 font-sans mt-0.5">Official invoices sent to billing@vowsforeternity.in</p>
+              </div>
+              <span class="text-xs font-sans text-emerald-700 font-bold bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                Billing Account Active
+              </span>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs font-sans">
+                <thead>
+                  <tr class="border-b border-[#C5A059]/20 text-[#5A1713] font-bold uppercase tracking-wider">
+                    <th class="py-3 px-2">Invoice #</th>
+                    <th class="py-3 px-2">Date</th>
+                    <th class="py-3 px-2">Membership Tier</th>
+                    <th class="py-3 px-2">Official Email</th>
+                    <th class="py-3 px-2 text-right">Receipt</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-[#C5A059]/10 text-[#332B45]">
+                  <tr>
+                    <td class="py-3.5 px-2 font-mono font-bold text-[#5A1713]">#INV-VFE-8814</td>
+                    <td class="py-3.5 px-2 font-sans">Sept 01, 2026</td>
+                    <td class="py-3.5 px-2 font-serif font-semibold text-[#5A1713]">Vows for Eternity Privé</td>
+                    <td class="py-3.5 px-2 font-mono text-[#5A1713]/80">billing@vowsforeternity.in</td>
+                    <td class="py-3.5 px-2 text-right">
+                      <button class="trigger-payment-modal text-[#C5A059] font-bold hover:underline">
+                        View Receipt
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right 1 Col: Concierge & Quick Actions -->
+        <div class="space-y-8">
+          
+          <!-- Assigned Concierge Card -->
+          <div class="bg-gradient-to-b from-[#5A1713] to-[#3F0E0B] border border-[#C5A059]/40 rounded-xl p-6 text-[#FAF5EE] shadow-lg">
+            <h3 class="text-xs uppercase tracking-widest text-[#C5A059] font-sans font-bold mb-4">
+              Your Personal Concierge
+            </h3>
+            
+            <div class="flex items-center gap-4 mb-5">
+              <div class="w-14 h-14 rounded-full bg-[#C5A059] text-[#3F0E0B] flex items-center justify-center font-serif text-xl font-bold border-2 border-[#FAF5EE]">
+                AG
+              </div>
+              <div>
+                <h4 class="font-serif text-lg font-normal text-[#FAF5EE]">Anuradha Gupta</h4>
+                <p class="text-xs text-[#FAF5EE]/70 font-sans">Founder & Global Concierge</p>
+                <div class="text-[0.7rem] text-[#C5A059] font-sans mt-1">Direct Line Active</div>
+              </div>
+            </div>
+
+            <p class="text-xs text-[#FAF5EE]/80 font-sans leading-relaxed mb-6 border-t border-[#C5A059]/20 pt-4">
+              "Every match is personally crafted with strict discretion. Reach out directly to discuss your candidate preferences."
+            </p>
+
+            <a href="apply-for-membership.html" class="block w-full text-center py-3 bg-[#C5A059] text-[#3F0E0B] font-mulish-bold text-xs uppercase tracking-widest rounded hover:bg-white transition-colors">
+              Schedule Confidential Call
+            </a>
+          </div>
+
+          <!-- Billing Support Box -->
+          <div class="bg-white border border-[#C5A059]/30 rounded-xl p-6 shadow-sm">
+            <h3 class="font-serif text-base text-[#5A1713] font-semibold mb-2">Billing & Account Inquiry</h3>
+            <p class="text-xs text-[#332B45]/70 font-sans leading-relaxed mb-4">
+              For invoice customizations or payment inquiries, your dedicated billing team is reachable at:
+            </p>
+            <div class="p-3 bg-[#FAF5EE] border border-[#C5A059]/30 rounded text-center">
+              <a href="mailto:billing@vowsforeternity.in" class="text-xs font-mono font-bold text-[#5A1713] hover:underline">
+                billing@vowsforeternity.in
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       STANDARDIZED MASTERPIECE FOOTER
+       ========================================================================= -->
+  <div class="faq-bottom-banner-wrap">
+    <div class="faq-bottom-banner-overlay"></div>
+    <img src="images/footer-art.webp" alt="Vows for Eternity footer artwork" class="faq-bottom-banner-img">
+  </div>
+
+  <footer class="real-footer" style="border-top: 1px solid #C5A059;">
+    <div class="luxury-container" style="max-width: 1440px;">
+      
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+        
+        <!-- Left Links Block (Flex-1) -->
+        <div class="flex-1 space-y-1 font-sans">
+          <div>
+            <a href="index.html" class="footer-nav-link">Home</a> <span class="footer-sep">|</span>
+            <a href="index.html#about" class="footer-nav-link">About Us</a> <span class="footer-sep">|</span>
+            <a href="select.html" class="footer-nav-link">Vows for Eternity Select</a> <span class="footer-sep">|</span>
+          </div>
+          <div>
+            <a href="prive.html" class="footer-nav-link">Vows for Eternity Privé</a> <span class="footer-sep">|</span>
+            <a href="index.html#blogs" class="footer-nav-link">Blogs</a> <span class="footer-sep">|</span>
+          </div>
+          <div>
+            <a href="index.html#press" class="footer-nav-link">Press Release</a> <span class="footer-sep">|</span>
+            <a href="faqs.html" class="footer-nav-link">FAQ</a> <span class="footer-sep">|</span>
+            <a href="apply-for-membership.html" class="footer-nav-link">Begin Your Journey</a> <span class="footer-sep">|</span>
+          </div>
+        </div>
+
+        <!-- Center Logo Block (Flex-none) -->
+        <div class="flex-none text-center py-4 lg:py-0">
+          <a href="index.html" class="inline-block transition-transform duration-300 hover:scale-[1.03]">
+            <img src="images/vfe-logo.webp" alt="Vows for Eternity Logo" class="mx-auto" style="height: 60px; width: auto; object-fit: contain;">
+          </a>
+        </div>
+
+        <!-- Right Locations & Legal Block (Flex-1) -->
+        <div class="flex-1 text-center lg:text-right font-sans text-xs space-y-2">
+          <div class="text-[#FAF5EE]/90 tracking-wider">
+            New York | Mumbai | New Delhi
+          </div>
+          <div>
+            <a href="https://www.vowsforeternity.com/terms-conditions" target="_blank" rel="noopener noreferrer" class="footer-nav-link text-[#FAF5EE]/70 hover:text-[#C5A059]">Terms &amp; Conditions</a>
+            <span class="footer-sep">|</span>
+            <a href="https://www.vowsforeternity.com/privacy-policy" target="_blank" rel="noopener noreferrer" class="footer-nav-link text-[#FAF5EE]/70 hover:text-[#C5A059]">Privacy Policy</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    // Member Session Auth Verification Script
+    document.addEventListener('DOMContentLoaded', () => {
+      const rawSession = sessionStorage.getItem('vfe_member_session');
+      if (rawSession) {
+        try {
+          const session = JSON.parse(rawSession);
+          if (session && session.authenticated) {
+            if (session.memberName) document.getElementById('welcomeMemberName').textContent = 'Welcome, ' + session.memberName;
+            if (session.email) document.getElementById('memberEmailText').textContent = session.email;
+            if (session.tier) document.getElementById('memberTierBadge').textContent = session.tier;
+          }
+        } catch (err) {}
+      }
+
+      const logoutHandler = () => {
+        sessionStorage.removeItem('vfe_member_session');
+        document.body.style.transition = 'opacity 0.35s ease';
+        document.body.style.opacity = '0';
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 300);
+      };
+
+      const logoutBtn = document.getElementById('logoutBtn');
+      const drawerLogoutBtn = document.getElementById('drawerLogoutBtn');
+      if (logoutBtn) logoutBtn.addEventListener('click', logoutHandler);
+      if (drawerLogoutBtn) drawerLogoutBtn.addEventListener('click', logoutHandler);
+    });
+  </script>
+</body>
+</html>

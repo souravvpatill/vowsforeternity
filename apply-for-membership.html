@@ -13,7 +13,7 @@
 
   <!-- Core Tailwind & Stylesheets -->
   <link rel="stylesheet" href="css/93ed2a90ee3dfcc7.css">
-  <link rel="stylesheet" href="css/luxury-custom.css?v=9">
+  <link rel="stylesheet" href="css/luxury-custom.css?v=10">
 
   <style>
     /* Standardized Footer & Bottom Watercolor Transition Banner */
@@ -940,6 +940,73 @@
       </div>
 
       <button id="closeSubmissionModal" class="btn-start-conversation w-full">CLOSE</button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       LUXURY MEMBER AUTHENTICATION MODAL (SUPABASE / DEMO)
+       ========================================================================= -->
+  <div id="memberAuthModal" class="member-auth-backdrop">
+    <div class="member-auth-card">
+      <button id="closeAuthModal" class="absolute top-4 right-4 text-[#FAF5EE]/70 hover:text-[#C5A059] p-2 focus:outline-none transition-colors cursor-pointer" aria-label="Close Modal">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <div class="text-center mb-6">
+        <img src="images/vfe-logo.webp" alt="Vows for Eternity logo" class="h-12 w-auto mx-auto mb-3">
+        <h2 class="text-xl font-serif text-[#FAF5EE] tracking-wide">Member Access Portal</h2>
+        <p class="text-xs text-[#FAF5EE]/70 font-sans mt-1">Confidential Matchmaking Portal</p>
+      </div>
+
+      <div class="flex items-center justify-center gap-8 mb-6 border-b border-[#C5A059]/20">
+        <button type="button" class="auth-tab-btn active" data-tab="login">Member Sign In</button>
+        <button type="button" class="auth-tab-btn" data-tab="register">New Candidate</button>
+      </div>
+
+      <form id="memberLoginForm" class="space-y-4">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#C5A059] font-sans font-bold mb-1.5">Member Email / Client ID</label>
+          <input type="email" required placeholder="name@domain.com" class="auth-input-field">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#C5A059] font-sans font-bold mb-1.5">Security PIN / Password</label>
+          <input type="password" required placeholder="••••••••••••" class="auth-input-field">
+        </div>
+        <div class="flex items-center justify-between text-xs font-sans text-[#FAF5EE]/70 pt-1">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" checked class="rounded border-[#C5A059] accent-[#C5A059]">
+            <span>Keep me signed in</span>
+          </label>
+          <a href="#" class="text-[#C5A059] hover:underline">Forgot PIN?</a>
+        </div>
+        <button type="submit" class="auth-submit-btn mt-4">Authenticate &amp; Enter Portal &rarr;</button>
+      </form>
+
+      <form id="memberRegisterForm" class="space-y-4 hidden">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#C5A059] font-sans font-bold mb-1.5">Full Name</label>
+          <input type="text" required placeholder="Lord / Lady / Dr. Name" class="auth-input-field">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#C5A059] font-sans font-bold mb-1.5">Official Email Address</label>
+          <input type="email" required placeholder="name@domain.com" class="auth-input-field">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#C5A059] font-sans font-bold mb-1.5">Select Membership Tier</label>
+          <select class="auth-input-field text-[#FAF5EE] bg-[#3F0E0B]">
+            <option value="Select">Vows for Eternity Select</option>
+            <option value="Prive">Vows for Eternity Privé</option>
+          </select>
+        </div>
+        <button type="submit" class="auth-submit-btn mt-4">Request Confidential Credentials &rarr;</button>
+      </form>
+
+      <div class="mt-6 pt-4 border-t border-[#C5A059]/20 text-center">
+        <p class="text-[0.75rem] text-[#FAF5EE]/60 font-sans mb-3">Testing the Member Portal?</p>
+        <button id="demoLoginBtn" type="button" class="auth-demo-btn">✨ Instant Demo VIP Access (No Password Needed)</button>
+      </div>
     </div>
   </div>
 
