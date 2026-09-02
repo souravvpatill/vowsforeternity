@@ -87,6 +87,8 @@ function initMobileDrawer() {
     }, 450);
   };
 
+  window.closeMobileDrawerGlobal = closeDrawer;
+
   openBtn.addEventListener('click', () => {
     if (drawer.classList.contains('open')) {
       closeDrawer();
@@ -155,8 +157,19 @@ function initMobileDrawer() {
   // Smooth Page Navigation Fade Transition (Smart Animate - Jitter Free)
   document.querySelectorAll('.nav-drawer-link:not(.nav-accordion-btn), .nav-subitem-link').forEach(link => {
     link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
-      if (!href) return;
+      const href = link.getAttribute('href') || '';
+
+      // Special handler for Member Login links in drawer
+      if (href.includes('#login') || link.classList.contains('trigger-login-modal') || link.classList.contains('nav-drawer-gold-link')) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeDrawer(() => {
+          if (typeof window.openMemberAuthModal === 'function') {
+            window.openMemberAuthModal();
+          }
+        });
+        return;
+      }
 
       // Handle anchor links on same page
       if (href.startsWith('#') || href.includes(window.location.pathname + '#')) {
@@ -194,157 +207,97 @@ function initPaymentGateway() {
   const loadingSection = document.getElementById('paymentLoadingSection');
   const successSection = document.getElementById('paymentSuccessSection');
   
-  const cardNumberInput = document.getElementById('cardNumber');
-  const cardExpiryInput = document.getElementById('cardExpiry');
-  const cardCvcInput = document.getElementById('cardCvc');
-  const cardBrandIcon = document.getElementById('cardBrandIcon');
-  const finalPayAmountEl = document.getElementById('finalPayAmount');
+  const receiptNameEl = document.getElementById('receiptName');
   const receiptReferenceEl = document.getElementById('receiptReference');
-  const receiptDateEl = document.getElementById('receiptDate');
   const receiptPlanEl = document.getElementById('receiptPlan');
   const receiptAmountEl = document.getElementById('receiptAmount');
-  const receiptNameEl = document.getElementById('receiptName');
+  const receiptDateEl = document.getElementById('receiptDate');
 
   if (!modal) return;
 
-  // Pricing Matrix per Currency & Tier
-  const pricingData = {
-    USD: { symbol: '$', select: 4500, prive: 7500, bespoke: 15000 },
-    INR: { symbol: '₹', select: 300000, prive: 500000, bespoke: 1000000 },
-    GBP: { symbol: '£', select: 3600, prive: 6000, bespoke: 12000 },
-    EUR: { symbol: '€', select: 4100, prive: 6800, bespoke: 13800 },
-    AED: { symbol: 'AED ', select: 16500, prive: 27500, bespoke: 55000 }
-  };
-
-  let state = {
-    selectedTier: 'select',
-    tierTitle: 'Prithvi: The Earth Tier',
+  const state = {
+    tierId: 'prive',
+    tierTitle: 'Vows for Eternity Privé',
     currency: 'USD',
-    amount: 4500,
-    selectedTab: 'card'
+    amounts: {
+      USD: 15000,
+      INR: 1200000,
+      GBP: 12000,
+      AED: 55000
+    },
+    amount: 15000
   };
 
-  function formatPrice(val, curr) {
-    const symbol = pricingData[curr].symbol;
-    return symbol + Number(val).toLocaleString();
-  }
+  const currencySymbols = {
+    USD: '$',
+    INR: '₹',
+    GBP: '£',
+    AED: 'AED '
+  };
 
-  function updatePricingDisplay() {
-    const tierData = pricingData[state.currency];
-    const prices = {
-      select: tierData.select,
-      prive: tierData.prive,
-      bespoke: tierData.bespoke
-    };
+  const formatPrice = (val, curr) => {
+    const symbol = currencySymbols[curr] || '$';
+    return `${symbol}${val.toLocaleString('en-US')}`;
+  };
 
-    document.querySelectorAll('.tier-option').forEach(opt => {
-      const tier = opt.getAttribute('data-tier');
-      const priceEl = opt.querySelector('.tier-price');
-      if (priceEl && prices[tier]) {
-        priceEl.textContent = formatPrice(prices[tier], state.currency);
-      }
-    });
+  const updateModalDisplay = () => {
+    const displayEl = document.getElementById('displayPlanAmount');
+    const inputEl = document.getElementById('customPlanAmount');
+    const finalAmountEl = document.getElementById('finalPayAmount');
 
-    state.amount = prices[state.selectedTier];
-    if (finalPayAmountEl) {
-      finalPayAmountEl.textContent = formatPrice(state.amount, state.currency);
-    }
-  }
+    state.amount = state.amounts[state.currency] || 15000;
+    const formatted = formatPrice(state.amount, state.currency);
 
-  tierOptions.forEach(opt => {
-    opt.addEventListener('click', () => {
-      tierOptions.forEach(o => o.classList.remove('selected'));
-      opt.classList.add('selected');
-      state.selectedTier = opt.getAttribute('data-tier');
-      state.tierTitle = opt.querySelector('.tier-name').textContent.trim();
-      updatePricingDisplay();
-    });
-  });
+    if (displayEl) displayEl.textContent = formatted;
+    if (inputEl) inputEl.value = state.amount;
+    if (finalAmountEl) finalAmountEl.textContent = formatted;
+  };
 
-  if (currencySelector) {
-    currencySelector.addEventListener('change', (e) => {
-      state.currency = e.target.value;
-      updatePricingDisplay();
-    });
-  }
+  const openModal = (e) => {
+    if (e) e.preventDefault();
 
-  paymentTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const targetTab = tab.getAttribute('data-tab');
-      paymentTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+    const trigger = e ? e.currentTarget : null;
+    if (trigger) {
+      const tierId = trigger.getAttribute('data-tier') || 'prive';
+      const tierTitle = trigger.getAttribute('data-tier-name') || 'Vows for Eternity Privé';
+      const usdAmount = parseInt(trigger.getAttribute('data-usd-amount') || '15000', 10);
+      
+      state.tierId = tierId;
+      state.tierTitle = tierTitle;
+      state.amounts.USD = usdAmount;
+      state.amounts.INR = usdAmount * 80;
+      state.amounts.GBP = Math.round(usdAmount * 0.8);
+      state.amounts.AED = Math.round(usdAmount * 3.67);
 
-      tabPanes.forEach(pane => {
-        pane.style.display = pane.getAttribute('data-tab-pane') === targetTab ? 'block' : 'none';
-      });
-      state.selectedTab = targetTab;
-    });
-  });
+      const titleEl = document.getElementById('modalTierTitle');
+      if (titleEl) titleEl.textContent = tierTitle;
 
-  if (cardNumberInput) {
-    cardNumberInput.addEventListener('input', (e) => {
-      let value = e.target.value.replace(/\D/g, '').substring(0, 16);
-      let formatted = value.match(/.{1,4}/g)?.join(' ') || value;
-      e.target.value = formatted;
-
-      if (cardBrandIcon) {
-        if (/^4/.test(value)) {
-          cardBrandIcon.textContent = '💳 VISA';
-        } else if (/^5[1-5]/.test(value) || /^2[2-7]/.test(value)) {
-          cardBrandIcon.textContent = '💳 MASTERCARD';
-        } else if (/^3[47]/.test(value)) {
-          cardBrandIcon.textContent = '💳 AMEX';
+      tierOptions.forEach(opt => {
+        if (opt.getAttribute('data-tier-option') === tierId) {
+          opt.classList.add('active');
         } else {
-          cardBrandIcon.textContent = '💳 CARD';
+          opt.classList.remove('active');
         }
-      }
-    });
-  }
+      });
 
-  if (cardExpiryInput) {
-    cardExpiryInput.addEventListener('input', (e) => {
-      let value = e.target.value.replace(/\D/g, '').substring(0, 4);
-      if (value.length >= 2) {
-        e.target.value = value.substring(0, 2) + ' / ' + value.substring(2);
-      } else {
-        e.target.value = value;
-      }
-    });
-  }
-
-  if (cardCvcInput) {
-    cardCvcInput.addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(/\D/g, '').substring(0, 4);
-    });
-  }
-
-  function openModal(preferredTier = 'select') {
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    const targetTierOpt = document.querySelector(`.tier-option[data-tier="${preferredTier}"]`);
-    if (targetTierOpt) {
-      targetTierOpt.click();
-    } else {
-      updatePricingDisplay();
+      updateModalDisplay();
     }
 
     if (formSection) formSection.style.display = 'block';
     if (loadingSection) loadingSection.style.display = 'none';
     if (successSection) successSection.style.display = 'none';
-  }
 
-  function closeModal() {
-    modal.classList.remove('active');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('open');
     document.body.style.overflow = '';
-  }
+  };
 
   openButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const tier = btn.getAttribute('data-tier') || 'select';
-      openModal(tier);
-    });
+    btn.addEventListener('click', openModal);
   });
 
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
@@ -353,10 +306,59 @@ function initPaymentGateway() {
     if (e.target === modal) closeModal();
   });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      closeModal();
-    }
+  tierOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      tierOptions.forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+
+      const tierId = opt.getAttribute('data-tier-option');
+      state.tierId = tierId;
+
+      let usdAmount = 15000;
+      let title = 'Vows for Eternity Privé';
+
+      if (tierId === 'select') {
+        usdAmount = 5000;
+        title = 'Vows for Eternity Select';
+      } else if (tierId === 'custom') {
+        usdAmount = 25000;
+        title = 'Bespoke Global Matchmaking';
+      }
+
+      state.tierTitle = title;
+      state.amounts.USD = usdAmount;
+      state.amounts.INR = usdAmount * 80;
+      state.amounts.GBP = Math.round(usdAmount * 0.8);
+      state.amounts.AED = Math.round(usdAmount * 3.67);
+
+      const titleEl = document.getElementById('modalTierTitle');
+      if (titleEl) titleEl.textContent = title;
+
+      updateModalDisplay();
+    });
+  });
+
+  if (currencySelector) {
+    currencySelector.addEventListener('change', (e) => {
+      state.currency = e.target.value;
+      updateModalDisplay();
+    });
+  }
+
+  paymentTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      paymentTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const targetPane = tab.getAttribute('data-payment-tab');
+      tabPanes.forEach(pane => {
+        if (pane.getAttribute('data-tab-pane') === targetPane) {
+          pane.style.display = 'block';
+        } else {
+          pane.style.display = 'none';
+        }
+      });
+    });
   });
 
   if (paymentForm) {
@@ -399,7 +401,7 @@ function initPaymentGateway() {
    -------------------------------------------------------------------------- */
 function initMemberAuth() {
   const modal = document.getElementById('memberAuthModal');
-  const openButtons = document.querySelectorAll('a[href*="#login"], .trigger-login-modal');
+  const openButtons = document.querySelectorAll('a[href*="#login"], .trigger-login-modal, .nav-drawer-gold-link');
   const closeBtn = document.getElementById('closeAuthModal');
   const tabButtons = document.querySelectorAll('.auth-tab-btn');
   const loginForm = document.getElementById('memberLoginForm');
@@ -408,10 +410,19 @@ function initMemberAuth() {
 
   if (!modal) return;
 
-  const openModal = (e) => {
-    if (e) e.preventDefault();
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
+  window.openMemberAuthModal = (e) => {
+    if (e && typeof e.preventDefault === 'function') e.preventDefault();
+    
+    // Close sidebar drawer if open
+    if (typeof window.closeMobileDrawerGlobal === 'function') {
+      window.closeMobileDrawerGlobal(() => {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    } else {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
   };
 
   const closeModal = () => {
@@ -420,7 +431,7 @@ function initMemberAuth() {
   };
 
   openButtons.forEach(btn => {
-    btn.addEventListener('click', openModal);
+    btn.addEventListener('click', window.openMemberAuthModal);
   });
 
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
@@ -428,6 +439,13 @@ function initMemberAuth() {
   modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
   });
+
+  // Auto-open modal if URL hash is #login
+  if (window.location.hash === '#login') {
+    setTimeout(() => {
+      window.openMemberAuthModal();
+    }, 250);
+  }
 
   // Tab Switcher (Sign In vs Register)
   tabButtons.forEach(tab => {
