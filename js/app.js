@@ -71,23 +71,73 @@ function initMobileDrawer() {
     if (e.target === drawer) closeDrawer();
   });
 
-  document.querySelectorAll('.nav-accordion-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const content = btn.nextElementSibling;
-      const arrow = btn.querySelector('.nav-accordion-arrow');
-      if (content) {
-        content.classList.toggle('hidden');
-      }
-      if (arrow) {
-        arrow.classList.toggle('rotate-180');
-      }
-    });
-  });
+  // OUR MEMBERSHIPS Accordion Controller: Open-on-Hover (120ms Delay) + Click Toggle
+  const accordionContainer = document.querySelector('.nav-drawer-accordion');
+  if (accordionContainer) {
+    const accordionBtn = accordionContainer.querySelector('.nav-accordion-btn');
+    const accordionContent = accordionContainer.querySelector('.nav-accordion-content');
+    const accordionArrow = accordionContainer.querySelector('.nav-accordion-arrow');
+    let accordionHoverTimer = null;
 
+    const expandMemberships = () => {
+      if (accordionContent) accordionContent.classList.remove('hidden');
+      if (accordionArrow) accordionArrow.classList.add('rotate-180');
+    };
+
+    const collapseMemberships = () => {
+      const currentPath = window.location.pathname;
+      if (!currentPath.includes('select.html') && !currentPath.includes('prive.html')) {
+        if (accordionContent) accordionContent.classList.add('hidden');
+        if (accordionArrow) accordionArrow.classList.remove('rotate-180');
+      }
+    };
+
+    // Open on Hover
+    accordionContainer.addEventListener('mouseenter', () => {
+      if (accordionHoverTimer) clearTimeout(accordionHoverTimer);
+      accordionHoverTimer = setTimeout(expandMemberships, 120);
+    });
+
+    accordionContainer.addEventListener('mouseleave', () => {
+      if (accordionHoverTimer) clearTimeout(accordionHoverTimer);
+    });
+
+    // Click Toggle
+    if (accordionBtn) {
+      accordionBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (accordionHoverTimer) clearTimeout(accordionHoverTimer);
+        const isCurrentlyHidden = accordionContent && accordionContent.classList.contains('hidden');
+        if (isCurrentlyHidden) {
+          expandMemberships();
+        } else {
+          collapseMemberships();
+        }
+      });
+    }
+  }
+
+  // Smooth Page Navigation Fade Transition (No Jitter)
   document.querySelectorAll('.nav-drawer-link:not(.nav-accordion-btn), .nav-accordion-content a').forEach(link => {
-    link.addEventListener('click', closeDrawer);
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (!href) return;
+
+      // Handle anchor links on same page
+      if (href.startsWith('#') || href.includes(window.location.pathname + '#')) {
+        closeDrawer();
+        return;
+      }
+
+      e.preventDefault();
+      closeDrawer();
+      document.body.style.transition = 'opacity 0.28s cubic-bezier(0.25, 1, 0.5, 1)';
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        window.location.href = href;
+      }, 240);
+    });
   });
 }
 
