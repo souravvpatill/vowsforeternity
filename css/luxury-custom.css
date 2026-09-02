@@ -703,3 +703,106 @@ body {
   color: #5A1713;
   transform: translateY(-2px);
 }
+
+/* ==========================================================================
+   LUXURY TACTILITY, MICRO-TRANSITIONS & AMBIENT SHADOWS
+   ========================================================================== */
+
+/* 1. Global Button & CTA Tactile Press Response */
+button, 
+.btn-start-conversation,
+.trigger-payment-modal,
+.social-badge-btn,
+.footer-nav-link,
+.nav-drawer-link,
+.path-toggle-btn {
+  transition: transform 0.22s cubic-bezier(0.25, 1, 0.5, 1), 
+              box-shadow 0.22s cubic-bezier(0.25, 1, 0.5, 1), 
+              background-color 0.22s ease, 
+              color 0.22s ease, 
+              border-color 0.22s ease !important;
+}
+
+button:active,
+.btn-start-conversation:active,
+.trigger-payment-modal:active,
+.path-toggle-btn:active {
+  transform: scale(0.975) translateY(1px) !important;
+}
+
+/* 2. Premium CTA Shimmer & Elevation Shadow on Hover */
+.btn-start-conversation,
+.trigger-payment-modal {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-start-conversation::after,
+.trigger-payment-modal::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  transition: transform 0.65s ease;
+  pointer-events: none;
+}
+
+.btn-start-conversation:hover::after,
+.trigger-payment-modal:hover::after {
+  transform: translate(300%, 0) rotate(25deg);
+}
+
+.btn-start-conversation:hover,
+.trigger-payment-modal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(197, 160, 89, 0.35), 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+/* 3. Luxury Card Hover Soft Elevation */
+.bg-\[\#FAF5EE\].border,
+.faq-accordion-item {
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+              box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+              border-color 0.3s ease;
+}
+
+.bg-\[\#FAF5EE\].border:hover {
+  box-shadow: 0 12px 32px rgba(63, 14, 11, 0.08);
+}
+
+/* 4. Footer Dropdown Badge Subtle Spring Hover */
+.footer-nav-link {
+  position: relative;
+}
+
+.footer-nav-link:hover .footer-dropdown-badge {
+  transform: scale(1.15) rotate(5deg);
+  background-color: #FAF5EE;
+}
+
+/* 5. Header Hamburger & Logo Subtle Scale Response */
+#openDrawerBtn svg {
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#openDrawerBtn:hover svg {
+  transform: scale(1.08);
+}
+
+#openDrawerBtn:active svg {
+  transform: scale(0.92);
+}
+
+/* 6. Accordion Chevron Smooth Spring Rotation */
+.faq-chevron-icon {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}

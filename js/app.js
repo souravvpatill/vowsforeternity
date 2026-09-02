@@ -6,7 +6,24 @@ document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
   initMobileDrawer();
   initPaymentGateway();
+  initSubtleTactility();
 });
+
+/* --------------------------------------------------------------------------
+   Subtle Tactility & Haptic Feedback
+   -------------------------------------------------------------------------- */
+function initSubtleTactility() {
+  document.addEventListener('pointerdown', (e) => {
+    const target = e.target.closest('button, .btn-start-conversation, .trigger-payment-modal, .footer-nav-link, .nav-drawer-link, .path-toggle-btn');
+    if (target && 'vibrate' in navigator) {
+      try {
+        navigator.vibrate(6); // 6ms ultra-light luxury haptic tick on mobile
+      } catch (err) {
+        // Safe fallback if vibration permissions disabled
+      }
+    }
+  }, { passive: true });
+}
 
 /* --------------------------------------------------------------------------
    Dynamic Header Scroll Transition (Transparent -> Burgundy)
