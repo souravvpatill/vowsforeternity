@@ -13,7 +13,7 @@
 
   <!-- Core Tailwind & Stylesheets -->
   <link rel="stylesheet" href="css/93ed2a90ee3dfcc7.css">
-  <link rel="stylesheet" href="css/luxury-custom.css?v=8">
+  <link rel="stylesheet" href="css/luxury-custom.css?v=9">
 
   <style>
     /* Standardized Footer & Bottom Watercolor Transition Banner */
@@ -406,10 +406,12 @@
   <header class="hero-header-bar">
     <!-- Left: Hamburger Icon (Flex-1) -->
     <div class="flex-1 flex items-center justify-start">
-      <button id="openDrawerBtn" class="p-2 text-white hover:text-[#C5A880] focus:outline-none cursor-pointer" aria-label="Open Menu">
-        <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
+      <button id="openDrawerBtn" class="luxury-hamburger-btn" aria-label="Open Menu">
+        <div class="hamburger-icon-wrap">
+          <span class="line line-1"></span>
+          <span class="line line-2"></span>
+          <span class="line line-3"></span>
+        </div>
       </button>
     </div>
 
@@ -438,10 +440,12 @@
       <div>
         <!-- Close Ghost Circle Button -->
         <div class="flex items-center justify-between pb-8">
-          <button id="closeDrawerBtn" class="drawer-close-btn" aria-label="Close Menu">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
+          <button id="closeDrawerBtn" class="luxury-hamburger-btn active" aria-label="Close Menu">
+            <div class="hamburger-icon-wrap">
+              <span class="line line-1"></span>
+              <span class="line line-2"></span>
+              <span class="line line-3"></span>
+            </div>
           </button>
         </div>
 

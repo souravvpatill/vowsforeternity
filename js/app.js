@@ -54,18 +54,51 @@ function initMobileDrawer() {
 
   if (!drawer || !openBtn) return;
 
+  let isClosing = false;
+
   const openDrawer = () => {
+    if (isClosing) return;
     drawer.classList.add('open');
+    openBtn.classList.add('active');
+    if (closeBtn) closeBtn.classList.add('active');
     document.body.style.overflow = 'hidden';
   };
 
-  const closeDrawer = () => {
+  const closeDrawer = (onComplete) => {
+    if (!drawer.classList.contains('open') || isClosing) {
+      if (typeof onComplete === 'function') onComplete();
+      return;
+    }
+    isClosing = true;
+
+    // Trigger Iris Rotation un-morphing back to 3 lines
+    openBtn.classList.remove('active');
+    if (closeBtn) closeBtn.classList.remove('active');
+
+    // Trigger CSS slide-out & backdrop fade
     drawer.classList.remove('open');
     document.body.style.overflow = '';
+
+    // Wait for the 0.48s smooth CSS transition to finish completely before callback
+    setTimeout(() => {
+      isClosing = false;
+      if (typeof onComplete === 'function') onComplete();
+    }, 450);
   };
 
-  openBtn.addEventListener('click', openDrawer);
-  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  openBtn.addEventListener('click', () => {
+    if (drawer.classList.contains('open')) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      closeDrawer();
+    });
+  }
 
   drawer.addEventListener('click', (e) => {
     if (e.target === drawer) closeDrawer();
@@ -118,8 +151,8 @@ function initMobileDrawer() {
     }
   }
 
-  // Smooth Page Navigation Fade Transition (No Jitter)
-  document.querySelectorAll('.nav-drawer-link:not(.nav-accordion-btn), .nav-accordion-content a').forEach(link => {
+  // Smooth Page Navigation Fade Transition (Smart Animate - Jitter Free)
+  document.querySelectorAll('.nav-drawer-link:not(.nav-accordion-btn), .nav-subitem-link').forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
       if (!href) return;
@@ -131,12 +164,14 @@ function initMobileDrawer() {
       }
 
       e.preventDefault();
-      closeDrawer();
-      document.body.style.transition = 'opacity 0.28s cubic-bezier(0.25, 1, 0.5, 1)';
+
+      // Smoothly fade page body during drawer closing slide
+      document.body.style.transition = 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
       document.body.style.opacity = '0';
-      setTimeout(() => {
+
+      closeDrawer(() => {
         window.location.href = href;
-      }, 240);
+      });
     });
   });
 }
