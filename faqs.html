@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frequently Asked Questions (FAQs) | Vows for Eternity</title>
+  <meta name="description" content="Frequently Asked Questions about Vows for Eternity's bespoke, confidential matrimonial and matchmaking services for accomplished individuals and families.">
+  
+  <!-- Preload Core Fonts -->
+  <link rel="preload" href="fonts/a42d76047022ac09-s.p.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="fonts/f95b6d9c1f133891-s.p.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="fonts/4cfd3e1bc9222a5d-s.p.ttf" as="font" type="font/ttf" crossorigin>
+
+  <!-- Core Tailwind & Stylesheets -->
+  <link rel="stylesheet" href="css/93ed2a90ee3dfcc7.css">
+  <link rel="stylesheet" href="css/luxury-custom.css?v=4">
+
+  <style>
+    /* =========================================================================
+       FAQ PAGE EXACT 1:1 MASTERPIECE REPLICATION
+       ========================================================================= */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .faq-page-container {
+      position: relative;
+      width: 100%;
+      background-color: #FAF5EE;
+      overflow-x: clip;
+      min-height: 100vh;
+    }
+
+    /* Top Watercolor Header Banner Asset */
+    .faq-top-banner-wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .faq-top-banner-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(to top, #FAF5EE 0%, rgba(250, 245, 238, 0) 100%);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .faq-top-banner-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
+    }
+
+    /* Header Glassmorphism & Dynamic Scroll Transition */
+    .hero-header-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 50;
+      padding: 1.1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(197, 160, 89, 0.35);
+      background: linear-gradient(180deg, rgba(90, 23, 19, 0.25) 0%, rgba(90, 23, 19, 0.05) 100%);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      transition: background 0.35s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s cubic-bezier(0.25, 1, 0.5, 1), padding 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: background, backdrop-filter, padding;
+    }
+
+    .hero-header-bar.scrolled {
+      padding: 0.75rem 2rem;
+      background: linear-gradient(135deg, rgba(90, 23, 19, 0.96) 0%, rgba(63, 14, 11, 0.98) 100%) !important;
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+      border-bottom-color: #C5A059;
+    }
+
+    /* GPU-Accelerated Logo Transform Scale (Silky Smooth 60fps) */
+    .header-logo-img {
+      height: 70px;
+      width: auto;
+      object-fit: contain;
+      transform-origin: center center;
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform;
+    }
+
+    @media (max-width: 768px) {
+      .header-logo-img {
+        height: 52px;
+      }
+    }
+
+    .hero-header-bar.scrolled .header-logo-img {
+      transform: scale(0.67);
+    }
+
+    /* Main Content Flex Grid */
+    .faq-content-layer {
+      position: relative;
+      z-index: 10;
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(24rem, 30vw, 28rem) 2rem 4rem 2rem;
+      display: flex;
+      flex-direction: row;
+      gap: 4rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 860px) {
+      .faq-content-layer {
+        flex-direction: column;
+        gap: 2.5rem;
+        padding-top: 18rem;
+      }
+      .faq-sidebar-aside {
+        width: 100% !important;
+        position: static !important;
+      }
+    }
+
+    /* Left Sidebar */
+    .faq-sidebar-aside {
+      width: 260px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 110px;
+    }
+
+    .faq-nav-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      font-family: 'metropolitanParliament', 'Playfair Display', Georgia, serif;
+      font-size: 1.22rem;
+      color: #332B45;
+      padding: 0.45rem 0;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    .faq-nav-btn:hover {
+      color: #5A1713;
+    }
+
+    .faq-nav-btn.active {
+      color: #5A1713 !important;
+      font-weight: 700 !important;
+    }
+
+    /* Celestial Gold Sparkle Illustration on Left Margin */
+    .celestial-stars-sidebar {
+      margin-top: 1rem;
+      width: 130px;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    /* Right Column Area */
+    .faq-main-column {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* Main Gold Title */
+    .faq-main-title {
+      font-family: 'metropolitanParliament', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      color: #C5A059;
+      font-weight: normal;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-top: 110px;
+      margin-bottom: 1.4rem;
+      line-height: 1.2;
+    }
+
+    /* Category Section Group & Title */
+    .faq-category-group {
+      margin-bottom: 4.5rem;
+      scroll-margin-top: 130px;
+    }
+
+    .faq-category-title {
+      font-family: 'metropolitanParliament', 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.75rem, 2.5vw, 2.15rem);
+      color: #5A1713;
+      font-weight: normal;
+      margin-top: 2rem;
+      margin-bottom: 1.4rem;
+      line-height: 1.2;
+    }
+
+    /* Accordion Item Styling */
+    .faq-accordion-item {
+      border: none;
+      padding: 0.15rem 0;
+      position: relative;
+    }
+
+    .faq-question-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      background: transparent;
+      border: none;
+      padding: 0.95rem 0;
+      cursor: pointer;
+      font-family: 'mulishBold', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1d184c;
+      transition: color 0.2s ease;
+      gap: 1.5rem;
+    }
+
+    .faq-question-btn:hover {
+      color: #5A1713;
+    }
+
+    .faq-chevron-icon {
+      width: 18px;
+      height: 18px;
+      color: #5A1713;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      flex-shrink: 0;
+    }
+
+    .faq-accordion-item.active .faq-chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer-pane {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .faq-accordion-item.active .faq-answer-pane {
+      max-height: 650px;
+      opacity: 1;
+    }
+
+    .faq-answer-text {
+      font-family: 'mulishRegular', 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: #332B45;
+      line-height: 1.7;
+      padding-bottom: 1.1rem;
+    }
+
+    /* Gold Textured Brushstroke Divider Line */
+    .faq-gold-divider {
+      width: 100%;
+      height: 14px;
+      background-image: url('images/faq-accordian-border.png');
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin: 0.15rem 0 0.4rem;
+      opacity: 0.85;
+    }
+
+    .faq-bottom-banner-wrap {
+      position: relative;
+      width: 100%;
+      margin-top: -3rem;
+      overflow: hidden;
+      line-height: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .faq-bottom-banner-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+      background: linear-gradient(to bottom, #FAF5EE 0%, rgba(250, 245, 238, 0) 100%);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .faq-bottom-banner-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 100%);
+    }
+
+    /* Refined Masterpiece Footer Styling */
+    .real-footer {
+      background-color: #5A1713;
+      background-image: url('images/common-footer.webp');
+      background-size: cover;
+      background-position: center;
+      padding: 2.2rem 0;
+      color: #FAF5EE;
+    }
+
+    .footer-nav-link {
+      font-family: 'mulishRegular', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      color: rgba(250, 245, 238, 0.9);
+      transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .footer-nav-link:hover {
+      color: #C5A059;
+    }
+
+    .footer-sep {
+      color: rgba(197, 160, 89, 0.5);
+      margin: 0 0.3rem;
+      font-size: 1rem;
+    }
+
+    .footer-dropdown-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: #C5A059;
+      color: #5A1713;
+      margin-left: 0.35rem;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .footer-dropdown-badge svg {
+      width: 11px;
+      height: 11px;
+      fill: #5A1713;
+    }
+
+    .social-badge-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      background-color: #C5A059;
+      color: #5A1713;
+      font-family: 'mulishBold', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .social-badge-btn:hover {
+      background-color: #FAF5EE;
+      color: #5A1713;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="bg-[#FAF5EE] text-[#332B45] antialiased">
+
+  <!-- =========================================================================
+       STICKY HEADER BAR
+       ========================================================================= -->
+  <header class="hero-header-bar">
+    <!-- Left: Hamburger Icon (Flex-1) -->
+    <div class="flex-1 flex items-center justify-start">
+      <button id="openDrawerBtn" class="p-2 text-white hover:text-[#C5A880] focus:outline-none cursor-pointer" aria-label="Open Menu">
+        <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Center: Gold Monogram Logo (Exact 50% Horizontal Page Center) -->
+    <div class="flex-none text-center">
+      <a href="index.html" class="inline-block transition-transform duration-300 hover:scale-[1.02]">
+        <img src="images/vfe-logo.webp" alt="Vows for Eternity logo" class="header-logo-img mx-auto">
+      </a>
+    </div>
+
+    <!-- Right: BEGIN YOUR JOURNEY (Flex-1) -->
+    <div class="flex-1 flex items-center justify-end">
+      <a href="apply-for-membership.html" class="text-white text-xs md:text-sm font-mulish-bold uppercase tracking-widest hover:text-[#C5A880] transition-colors cursor-pointer">
+        BEGIN YOUR JOURNEY
+      </a>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       LEFT NAVIGATION DRAWER
+       ========================================================================= -->
+  <div id="mobileNavDrawer" class="nav-drawer-backdrop">
+    <div class="nav-drawer-content">
+      
+      <!-- Close X Button -->
+      <div class="flex items-center justify-between pb-6">
+        <button id="closeDrawerBtn" class="text-white hover:text-[#C5A880] p-1 focus:outline-none cursor-pointer" aria-label="Close Menu">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Drawer Links -->
+      <nav class="space-y-1">
+        <a href="index.html#about" class="nav-drawer-link">ABOUT US</a>
+        
+        <!-- OUR MEMBERSHIPS Accordion -->
+        <div class="nav-drawer-accordion">
+          <button type="button" class="nav-drawer-link w-full text-left focus:outline-none cursor-pointer nav-accordion-btn">
+            <span>OUR MEMBERSHIPS</span>
+            <svg class="w-4 h-4 transition-transform duration-300 transform nav-accordion-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="nav-accordion-content hidden pl-4 space-y-2 py-2">
+            <a href="select.html" class="block text-xs uppercase tracking-widest text-white/90 hover:text-[#C5A880] py-1.5 transition-colors font-sans">
+              &bull; Vows for Eternity Select
+            </a>
+            <a href="prive.html" class="block text-xs uppercase tracking-widest text-white/90 hover:text-[#C5A880] py-1.5 transition-colors font-sans">
+              &bull; Vows for Eternity Privé
+            </a>
+          </div>
+        </div>
+
+        <a href="pride.html" class="nav-drawer-link">PRIDE BY VOWS FOR ETERNITY</a>
+        <a href="apply-for-membership.html" class="nav-drawer-link">BEGIN YOUR JOURNEY</a>
+        <a href="faqs.html" class="nav-drawer-link text-[#C5A880] font-bold">FREQUENTLY ASKED QUESTIONS (FAQ'S)</a>
+        <a href="index.html#substance" class="nav-drawer-link">WOMEN OF SUBSTANCE</a>
+        <a href="index.html#media" class="nav-drawer-link">MEDIA</a>
+
+        <div class="nav-drawer-divider"></div>
+
+        <a href="index.html#login" class="nav-drawer-link nav-drawer-gold-link">MEMBER LOGIN</a>
+      </nav>
+
+    </div>
+  </div>
+
+  <main>
+    <!-- =========================================================================
+         FAQ MASTER PAGE WRAPPER (SEAMLESS WATERCOLOR BLEND)
+         ========================================================================= -->
+    <div class="faq-page-container">
+      
+      <!-- Top Watercolor Artwork Banner Asset (Image 2) -->
+      <div class="faq-top-banner-wrap">
+        <img src="images/faq-top-banner.png" alt="" class="faq-top-banner-img">
+      </div>
+
+      <!-- Main Content Layer with 2-Column Architecture -->
+      <div class="faq-content-layer">
+        
+        <!-- LEFT COLUMN: SIDEBAR MENU + CELESTIAL STARS -->
+        <aside class="faq-sidebar-aside">
+          <nav style="display: flex; flex-direction: column; gap: 0.65rem; margin-top: 270px;">
+            <button type="button" class="faq-nav-btn active" data-target="bigger-picture">
+              The Bigger Picture
+            </button>
+            <button type="button" class="faq-nav-btn" data-target="finer-details">
+              The Finer Details
+            </button>
+            <button type="button" class="faq-nav-btn" data-target="what-we-protect">
+              What We Protect
+            </button>
+            <button type="button" class="faq-nav-btn" data-target="practical-details">
+              The Practical Details
+            </button>
+          </nav>
+
+          <!-- Gold Celestial Starburst Artwork on Left Margin -->
+          <div class="celestial-stars-sidebar hidden lg:block">
+            <svg viewBox="0 0 100 160" fill="none" style="width: 100%; height: auto;">
+              <circle cx="15" cy="15" r="2.5" fill="#C5A059"/>
+              <circle cx="45" cy="30" r="3" fill="#C5A059"/>
+              <circle cx="10" cy="55" r="2" fill="#C5A059"/>
+              <!-- Starburst 1 -->
+              <path d="M40 55 L42.5 67 L55 69 L42.5 71 L40 83 L37.5 71 L25 69 L37.5 67 Z" fill="#C5A059"/>
+              <!-- Starburst 2 -->
+              <path d="M18 95 L20 103 L28 104.5 L20 106 L18 114 L16 106 L8 104.5 L16 103 Z" fill="#C5A059"/>
+              <circle cx="50" cy="120" r="2.5" fill="#C5A059"/>
+              <circle cx="20" cy="135" r="2" fill="#C5A059"/>
+            </svg>
+          </div>
+        </aside>
+
+        <!-- RIGHT COLUMN: FREQUENTLY ASKED QUESTIONS + ACCORDIONS -->
+        <div class="faq-main-column">
+          
+          <!-- Page Main Heading (Positioned at bottom opening of the header watercolor asset) -->
+          <h1 class="faq-main-title">
+            FREQUENTLY ASKED QUESTIONS
+          </h1>
+
+          <!-- ===============================================================
+               CATEGORY 1: THE BIGGER PICTURE
+               =============================================================== -->
+          <div id="bigger-picture" class="faq-category-group">
+            <h2 class="faq-category-title">
+              The Bigger Picture
+            </h2>
+
+            <div class="faq-accordion-list">
+              
+              <!-- Q1.1 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Is this a platform for arranged marriages?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    No. We offer arranged introductions, not arranged marriages. In a world flooded with options but little alignment, we create opportunities for two people to meet with intention. What happens after that is entirely theirs. Our role is simply to make a thoughtful introduction.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q1.2 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>What do you believe about marriage?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    We believe that marriage is a profound partnership built on shared values, emotional maturity, mutual respect, and genuine alignment. It's not about settling or rushing into a timeline; it's about finding someone with whom you can build an enduring, fulfilling life together.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q1.3 (Open initially as in reference screenshot 1) -->
+              <div class="faq-accordion-item active">
+                <button type="button" class="faq-question-btn" aria-expanded="true">
+                  <span>Who are your members?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane" style="max-height: 500px; opacity: 1;">
+                  <div class="faq-answer-text space-y-3">
+                    <p>
+                      Our members are accomplished professionals, entrepreneurs, business families and next generation leaders. They value discretion, emotional maturity and a thoughtful approach to finding a life partner.
+                    </p>
+                    <p>
+                      They come to us not because they lack options, but because they want a process that reflects the significance of the decision.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q1.4 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Do you only work with people in India?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    No. We are a global service with offices in New York, Mumbai, and New Delhi. Our clientele spans across the United States, United Kingdom, Europe, Canada, the Middle East, Southeast Asia, and India.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q1.5 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>What does your membership look like?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    We offer bespoke, concierge-led memberships tailored to your requirements, ranging from our curated Vows for Eternity Select tiers (Prithvi, Tejas, and Vyom) to our confidential, ultra-high-net-worth Vows for Eternity Privé offering led directly by our founder.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q1.6 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>What is your success rate?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Our success is defined by the quality and durability of the marriages we help create. Because our process is curated, selective, and driven by deep human intuition rather than automated algorithms, a significant percentage of our members find meaningful, long-term partnerships through us.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q1.7 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>What is your refund policy?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Membership fees are strictly non-refundable once onboarding and the confidential search process have commenced, as our team dedicates significant time, resources, and personalised effort from day one.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ===============================================================
+               CATEGORY 2: THE FINER DETAILS
+               =============================================================== -->
+          <div id="finer-details" class="faq-category-group">
+            <h2 class="faq-category-title">
+              The Finer Details
+            </h2>
+
+            <div class="faq-accordion-list">
+              
+              <!-- Q2.1 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>How do I sign up?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Complete the Apply for Membership form and a member of our team will reach out to learn more about you and your expectations. If there is mutual alignment, you will be invited to complete your profile. Every search begins with an in depth conversation so we understand who you are and what you are looking for.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.2 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Is there an eligibility criterion?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Yes. We look for individuals who are genuine, emotionally clear, accomplished, and serious about finding a life partner. Acceptance into our service is based on an introductory consultation to ensure mutual alignment and fit.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.3 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>How do you ensure alignment in matches?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Alignment is determined through extensive one-on-one discovery sessions where we delve into your personality, values, cultural background, family dynamics, lifestyle expectations, and relationship goals. Every introduction is hand-curated by experienced matchmakers.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.4 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Is my information kept confidential?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Absolute confidentiality is the cornerstone of our practice. Your profile and personal details are never published on any public website, directory, or app. Information is only shared privately with potential matches with your explicit consent.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.5 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Will my profile be visible on your website or app?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    No. We do not maintain any public-facing database, directory, or app. All introductions are facilitated privately and offline by our team.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.6 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Is there a minimum number of introductions each month?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    We prioritize quality and depth over arbitrary quotas. Rather than sending a fixed monthly volume of mismatched profiles, we only introduce you to candidates who truly meet your criteria and values.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.7 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Tell me about your team.</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Our team comprises seasoned relationship advisors, executive consultants, and dedicated researchers led by our Founder, Anuradda Gupta. We combine deep global exposure, cultural empathy, and discretion to guide you throughout your journey.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.8 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>What is the difference between profile sharing and introductions?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Profile sharing is the initial stage where detailed biographical and values-based information is shared with both parties for preliminary review. An introduction takes place once mutual interest is established, leading to direct communication and facilitated meetings.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.9 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>What if I do not like the matches?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Matchmaking is an iterative and collaborative process. If a profile doesn't resonate, your constructive feedback helps us refine subsequent introductions and align even closer with your preferences.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.10 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Do I receive coaching or additional support?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Yes. Our team provides continuous guidance, perspective, and support before and after meetings, helping you navigate dating dynamics with clarity and confidence.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.11 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>What happens if I find someone independently?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    We will genuinely be delighted for you. However, membership fees remain non-refundable once onboarding has commenced.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.12 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Do you work with specific faiths or communities?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    We work with diverse cultural backgrounds, faiths, and communities across the globe, respecting all traditions while focusing primarily on individual compatibility and mutual values.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.13 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Can you guarantee I will find someone?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    While we guarantee our utmost dedication, discretion, and access to a world-class network of eligible individuals, finding love ultimately depends on mutual chemistry and timing, which cannot be guaranteed by any ethical service.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.14 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>How long does the process typically take?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    The timeline varies depending on the specificity of your criteria, openness, and location. Many members connect within 6 to 12 months, while others take longer to find their ideal partner.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.15 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Can I pause my membership?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Yes, membership pause options are available under specific circumstances (such as exploring a promising connection or personal commitments) as outlined in your membership agreement.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.16 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Can family members be involved in my search?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Yes, with your consent. We frequently work with supportive parents and family members to ensure the process honors family values while keeping the individual's happiness at the center.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.17 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Do both people need to be members for an introduction to happen?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Yes. Both individuals must be vetted, registered members of Vows for Eternity to ensure mutual commitment, verified credentials, and shared seriousness.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.18 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Can I upgrade my membership?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Yes. You can transition or upgrade to a higher tier (such as Vyom or VFE Privé) at any point during your search by paying the differential fee.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q2.19 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Is there a success fee?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Our fee structure is transparently detailed in your chosen membership tier agreement. Some bespoke executive tiers may involve a retention or success component, which is clarified during your initial consultation.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ===============================================================
+               CATEGORY 3: WHAT WE PROTECT
+               =============================================================== -->
+          <div id="what-we-protect" class="faq-category-group">
+            <h2 class="faq-category-title">
+              What We Protect
+            </h2>
+
+            <div class="faq-accordion-list">
+              
+              <!-- Q3.1 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Do you conduct background checks?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    We do not conduct formal criminal background checks. Public databases vary significantly across countries and cannot be relied upon as a complete measure of an individual's history. Instead, we rely on referrals, contextual conversations and careful human judgement throughout the process.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q3.2 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Can I see testimonials or success stories?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Due to the high-profile nature and privacy requirements of our clientele, we protect all identities strictly. Anonymized success stories, reviews, and client experiences are shared on our website and during private consultations upon request.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q3.3 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Can I meet your team before signing up?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Yes. We conduct thorough discovery consultations (via video call or in-person at our New York, Mumbai, or New Delhi offices) prior to finalizing membership.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ===============================================================
+               CATEGORY 4: THE PRACTICAL DETAILS
+               =============================================================== -->
+          <div id="practical-details" class="faq-category-group">
+            <h2 class="faq-category-title">
+              The Practical Details
+            </h2>
+
+            <div class="faq-accordion-list">
+              
+              <!-- Q4.1 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>What are the accepted modes of payment?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    We accept bank transfers, cheques and major credit or debit cards.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q4.2 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Can I split my membership payment?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    Standard memberships require full upfront payment prior to initiation of the search, though specific installment arrangements may be reviewed on a case-by-case basis.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+              <!-- Q4.3 -->
+              <div class="faq-accordion-item">
+                <button type="button" class="faq-question-btn" aria-expanded="false">
+                  <span>Is there a refund if I meet someone outside the service during my membership?</span>
+                  <svg class="faq-chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="faq-answer-pane">
+                  <p class="faq-answer-text">
+                    No. Membership fees cover the extensive advisory, research, and curation services initiated on your behalf and remain non-refundable.
+                  </p>
+                </div>
+                <div class="faq-gold-divider"></div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Bottom Watercolor Artwork Banner Asset (Image 3) -->
+      <div class="faq-bottom-banner-wrap">
+        <img src="images/faq-bottom-banner.png" alt="" class="faq-bottom-banner-img">
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="real-footer" style="border-top: 1px solid #C5A059;">
+    <div class="luxury-container" style="max-width: 1440px;">
+      
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+        
+        <!-- Left Links Block (Flex-1) -->
+        <div class="flex-1 space-y-1 font-sans">
+          <div>
+            <a href="index.html" class="footer-nav-link">Home</a> <span class="footer-sep">|</span>
+            <a href="index.html#about" class="footer-nav-link">About Us</a> <span class="footer-sep">|</span>
+            <a href="select.html" class="footer-nav-link">Vows for Eternity Select</a> <span class="footer-sep">|</span>
+          </div>
+          <div>
+            <a href="prive.html" class="footer-nav-link">Vows for Eternity Privé</a> <span class="footer-sep">|</span>
+            <a href="index.html#substance" class="footer-nav-link">Women of Substance</a> <span class="footer-sep">|</span>
+            <a href="index.html#blogs" class="footer-nav-link">Blogs</a> <span class="footer-sep">|</span>
+          </div>
+          <div>
+            <a href="index.html#press" class="footer-nav-link">Press Release</a> <span class="footer-sep">|</span>
+            <a href="faqs.html" class="footer-nav-link text-[#C5A059] font-medium">FAQ</a> <span class="footer-sep">|</span>
+            <a href="apply-for-membership.html" class="footer-nav-link">Begin Your Journey</a> <span class="footer-sep">|</span>
+          </div>
+          <div class="pt-1 space-y-1">
+            <div>
+              <a href="#" class="footer-nav-link">
+                Matchmaking services in India
+                <span class="footer-dropdown-badge">
+                  <svg viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                </span>
+              </a> <span class="footer-sep">|</span>
+            </div>
+            <div>
+              <a href="#" class="footer-nav-link">
+                Matchmaking services in United Kingdom
+                <span class="footer-dropdown-badge">
+                  <svg viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                </span>
+              </a> <span class="footer-sep">|</span>
+            </div>
+            <div>
+              <a href="#" class="footer-nav-link">
+                Matchmaking services in UAE
+                <span class="footer-dropdown-badge">
+                  <svg viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                </span>
+              </a> <span class="footer-sep">|</span>
+              <a href="#" class="footer-nav-link">
+                Matchmaking services in USA
+                <span class="footer-dropdown-badge">
+                  <svg viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center VFE Logo (Exact 50% Horizontal Page Midpoint) -->
+        <div class="text-center flex flex-col items-center justify-center px-4 my-4 lg:my-0">
+          <a href="index.html" class="inline-block transition-transform duration-300 hover:scale-105">
+            <img src="images/vfe-monogram.png" alt="Vows for Eternity Logo" class="h-20 md:h-24 w-auto mx-auto object-contain">
+            <span class="block font-times-roman text-xs tracking-widest text-[#EBDDCB] mt-2 lowercase">vows for eternity</span>
+          </a>
+        </div>
+
+        <!-- Right Block: Locations & Legal Links (Flex-1) -->
+        <div class="flex-1 text-right space-y-2 font-sans">
+          <div class="text-xs uppercase tracking-wider text-[#EBDDCB] font-medium leading-relaxed">
+            New York <span class="footer-sep">|</span> Mumbai <span class="footer-sep">|</span> New Delhi
+          </div>
+
+          <div class="text-[11px] text-white/80 space-x-2 pt-1">
+            <a href="https://www.vowsforeternity.com/terms-conditions" target="_blank" rel="noopener" class="hover:text-[#C5A059] transition-colors">Terms &amp; Conditions</a>
+            <span class="text-white/40">|</span>
+            <a href="https://www.vowsforeternity.com/privacy-policy" target="_blank" rel="noopener" class="hover:text-[#C5A059] transition-colors">Privacy Policy</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating Widgets -->
+  <div class="floating-actions-container">
+    <a href="https://wa.me/919820000000" target="_blank" class="floating-circle-btn btn-whatsapp-green" aria-label="WhatsApp Concierge">
+      <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.143 4.174 4.286-1.124z"/></svg>
+    </a>
+    <a href="apply-for-membership.html" class="floating-circle-btn btn-chat-purple" aria-label="Private Inquiry">
+      <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+    </a>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    // Exclusive Accordion Toggle: only ONE FAQ item can be open at a time
+    document.querySelectorAll('.faq-question-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const currentItem = btn.closest('.faq-accordion-item');
+        const isCurrentlyActive = currentItem.classList.contains('active');
+        const currentPane = currentItem.querySelector('.faq-answer-pane');
+
+        // Close ALL accordion items across all groups
+        document.querySelectorAll('.faq-accordion-item').forEach(item => {
+          item.classList.remove('active');
+          const btnElem = item.querySelector('.faq-question-btn');
+          const paneElem = item.querySelector('.faq-answer-pane');
+          if (btnElem) btnElem.setAttribute('aria-expanded', 'false');
+          if (paneElem) paneElem.style.maxHeight = null;
+        });
+
+        // If the clicked item was NOT active, open it exclusively
+        if (!isCurrentlyActive) {
+          currentItem.classList.add('active');
+          btn.setAttribute('aria-expanded', 'true');
+          currentPane.style.maxHeight = currentPane.scrollHeight + "px";
+        }
+      });
+    });
+
+    // Anchor Navigation & ScrollSpy Controller
+    const navButtons = document.querySelectorAll('.faq-nav-btn');
+    const categoryGroups = document.querySelectorAll('.faq-category-group');
+
+    // Smooth Scroll on Sidebar Button Click
+    navButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = btn.getAttribute('data-target');
+        const targetGroup = document.getElementById(targetId);
+        if (targetGroup) {
+          targetGroup.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ScrollSpy using IntersectionObserver
+    const observerOptions = {
+      root: null,
+      rootMargin: '-10% 0px -55% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navButtons.forEach(btn => {
+            if (btn.getAttribute('data-target') === id) {
+              btn.classList.add('active');
+            } else {
+              btn.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    categoryGroups.forEach(group => observer.observe(group));
+
+    // Dynamic Glassmorphic Header & Logo Shrink Controller
+    const mainHeaderBar = document.querySelector('.hero-header-bar');
+    if (mainHeaderBar) {
+      const handleHeaderScroll = () => {
+        if (window.scrollY > 30) {
+          mainHeaderBar.classList.add('scrolled');
+        } else {
+          mainHeaderBar.classList.remove('scrolled');
+        }
+      };
+      window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+      handleHeaderScroll();
+    }
+  </script>
+</body>
+</html>

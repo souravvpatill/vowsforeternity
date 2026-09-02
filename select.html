@@ -13,7 +13,84 @@
 
   <!-- Core Tailwind & Stylesheets -->
   <link rel="stylesheet" href="css/93ed2a90ee3dfcc7.css">
-  <link rel="stylesheet" href="css/luxury-custom.css?v=2">
+  <link rel="stylesheet" href="css/luxury-custom.css?v=4">
+
+  <style>
+    /* Standardized Footer & Bottom Watercolor Transition Banner */
+    .faq-bottom-banner-wrap {
+      position: relative;
+      width: 100%;
+      margin-top: -3rem;
+      overflow: hidden;
+      line-height: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .faq-bottom-banner-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+      background: linear-gradient(to bottom, #FAF5EE 0%, rgba(250, 245, 238, 0) 100%);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .faq-bottom-banner-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 100%);
+    }
+
+    .real-footer {
+      background-color: #5A1713;
+      background-image: url('images/common-footer.webp');
+      background-size: cover;
+      background-position: center;
+      padding: 2.2rem 0;
+      color: #FAF5EE;
+    }
+
+    .footer-nav-link {
+      font-family: 'mulishRegular', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      color: rgba(250, 245, 238, 0.9);
+      transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .footer-nav-link:hover {
+      color: #C5A059;
+    }
+
+    .footer-sep {
+      color: rgba(197, 160, 89, 0.5);
+      margin: 0 0.3rem;
+      font-size: 1rem;
+    }
+
+    .footer-dropdown-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: #C5A059;
+      color: #5A1713;
+      margin-left: 0.35rem;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+  </style>
 </head>
 <body class="bg-[#FAF5EE] text-[#332B45] antialiased">
 
@@ -21,19 +98,28 @@
        STICKY HEADER BAR
        ========================================================================= -->
   <header class="hero-header-bar">
-    <button id="openDrawerBtn" class="p-2 text-white hover:text-[#C5A880] focus:outline-none cursor-pointer" aria-label="Open Menu">
-      <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
+    <!-- Left: Hamburger Icon (Flex-1) -->
+    <div class="flex-1 flex items-center justify-start">
+      <button id="openDrawerBtn" class="p-2 text-white hover:text-[#C5A880] focus:outline-none cursor-pointer" aria-label="Open Menu">
+        <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
 
-    <a href="index.html" class="inline-block transition-transform duration-300 hover:scale-[1.02]">
-      <img src="images/vfe-logo.webp" alt="Vows for Eternity logo" class="h-10 md:h-14 w-auto object-contain">
-    </a>
+    <!-- Center: Gold Monogram Logo (Exact 50% Horizontal Page Center) -->
+    <div class="flex-none text-center">
+      <a href="index.html" class="inline-block transition-transform duration-300 hover:scale-[1.02]">
+        <img src="images/vfe-logo.webp" alt="Vows for Eternity logo" class="header-logo-img mx-auto">
+      </a>
+    </div>
 
-    <a href="#tiers" class="text-white text-xs md:text-sm font-mulish-bold uppercase tracking-widest hover:text-[#C5A880] transition-colors cursor-pointer trigger-payment-modal" data-tier="select">
-      BEGIN YOUR JOURNEY
-    </a>
+    <!-- Right: BEGIN YOUR JOURNEY (Flex-1) -->
+    <div class="flex-1 flex items-center justify-end">
+      <a href="apply-for-membership.html" class="text-white text-xs md:text-sm font-mulish-bold uppercase tracking-widest hover:text-[#C5A880] transition-colors cursor-pointer">
+        BEGIN YOUR JOURNEY
+      </a>
+    </div>
   </header>
 
   <!-- =========================================================================
@@ -71,9 +157,9 @@
           </div>
         </div>
 
-        <a href="index.html#pride" class="nav-drawer-link">PRIDE BY VOWS FOR ETERNITY</a>
-        <a href="#tiers" class="nav-drawer-link trigger-payment-modal" data-tier="select">BEGIN YOUR JOURNEY</a>
-        <a href="index.html#faq" class="nav-drawer-link">FREQUENTLY ASKED QUESTIONS (FAQ'S)</a>
+        <a href="pride.html" class="nav-drawer-link">PRIDE BY VOWS FOR ETERNITY</a>
+        <a href="apply-for-membership.html" class="nav-drawer-link">BEGIN YOUR JOURNEY</a>
+        <a href="faqs.html" class="nav-drawer-link">FREQUENTLY ASKED QUESTIONS (FAQ'S)</a>
         <a href="index.html#substance" class="nav-drawer-link">WOMEN OF SUBSTANCE</a>
         <a href="index.html#media" class="nav-drawer-link">MEDIA</a>
 
@@ -287,16 +373,22 @@
   <!-- =========================================================================
        REAL TARGET FOOTER
        ========================================================================= -->
-  <footer class="real-footer">
-    <div class="luxury-container">
+  <!-- Bottom Watercolor Artwork Banner Asset -->
+  <div class="faq-bottom-banner-wrap">
+    <img src="images/faq-bottom-banner.png" alt="" class="faq-bottom-banner-img">
+  </div>
+
+  <footer class="real-footer" style="border-top: 1px solid #C5A059;">
+    <div class="luxury-container" style="max-width: 1440px;">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
         
-        <div class="lg:col-span-6 space-y-2 text-xs leading-relaxed">
+        <!-- Left Links Block (Flex-1) -->
+        <div class="flex-1 space-y-1 font-sans">
           <div>
             <a href="index.html" class="footer-nav-link">Home</a> <span class="footer-sep">|</span>
             <a href="index.html#about" class="footer-nav-link">About Us</a> <span class="footer-sep">|</span>
-            <a href="select.html" class="footer-nav-link text-[#C5A880]">Vows for Eternity Select</a> <span class="footer-sep">|</span>
+            <a href="select.html" class="footer-nav-link text-[#C5A059] font-medium">Vows for Eternity Select</a> <span class="footer-sep">|</span>
           </div>
           <div>
             <a href="prive.html" class="footer-nav-link">Vows for Eternity Privé</a> <span class="footer-sep">|</span>
@@ -305,26 +397,61 @@
           </div>
           <div>
             <a href="index.html#press" class="footer-nav-link">Press Release</a> <span class="footer-sep">|</span>
-            <a href="index.html#faq" class="footer-nav-link">FAQ</a> <span class="footer-sep">|</span>
-            <a href="#tiers" class="footer-nav-link">Begin Your Journey</a> <span class="footer-sep">|</span>
+            <a href="faqs.html" class="footer-nav-link">FAQ</a> <span class="footer-sep">|</span>
+            <a href="apply-for-membership.html" class="footer-nav-link">Begin Your Journey</a> <span class="footer-sep">|</span>
+          </div>
+          <div class="pt-1 space-y-1">
+            <div>
+              <a href="#" class="footer-nav-link">
+                Matchmaking services in India
+                <span class="footer-dropdown-badge">
+                  <svg width="11" height="11" fill="#5A1713" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                </span>
+              </a> <span class="footer-sep">|</span>
+            </div>
+            <div>
+              <a href="#" class="footer-nav-link">
+                Matchmaking services in United Kingdom
+                <span class="footer-dropdown-badge">
+                  <svg width="11" height="11" fill="#5A1713" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                </span>
+              </a> <span class="footer-sep">|</span>
+            </div>
+            <div>
+              <a href="#" class="footer-nav-link">
+                Matchmaking services in UAE
+                <span class="footer-dropdown-badge">
+                  <svg width="11" height="11" fill="#5A1713" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                </span>
+              </a> <span class="footer-sep">|</span>
+              <a href="#" class="footer-nav-link">
+                Matchmaking services in USA
+                <span class="footer-dropdown-badge">
+                  <svg width="11" height="11" fill="#5A1713" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                </span>
+              </a>
+            </div>
           </div>
         </div>
 
-        <div class="lg:col-span-3 text-center my-6 lg:my-0">
-          <a href="index.html" class="inline-block">
-            <img src="images/vfe-logo.webp" alt="Vows for Eternity Logo" class="h-16 md:h-20 w-auto mx-auto brightness-200">
+        <!-- Center VFE Logo (Exact 50% Horizontal Page Midpoint) -->
+        <div class="text-center flex flex-col items-center justify-center px-4 my-4 lg:my-0">
+          <a href="index.html" class="inline-block transition-transform duration-300 hover:scale-105">
+            <img src="images/vfe-monogram.png" alt="Vows for Eternity Logo" class="h-20 md:h-24 w-auto mx-auto object-contain">
+            <span class="block font-times-roman text-xs tracking-widest text-[#EBDDCB] mt-2 lowercase">vows for eternity</span>
           </a>
         </div>
 
-        <div class="lg:col-span-3 text-right space-y-4">
-          <div class="flex items-center justify-end space-x-2">
-            <a href="#" class="social-square-badge">f</a>
-            <a href="#" class="social-square-badge">in</a>
-            <a href="#" class="social-square-badge">📷</a>
+        <!-- Right Block: Locations & Legal Links (Flex-1) -->
+        <div class="flex-1 text-right space-y-2 font-sans">
+          <div class="text-xs uppercase tracking-wider text-[#EBDDCB] font-medium leading-relaxed">
+            New York <span class="footer-sep">|</span> Mumbai <span class="footer-sep">|</span> New Delhi
           </div>
 
-          <div class="text-xs uppercase tracking-wider text-white/90 font-medium">
-            NEW YORK <span class="footer-sep">|</span> MUMBAI <span class="footer-sep">|</span> NEW DELHI
+          <div class="text-[11px] text-white/80 space-x-2 pt-1">
+            <a href="https://www.vowsforeternity.com/terms-conditions" target="_blank" rel="noopener" class="hover:text-[#C5A059] transition-colors">Terms &amp; Conditions</a>
+            <span class="text-white/40">|</span>
+            <a href="https://www.vowsforeternity.com/privacy-policy" target="_blank" rel="noopener" class="hover:text-[#C5A059] transition-colors">Privacy Policy</a>
           </div>
         </div>
 
