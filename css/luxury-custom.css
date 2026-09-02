@@ -351,16 +351,17 @@ body {
   transform: translateY(-2px);
 }
 
-/* Left Navigation Drawer */
+/* Left Navigation Drawer - Depth & Glassmorphism Materiality */
 .nav-drawer-backdrop {
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.45);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
 }
 
 .nav-drawer-backdrop.open {
@@ -375,47 +376,111 @@ body {
   bottom: 0;
   width: 88%;
   max-width: 420px;
-  background-color: #5a1713;
-  color: #FFFFFF;
-  padding: 2.5rem 2.5rem 3rem;
+  background: linear-gradient(175deg, rgba(63, 14, 11, 0.94) 0%, rgba(90, 23, 19, 0.96) 60%, rgba(46, 10, 9, 0.97) 100%);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(197, 160, 89, 0.3);
+  color: #FAF5EE;
+  padding: 2.5rem 2.25rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   transform: translateX(-100%);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   overflow-y: auto;
-  box-shadow: 10px 0 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 20px 0 50px rgba(0, 0, 0, 0.5);
 }
 
 .nav-drawer-backdrop.open .nav-drawer-content {
   transform: translateX(0);
 }
 
+/* Circular Ghost Close Button */
+.drawer-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(250, 245, 238, 0.25);
+  background: rgba(250, 245, 238, 0.05);
+  color: #FAF5EE;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.drawer-close-btn:hover {
+  background: rgba(197, 160, 89, 0.2);
+  border-color: #C5A059;
+  color: #C5A059;
+  transform: scale(1.08) rotate(90deg);
+}
+
+.nav-drawer-backdrop.open .drawer-close-btn svg {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
 .nav-drawer-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #FFFFFF;
+  color: rgba(250, 245, 238, 0.92);
   text-decoration: none;
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
+  font-family: 'mulishRegular', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   padding: 0.9rem 0;
-  transition: color 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+  position: relative;
+}
+
+.nav-drawer-item-num {
+  font-family: 'metropolitanParliament', 'Playfair Display', serif;
+  font-size: 0.75rem;
+  color: #C5A059;
+  opacity: 0.7;
+  margin-right: 0.75rem;
+  font-weight: normal;
+  transition: opacity 0.25s ease, color 0.25s ease;
+}
+
+.nav-drawer-link-arrow {
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  color: #C5A059;
+  font-size: 0.9rem;
 }
 
 .nav-drawer-link:hover {
-  color: var(--color-gold);
+  color: #C5A059;
+  transform: translateX(6px);
 }
 
+.nav-drawer-link:hover .nav-drawer-item-num {
+  opacity: 1;
+  color: #FAF5EE;
+}
+
+.nav-drawer-link:hover .nav-drawer-link-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Gradient Fade Divider */
 .nav-drawer-divider {
   height: 1px;
-  background: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(to right, rgba(197, 160, 89, 0.4), rgba(197, 160, 89, 0.05));
   margin: 1.5rem 0;
 }
 
 .nav-drawer-gold-link {
-  color: var(--color-gold) !important;
-  font-weight: 600;
+  color: #C5A059 !important;
+  font-weight: 700;
+  letter-spacing: 0.18em;
 }
 
 /* Footer styles moved to bottom of file — see "STANDARDIZED MASTERPIECE FOOTER" section */

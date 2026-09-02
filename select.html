@@ -13,7 +13,7 @@
 
   <!-- Core Tailwind & Stylesheets -->
   <link rel="stylesheet" href="css/93ed2a90ee3dfcc7.css">
-  <link rel="stylesheet" href="css/luxury-custom.css?v=5">
+  <link rel="stylesheet" href="css/luxury-custom.css?v=7">
 
   <style>
     /* Standardized Footer & Bottom Watercolor Transition Banner */
@@ -128,43 +128,67 @@
   <div id="mobileNavDrawer" class="nav-drawer-backdrop">
     <div class="nav-drawer-content">
       
-      <div class="flex items-center justify-between pb-6">
-        <button id="closeDrawerBtn" class="text-white hover:text-[#C5A880] p-1 focus:outline-none cursor-pointer" aria-label="Close Menu">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
-
-      <nav class="space-y-1">
-        <a href="index.html#about" class="nav-drawer-link">ABOUT US</a>
-        
-        <!-- OUR MEMBERSHIPS Accordion -->
-        <div class="nav-drawer-accordion">
-          <button type="button" class="nav-drawer-link w-full text-left focus:outline-none cursor-pointer nav-accordion-btn text-[#C5A880]">
-            <span>OUR MEMBERSHIPS</span>
-            <svg class="w-4 h-4 transition-transform duration-300 transform nav-accordion-arrow rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+      <!-- Top Links Area -->
+      <div>
+        <!-- Close Ghost Circle Button -->
+        <div class="flex items-center justify-between pb-8">
+          <button id="closeDrawerBtn" class="drawer-close-btn" aria-label="Close Menu">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
           </button>
-          <div class="nav-accordion-content pl-4 space-y-2 py-2">
-            <a href="select.html" class="block text-xs uppercase tracking-widest text-[#C5A880] font-bold py-1.5 transition-colors font-sans">
-              &bull; Vows for Eternity Select
-            </a>
-            <a href="prive.html" class="block text-xs uppercase tracking-widest text-white/90 hover:text-[#C5A880] py-1.5 transition-colors font-sans">
-              &bull; Vows for Eternity Privé
-            </a>
-          </div>
         </div>
 
-        <a href="pride.html" class="nav-drawer-link">PRIDE BY VOWS FOR ETERNITY</a>
-        <a href="apply-for-membership.html" class="nav-drawer-link">BEGIN YOUR JOURNEY</a>
-        <a href="faqs.html" class="nav-drawer-link">FREQUENTLY ASKED QUESTIONS (FAQ'S)</a>
+        <!-- Editorial Navigation Links -->
+        <nav class="space-y-1">
+          <a href="index.html#about" class="nav-drawer-link">
+            <span><span class="nav-drawer-item-num">01 /</span>ABOUT US</span>
+            <span class="nav-drawer-link-arrow">&rarr;</span>
+          </a>
 
+          <!-- OUR MEMBERSHIPS Accordion -->
+          <div class="nav-drawer-accordion">
+            <button type="button" class="nav-drawer-link w-full text-left focus:outline-none cursor-pointer nav-accordion-btn text-[#C5A880]">
+              <span><span class="nav-drawer-item-num">02 /</span>OUR MEMBERSHIPS</span>
+              <svg class="w-4 h-4 transition-transform duration-300 transform nav-accordion-arrow rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="nav-accordion-content pl-8 space-y-2 py-2">
+              <a href="select.html" class="block text-xs uppercase tracking-widest text-[#C5A880] font-bold py-1.5 transition-colors font-sans">
+                &bull; Vows for Eternity Select
+              </a>
+              <a href="prive.html" class="block text-xs uppercase tracking-widest text-white/90 hover:text-[#C5A880] py-1.5 transition-colors font-sans">
+                &bull; Vows for Eternity Privé
+              </a>
+            </div>
+          </div>
+
+          <a href="pride.html" class="nav-drawer-link">
+            <span><span class="nav-drawer-item-num">03 /</span>PRIDE BY VOWS FOR ETERNITY</span>
+            <span class="nav-drawer-link-arrow">&rarr;</span>
+          </a>
+
+          <a href="apply-for-membership.html" class="nav-drawer-link">
+            <span><span class="nav-drawer-item-num">04 /</span>BEGIN YOUR JOURNEY</span>
+            <span class="nav-drawer-link-arrow">&rarr;</span>
+          </a>
+
+          <a href="faqs.html" class="nav-drawer-link">
+            <span><span class="nav-drawer-item-num">05 /</span>FREQUENTLY ASKED QUESTIONS</span>
+            <span class="nav-drawer-link-arrow">&rarr;</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Bottom Member Login -->
+      <div class="pt-6">
         <div class="nav-drawer-divider"></div>
-
-        <a href="index.html#login" class="nav-drawer-link nav-drawer-gold-link">MEMBER LOGIN</a>
-      </nav>
+        <a href="index.html#login" class="nav-drawer-link nav-drawer-gold-link">
+          <span>MEMBER LOGIN</span>
+          <span class="nav-drawer-link-arrow">&rarr;</span>
+        </a>
+      </div>
 
     </div>
   </div>
