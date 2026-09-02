@@ -13,7 +13,7 @@
 
   <!-- Core Tailwind & Stylesheets -->
   <link rel="stylesheet" href="css/93ed2a90ee3dfcc7.css">
-  <link rel="stylesheet" href="css/luxury-custom.css?v=11">
+  <link rel="stylesheet" href="css/luxury-custom.css?v=12">
 
   <style>
     /* Standardized Footer & Bottom Watercolor Transition Banner */
@@ -614,69 +614,72 @@
   </div>
 
   <!-- =========================================================================
-       LUXURY MEMBER AUTHENTICATION MODAL (SUPABASE / DEMO)
+       LUXURY MEMBER AUTHENTICATION MODAL (OFFICIAL VFE SPLIT LAYOUT)
        ========================================================================= -->
   <div id="memberAuthModal" class="member-auth-backdrop">
     <div class="member-auth-card">
-      <button id="closeAuthModal" class="absolute top-4 right-4 text-[#FAF5EE]/70 hover:text-[#C5A059] p-2 focus:outline-none transition-colors cursor-pointer" aria-label="Close Modal">
+      <button id="closeAuthModal" class="absolute top-4 right-4 text-[#5A1713] hover:text-[#C5A059] p-2 focus:outline-none transition-colors cursor-pointer z-20" aria-label="Close Modal">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
 
-      <div class="text-center mb-6">
-        <img src="images/vfe-logo.webp" alt="Vows for Eternity logo" class="h-12 w-auto mx-auto mb-3">
-        <h2 class="text-xl font-serif text-[#FAF5EE] tracking-wide">Member Access Portal</h2>
-        <p class="text-xs text-[#FAF5EE]/70 font-sans mt-1">Confidential Matchmaking Portal</p>
+      <div class="auth-collage-col hidden md:flex">
+        <img src="images/login-collage.jpg" alt="Vows for Eternity Couples Collage" class="auth-collage-img">
       </div>
 
-      <div class="flex items-center justify-center gap-8 mb-6 border-b border-[#C5A059]/20">
-        <button type="button" class="auth-tab-btn active" data-tab="login">Member Sign In</button>
-        <button type="button" class="auth-tab-btn" data-tab="register">New Candidate</button>
-      </div>
+      <div class="auth-form-col">
+        <div class="text-center mb-5">
+          <div class="w-16 h-16 rounded-full bg-[#5A1713] mx-auto flex items-center justify-center border-2 border-[#C5A059]/40 shadow-md">
+            <img src="images/vfe-logo.webp" alt="Vows for Eternity monogram" class="h-9 w-auto object-contain">
+          </div>
+          <h2 class="text-3xl font-serif text-[#332B45] mt-3 font-normal">Login</h2>
+        </div>
 
-      <form id="memberLoginForm" class="space-y-4">
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-[#C5A059] font-sans font-bold mb-1.5">Member Email / Client ID</label>
-          <input type="email" required placeholder="name@domain.com" class="auth-input-field">
-        </div>
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-[#C5A059] font-sans font-bold mb-1.5">Security PIN / Password</label>
-          <input type="password" required placeholder="••••••••••••" class="auth-input-field">
-        </div>
-        <div class="flex items-center justify-between text-xs font-sans text-[#FAF5EE]/70 pt-1">
-          <label class="flex items-center gap-2 cursor-pointer">
-            <input type="checkbox" checked class="rounded border-[#C5A059] accent-[#C5A059]">
-            <span>Keep me signed in</span>
-          </label>
-          <a href="#" class="text-[#C5A059] hover:underline">Forgot PIN?</a>
-        </div>
-        <button type="submit" class="auth-submit-btn mt-4">Authenticate &amp; Enter Portal &rarr;</button>
-      </form>
+        <form id="memberLoginForm" class="space-y-4">
+          <div>
+            <label class="block text-xs font-sans font-bold text-[#332B45] mb-1.5">Email ID</label>
+            <input type="email" required placeholder="Enter your email" class="auth-pill-input">
+          </div>
+          <div>
+            <label class="block text-xs font-sans font-bold text-[#332B45] mb-1.5">Password</label>
+            <div class="relative">
+              <input type="password" id="authPasswordInput" required placeholder="Enter password" class="auth-pill-input pr-10">
+              <button type="button" id="togglePasswordVisibility" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#5A1713] focus:outline-none cursor-pointer">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542-7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="flex items-center justify-between text-xs font-sans pt-0.5">
+            <label class="flex items-center gap-2 cursor-pointer text-[#332B45]">
+              <input type="checkbox" checked class="rounded border-gray-300 accent-[#5A1713]">
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="text-[#5A1713] font-semibold hover:underline">Forgot Password?</a>
+          </div>
+          <button type="submit" class="auth-pill-btn mt-3">Login</button>
+        </form>
 
-      <form id="memberRegisterForm" class="space-y-4 hidden">
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-[#C5A059] font-sans font-bold mb-1.5">Full Name</label>
-          <input type="text" required placeholder="Lord / Lady / Dr. Name" class="auth-input-field">
+        <div class="mt-4 pt-3 border-t border-gray-200 text-center space-y-2">
+          <a href="#" id="loginMobileBtn" class="auth-mobile-link">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+            </svg>
+            Login with Mobile Number
+          </a>
+          <div>
+            <button id="demoLoginBtn" type="button" class="text-xs text-[#C5A059] font-bold uppercase tracking-wider hover:underline mt-1 cursor-pointer">
+              ✨ Instant Demo VIP Access (No Password Needed)
+            </button>
+          </div>
         </div>
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-[#C5A059] font-sans font-bold mb-1.5">Official Email Address</label>
-          <input type="email" required placeholder="name@domain.com" class="auth-input-field">
-        </div>
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-[#C5A059] font-sans font-bold mb-1.5">Select Membership Tier</label>
-          <select class="auth-input-field text-[#FAF5EE] bg-[#3F0E0B]">
-            <option value="Pride">Pride by Vows for Eternity</option>
-            <option value="Select">Vows for Eternity Select</option>
-            <option value="Prive">Vows for Eternity Privé</option>
-          </select>
-        </div>
-        <button type="submit" class="auth-submit-btn mt-4">Request Confidential Credentials &rarr;</button>
-      </form>
 
-      <div class="mt-6 pt-4 border-t border-[#C5A059]/20 text-center">
-        <p class="text-[0.75rem] text-[#FAF5EE]/60 font-sans mb-3">Testing the Member Portal?</p>
-        <button id="demoLoginBtn" type="button" class="auth-demo-btn">✨ Instant Demo VIP Access (No Password Needed)</button>
+        <div class="mt-4 text-center text-[0.7rem] text-gray-500 font-sans">
+          By logging in, you agree to VFE 's <a href="https://www.vowsforeternity.com/terms-conditions" target="_blank" class="font-semibold text-[#5A1713] hover:underline">Terms &amp; Conditions</a> and <a href="https://www.vowsforeternity.com/privacy-policy" target="_blank" class="font-semibold text-[#5A1713] hover:underline">Privacy Policy</a>.
+        </div>
       </div>
     </div>
   </div>

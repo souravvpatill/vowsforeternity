@@ -447,6 +447,16 @@ function initMemberAuth() {
     }, 250);
   }
 
+  // Password Visibility Toggle
+  const togglePassBtn = document.getElementById('togglePasswordVisibility');
+  const passInput = document.getElementById('authPasswordInput');
+  if (togglePassBtn && passInput) {
+    togglePassBtn.addEventListener('click', () => {
+      const type = passInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passInput.setAttribute('type', type);
+    });
+  }
+
   // Tab Switcher (Sign In vs Register)
   tabButtons.forEach(tab => {
     tab.addEventListener('click', () => {
