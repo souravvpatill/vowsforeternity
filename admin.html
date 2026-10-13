@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Founder Concierge Admin Portal | Vows for Eternity</title>
+  <meta name="description" content="Confidential Founder & Matchmaker Admin Portal for Vows for Eternity.">
+  
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <!-- Core Tailwind & Stylesheets -->
+  <link rel="stylesheet" href="css/93ed2a90ee3dfcc7.css">
+  <link rel="stylesheet" href="css/luxury-custom.css?v=30">
+
+  <style>
+    .admin-kpi-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(197, 160, 89, 0.35);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .admin-kpi-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(90, 23, 19, 0.12);
+      border-color: #5A1713;
+    }
+    .admin-nav-btn {
+      padding: 0.75rem 1.25rem;
+      font-family: 'mulishRegular', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #5A1713;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+    .admin-nav-btn.active {
+      color: #5A1713;
+      border-bottom-color: #C5A059;
+      opacity: 1;
+      background: rgba(197, 160, 89, 0.08);
+    }
+    .admin-nav-btn:hover {
+      opacity: 1;
+    }
+    .admin-section-view {
+      display: none;
+      animation: portalFadeIn 0.3s ease;
+    }
+    .admin-section-view.active {
+      display: block;
+    }
+    .real-footer {
+      background-color: #5A1713 !important;
+      color: #FAF5EE !important;
+      padding: 3rem 1.5rem 2.5rem !important;
+      font-family: var(--font-sans), sans-serif !important;
+    }
+    .footer-nav-link {
+      color: #FAF5EE;
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+    .footer-nav-link:hover {
+      color: #C5A059;
+    }
+    .footer-sep {
+      color: rgba(197, 160, 89, 0.5);
+      margin: 0 0.3rem;
+      font-size: 1rem;
+    }
+  </style>
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body class="bg-[#FAF5EE] text-[#332B45] antialiased">
+
+  <!-- =========================================================================
+       FIXED HEADER BAR
+       ========================================================================= -->
+  <header class="hero-header-bar solid-header">
+    <!-- Left: Hamburger Button -->
+    <div class="flex-1 flex items-center justify-start">
+      <button id="openDrawerBtn" class="luxury-hamburger-btn" aria-label="Open Menu">
+        <div class="hamburger-icon-wrap">
+          <span class="line line-1"></span>
+          <span class="line line-2"></span>
+          <span class="line line-3"></span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Center: Gold Monogram Logo -->
+    <div class="flex-none text-center">
+      <a href="index.html" class="inline-block transition-transform duration-300 hover:scale-[1.02]">
+        <img src="images/vfe-logo.webp" alt="Vows for Eternity logo" class="header-logo-img mx-auto">
+      </a>
+    </div>
+
+    <!-- Right: Logout & Concierge Badge -->
+    <div class="flex-1 flex items-center justify-end gap-4">
+      <span class="hidden sm:inline-block text-xs font-sans text-[#C5A059] font-bold bg-[#5A1713]/10 px-3 py-1 rounded-full border border-[#C5A059]/30">
+        👑 Founder Concierge Mode
+      </span>
+      <a href="portal.html" class="text-[#5A1713] text-xs font-mulish-bold uppercase tracking-wider hover:underline">
+        Client View &rarr;
+      </a>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       LEFT NAVIGATION DRAWER
+       ========================================================================= -->
+  <div id="mobileNavDrawer" class="nav-drawer-backdrop">
+    <div class="nav-drawer-content">
+      <div>
+        <div class="flex items-center justify-between pb-8">
+          <button id="closeDrawerBtn" class="luxury-hamburger-btn active" aria-label="Close Menu">
+            <div class="hamburger-icon-wrap">
+              <span class="line line-1"></span>
+              <span class="line line-2"></span>
+              <span class="line line-3"></span>
+            </div>
+          </button>
+        </div>
+
+        <nav class="space-y-1">
+          <a href="admin.html" class="nav-drawer-link text-[#C5A880] font-bold">
+            <span><span class="nav-drawer-item-num">01 /</span>ADMIN MATCHMAKING PORTAL</span>
+            <span class="nav-drawer-link-arrow">&rarr;</span>
+          </a>
+          <a href="portal.html" class="nav-drawer-link">
+            <span><span class="nav-drawer-item-num">02 /</span>CLIENT MEMBER PORTAL</span>
+            <span class="nav-drawer-link-arrow">&rarr;</span>
+          </a>
+          <a href="index.html" class="nav-drawer-link">
+            <span><span class="nav-drawer-item-num">03 /</span>MAIN WEBSITE</span>
+            <span class="nav-drawer-link-arrow">&rarr;</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="pt-6">
+        <div class="nav-drawer-divider"></div>
+        <a href="index.html" class="nav-drawer-link nav-drawer-gold-link w-full text-left">
+          <span>EXIT CONCIERGE MODE</span>
+          <span class="nav-drawer-link-arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main class="portal-main-content pb-20" style="padding-top: 135px !important;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      
+      <!-- Welcome Executive Banner -->
+      <div class="bg-gradient-to-r from-[#5A1713] via-[#3F0E0B] to-[#2A0907] border border-[#C5A059]/40 rounded-2xl p-6 sm:p-8 text-[#FAF5EE] shadow-xl mb-8 relative overflow-hidden">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+          <div class="flex items-center gap-5">
+            <div class="w-16 h-16 rounded-full bg-[#C5A059] text-[#3F0E0B] flex items-center justify-center font-serif text-2xl font-bold border-2 border-[#FAF5EE] flex-shrink-0 shadow-lg">
+              VFE
+            </div>
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-0.5 bg-[#C5A059]/20 border border-[#C5A059]/40 rounded-full text-[0.7rem] font-sans uppercase tracking-widest text-[#C5A059] mb-1">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Senior Matchmaking &amp; Concierge Panel
+              </div>
+              <h1 class="text-2xl sm:text-3xl font-serif text-[#FAF5EE] font-normal tracking-tight">
+                Candidate Portfolio &amp; Matchmaking Suite
+              </h1>
+              <p class="text-xs text-[#FAF5EE]/70 font-sans mt-0.5">
+                Hand-curate mutual introductions, evaluate profile compatibility, and filter candidate database.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button id="triggerNewCandidateModal" class="px-5 py-2.5 bg-[#C5A059] text-[#3F0E0B] text-xs font-mulish-bold uppercase tracking-wider rounded-lg hover:bg-white transition-colors shadow">
+              + Register New Candidate
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI Executive Metrics (4 Cards) -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div class="admin-kpi-card">
+          <div class="text-[0.7rem] uppercase tracking-wider font-sans text-gray-500 font-bold">Total Candidates</div>
+          <div class="text-3xl font-serif font-bold text-[#5A1713] mt-1" id="kpiTotalCandidates">24</div>
+          <div class="text-[0.68rem] text-emerald-600 font-sans mt-1">● 14 Privé VIP Tier</div>
+        </div>
+
+        <div class="admin-kpi-card">
+          <div class="text-[0.7rem] uppercase tracking-wider font-sans text-gray-500 font-bold">Unmatched Candidates</div>
+          <div class="text-3xl font-serif font-bold text-amber-700 mt-1" id="kpiUnmatched">8</div>
+          <div class="text-[0.68rem] text-amber-800 font-sans mt-1">Awaiting Compatibility Review</div>
+        </div>
+
+        <div class="admin-kpi-card">
+          <div class="text-[0.7rem] uppercase tracking-wider font-sans text-gray-500 font-bold">Active Introductions</div>
+          <div class="text-3xl font-serif font-bold text-emerald-800 mt-1" id="kpiActiveMatches">12</div>
+          <div class="text-[0.68rem] text-emerald-600 font-sans mt-1">1-on-1 Chat Unlocked</div>
+        </div>
+
+        <div class="admin-kpi-card">
+          <div class="text-[0.7rem] uppercase tracking-wider font-sans text-gray-500 font-bold">Success Meetings</div>
+          <div class="text-3xl font-serif font-bold text-[#5A1713] mt-1">6</div>
+          <div class="text-[0.68rem] text-gray-500 font-sans mt-1">Telephone &amp; In-Person</div>
+        </div>
+      </div>
+
+      <!-- Admin Navigation Tabs -->
+      <div class="bg-white border border-[#C5A059]/30 rounded-xl p-1.5 mb-8 shadow-sm overflow-x-auto">
+        <div class="flex items-center gap-2 min-w-max">
+          <button class="admin-nav-btn active flex items-center gap-2" data-admin-tab="directory">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            👥 Candidate Directory &amp; Pool
+          </button>
+          <button class="admin-nav-btn flex items-center gap-2" data-admin-tab="matcher">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            ✨ Compatibility Matchmaker Engine
+          </button>
+          <button class="admin-nav-btn flex items-center gap-2" data-admin-tab="pipeline">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            💌 Active Introductions &amp; Pipeline
+          </button>
+          <button class="admin-nav-btn flex items-center gap-2" data-admin-tab="invoices">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2zM10 8.5a.5.5 0 11-1 0 .5.5 0 011 0zm5 5a.5.5 0 11-1 0 .5.5 0 011 0z"></path></svg>
+            🧾 Invoices &amp; Billing
+          </button>
+        </div>
+      </div>
+
+      <!-- =========================================================================
+           VIEW 1: CANDIDATE DIRECTORY & ADVANCED MULTI-ATTRIBUTE FILTERS
+           ========================================================================= -->
+      <div id="adminTab-directory" class="admin-section-view active space-y-6">
+        
+        <!-- Clean Evenly-Spaced Advanced Multi-Filter Suite -->
+        <div class="bg-white border border-[#C5A059]/30 rounded-xl p-5 sm:p-6 shadow-sm space-y-4">
+          
+          <div class="flex items-center justify-between border-b border-gray-100 pb-3">
+            <h3 class="text-xs font-sans font-bold uppercase tracking-widest text-[#5A1713]">
+              🔍 Database Filter Suite &bull; Filter All Candidate Setup Attributes
+            </h3>
+            <button id="resetFiltersBtn" class="text-[0.7rem] text-[#C5A059] font-bold hover:underline">
+              Reset Filters
+            </button>
+          </div>
+
+          <!-- Primary Search & Main Category Bar -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="md:col-span-2 relative">
+              <input type="text" id="adminSearchInput" placeholder="Search by Candidate Name, Ref ID (#VFE-8842), Profession..." class="portal-input-field pl-10 text-xs">
+              <svg class="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+
+            <div>
+              <select id="adminTierFilter" class="portal-input-field text-xs">
+                <option value="ALL">All Membership Tiers</option>
+                <option value="Prive">Vows for Eternity Privé</option>
+                <option value="Select">Vows for Eternity Select</option>
+                <option value="Pride">Pride by Vows for Eternity</option>
+              </select>
+            </div>
+
+            <div>
+              <select id="adminGenderFilter" class="portal-input-field text-xs">
+                <option value="ALL">All Genders</option>
+                <option value="Male">Male Candidates</option>
+                <option value="Female">Female Candidates</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Secondary Granular Attribute Filters Grid -->
+          <div class="grid grid-cols-2 md:grid-cols-6 gap-3 pt-2">
+            <div>
+              <label class="block text-[0.65rem] font-bold text-gray-500 uppercase mb-1">Age Range</label>
+              <select id="filterAge" class="portal-input-field text-xs py-1.5 px-2">
+                <option value="ALL">All Ages</option>
+                <option value="25-34">25 - 34 Years</option>
+                <option value="35-44">35 - 44 Years</option>
+                <option value="45+">45+ Years</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[0.65rem] font-bold text-gray-500 uppercase mb-1">Marital Status</label>
+              <select id="filterMarital" class="portal-input-field text-xs py-1.5 px-2">
+                <option value="ALL">All Statuses</option>
+                <option value="Never Married">Never Married</option>
+                <option value="Divorced">Divorced</option>
+                <option value="Widowed">Widowed</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[0.65rem] font-bold text-gray-500 uppercase mb-1">Religion / Community</label>
+              <select id="filterCommunity" class="portal-input-field text-xs py-1.5 px-2">
+                <option value="ALL">All Communities</option>
+                <option value="Hindu-Baniya">Hindu: Baniya/Agarwal</option>
+                <option value="Hindu-Brahmin">Hindu: Brahmin</option>
+                <option value="Sikh">Sikh</option>
+                <option value="Jain">Jain</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[0.65rem] font-bold text-gray-500 uppercase mb-1">Base Location</label>
+              <select id="filterLocation" class="portal-input-field text-xs py-1.5 px-2">
+                <option value="ALL">All Locations</option>
+                <option value="New York">New York</option>
+                <option value="London">London</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="New Delhi">New Delhi</option>
+                <option value="Dubai">Dubai</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[0.65rem] font-bold text-gray-500 uppercase mb-1">Education</label>
+              <select id="filterEducation" class="portal-input-field text-xs py-1.5 px-2">
+                <option value="ALL">All Degrees</option>
+                <option value="MBA">MBA &amp; Master's</option>
+                <option value="PhD">Ph.D &amp; Doctorate</option>
+                <option value="Professional">Professional Degree</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[0.65rem] font-bold text-gray-500 uppercase mb-1">Income Level</label>
+              <select id="filterIncome" class="portal-input-field text-xs py-1.5 px-2">
+                <option value="ALL">All Incomes</option>
+                <option value="150-300k">$150k - $300k</option>
+                <option value="300-500k">$300k - $500k</option>
+                <option value="500k+">$500k+ (Ultra HNW)</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Candidate Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="candidateCardsGrid">
+          
+          <!-- Candidate Card 1 -->
+          <div class="bg-white border border-[#C5A059]/30 rounded-xl p-6 shadow-sm hover:border-[#5A1713] transition-all">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-full bg-[#5A1713] text-[#C5A059] flex items-center justify-center font-serif text-xl font-bold flex-shrink-0 border-2 border-[#C5A059]/30">
+                AH
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                  <span class="text-[0.65rem] font-sans font-bold text-[#5A1713] bg-[#5A1713]/10 px-2 py-0.5 rounded">
+                    #VFE-8842
+                  </span>
+                  <span class="text-[0.65rem] font-sans font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                    Privé VIP
+                  </span>
+                </div>
+                <h3 class="font-serif text-base text-[#5A1713] font-bold mt-1 truncate">Alexander Harrington</h3>
+                <p class="text-xs text-gray-500 font-sans">38 Yrs &bull; 6' 0" &bull; Never Married</p>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-gray-100 space-y-1.5 text-xs text-gray-600 font-sans">
+              <p><strong>Profession:</strong> Managing Director - Private Equity</p>
+              <p><strong>Education:</strong> MBA, Columbia Business School</p>
+              <p><strong>Location:</strong> New York &amp; London</p>
+            </div>
+
+            <div class="mt-5 pt-3 border-t border-[#C5A059]/20 flex items-center justify-between">
+              <button class="text-xs text-[#5A1713] font-bold hover:underline" onclick="openCandidateDetail('AH')">
+                View Full Bio &rarr;
+              </button>
+              <button class="px-3 py-1.5 bg-[#5A1713] text-[#FAF5EE] text-[0.7rem] font-sans font-bold uppercase tracking-wider rounded hover:bg-[#3F0E0B] transition-colors" onclick="selectForMatchmaking('AH')">
+                Match Candidate
+              </button>
+            </div>
+          </div>
+
+          <!-- Candidate Card 2 -->
+          <div class="bg-white border border-[#C5A059]/30 rounded-xl p-6 shadow-sm hover:border-[#5A1713] transition-all">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-full bg-[#5A1713] text-[#C5A059] flex items-center justify-center font-serif text-xl font-bold flex-shrink-0 border-2 border-[#C5A059]/30">
+                YS
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                  <span class="text-[0.65rem] font-sans font-bold text-[#5A1713] bg-[#5A1713]/10 px-2 py-0.5 rounded">
+                    #VFE-9103
+                  </span>
+                  <span class="text-[0.65rem] font-sans font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                    Privé VIP
+                  </span>
+                </div>
+                <h3 class="font-serif text-base text-[#5A1713] font-bold mt-1 truncate">Yogesh Shetty</h3>
+                <p class="text-xs text-gray-500 font-sans">34 Yrs &bull; 5' 10" &bull; Never Married</p>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-gray-100 space-y-1.5 text-xs text-gray-600 font-sans">
+              <p><strong>Profession:</strong> Corporate Executive &amp; Founder</p>
+              <p><strong>Education:</strong> M.S. Engineering, Stanford</p>
+              <p><strong>Location:</strong> New York &amp; Mumbai</p>
+            </div>
+
+            <div class="mt-5 pt-3 border-t border-[#C5A059]/20 flex items-center justify-between">
+              <button class="text-xs text-[#5A1713] font-bold hover:underline" onclick="openCandidateDetail('YS')">
+                View Full Bio &rarr;
+              </button>
+              <button class="px-3 py-1.5 bg-[#5A1713] text-[#FAF5EE] text-[0.7rem] font-sans font-bold uppercase tracking-wider rounded hover:bg-[#3F0E0B] transition-colors" onclick="selectForMatchmaking('YS')">
+                Match Candidate
+              </button>
+            </div>
+          </div>
+
+          <!-- Candidate Card 3 -->
+          <div class="bg-white border border-[#C5A059]/30 rounded-xl p-6 shadow-sm hover:border-[#5A1713] transition-all">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-full bg-[#3F0E0B]/20 text-[#5A1713] flex items-center justify-center font-serif text-xl font-bold flex-shrink-0 border-2 border-[#C5A059]/30">
+                EL
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                  <span class="text-[0.65rem] font-sans font-bold text-[#5A1713] bg-[#5A1713]/10 px-2 py-0.5 rounded">
+                    #VFE-7721
+                  </span>
+                  <span class="text-[0.65rem] font-sans font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                    Select Tier
+                  </span>
+                </div>
+                <h3 class="font-serif text-base text-[#5A1713] font-bold mt-1 truncate">Lady Eleanor Vance</h3>
+                <p class="text-xs text-gray-500 font-sans">32 Yrs &bull; 5' 7" &bull; Never Married</p>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-gray-100 space-y-1.5 text-xs text-gray-600 font-sans">
+              <p><strong>Profession:</strong> Contemporary Art Curator</p>
+              <p><strong>Education:</strong> M.A. Courtauld Institute, London</p>
+              <p><strong>Location:</strong> London &amp; Paris</p>
+            </div>
+
+            <div class="mt-5 pt-3 border-t border-[#C5A059]/20 flex items-center justify-between">
+              <button class="text-xs text-[#5A1713] font-bold hover:underline" onclick="openCandidateDetail('EL')">
+                View Full Bio &rarr;
+              </button>
+              <button class="px-3 py-1.5 bg-[#5A1713] text-[#FAF5EE] text-[0.7rem] font-sans font-bold uppercase tracking-wider rounded hover:bg-[#3F0E0B] transition-colors" onclick="selectForMatchmaking('EL')">
+                Match Candidate
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- =========================================================================
+           VIEW 2: SIDE-BY-SIDE COMPATIBILITY MATCHMAKER ENGINE
+           ========================================================================= -->
+      <div id="adminTab-matcher" class="admin-section-view space-y-6">
+        
+        <div class="bg-gradient-to-r from-[#5A1713] to-[#3F0E0B] text-[#FAF5EE] rounded-xl p-5 shadow-md flex items-center justify-between">
+          <div>
+            <h2 class="font-serif text-lg font-normal">Side-by-Side Candidate Compatibility Evaluator</h2>
+            <p class="text-xs text-[#FAF5EE]/80 font-sans mt-0.5">Select two candidates below to cross-evaluate partner preferences and trigger an introduction.</p>
+          </div>
+          <span class="text-xs text-[#C5A059] font-bold uppercase tracking-widest bg-black/30 px-3 py-1.5 rounded-full border border-[#C5A059]/30">
+            Internal Concierge Tool
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Candidate A (Left Column) -->
+          <div class="lg:col-span-5 bg-white border border-[#C5A059]/30 rounded-xl p-6 shadow-sm space-y-4">
+            <div class="flex items-center justify-between border-b border-[#C5A059]/20 pb-3">
+              <h3 class="text-xs font-sans font-bold uppercase tracking-wider text-[#5A1713]">
+                Candidate A (Target)
+              </h3>
+              <span class="text-[0.65rem] bg-[#5A1713] text-[#FAF5EE] px-2 py-0.5 rounded">#VFE-8842</span>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-full bg-[#5A1713] text-[#C5A059] flex items-center justify-center font-serif text-xl font-bold border-2 border-[#C5A059]/40">
+                AH
+              </div>
+              <div>
+                <h4 class="font-serif text-base font-bold text-[#5A1713]">Alexander Harrington</h4>
+                <p class="text-xs text-gray-500 font-sans">38 Yrs &bull; 6' 0" &bull; Privé VIP</p>
+                <p class="text-xs text-gray-600 font-sans">Managing Director &bull; New York &amp; London</p>
+              </div>
+            </div>
+
+            <div class="bg-[#FAF5EE] rounded-lg p-4 space-y-2 text-xs font-sans">
+              <h5 class="font-bold text-[#5A1713] uppercase text-[0.68rem]">Desired Partner Preferences:</h5>
+              <p>&bull; <strong>Age Range:</strong> 28 to 36 Years</p>
+              <p>&bull; <strong>Height Range:</strong> 5' 4" to 5' 10"</p>
+              <p>&bull; <strong>Education:</strong> Master's / Professional Degree</p>
+              <p>&bull; <strong>Community:</strong> Hindu / Open to Spiritual</p>
+              <p>&bull; <strong>Locations:</strong> US / UK / India / UAE</p>
+            </div>
+          </div>
+
+          <!-- Compatibility Matrix (Center Column) -->
+          <div class="lg:col-span-2 flex flex-col items-center justify-center bg-white border border-[#C5A059]/30 rounded-xl p-6 shadow-sm text-center space-y-4">
+            <div class="w-16 h-16 rounded-full bg-[#5A1713] text-[#C5A059] flex items-center justify-center font-serif text-xl font-bold border-2 border-[#C5A059]">
+              94%
+            </div>
+            <div>
+              <h4 class="font-serif text-xs font-bold text-[#5A1713] uppercase tracking-wider">High Match Score</h4>
+              <p class="text-[0.68rem] text-gray-500 font-sans mt-0.5">Mutual Criteria Verified</p>
+            </div>
+
+            <div class="space-y-1 text-[0.7rem] text-emerald-700 font-bold font-sans">
+              <p>✓ Age Match</p>
+              <p>✓ Height Match</p>
+              <p>✓ Location Match</p>
+              <p>✓ Education Match</p>
+            </div>
+
+            <button id="createMatchBtn" class="w-full py-3 bg-[#5A1713] text-[#FAF5EE] text-[0.75rem] font-mulish-bold uppercase tracking-wider rounded-lg hover:bg-[#3F0E0B] transition-colors shadow">
+              ✨ Introduce Match
+            </button>
+          </div>
+
+          <!-- Candidate B (Right Column) -->
+          <div class="lg:col-span-5 bg-white border border-[#C5A059]/30 rounded-xl p-6 shadow-sm space-y-4">
+            <div class="flex items-center justify-between border-b border-[#C5A059]/20 pb-3">
+              <h3 class="text-xs font-sans font-bold uppercase tracking-wider text-[#5A1713]">
+                Candidate B (Introduced Pair)
+              </h3>
+              <span class="text-[0.65rem] bg-[#5A1713] text-[#FAF5EE] px-2 py-0.5 rounded">#VFE-7721</span>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-full bg-[#3F0E0B]/20 text-[#5A1713] flex items-center justify-center font-serif text-xl font-bold border-2 border-[#C5A059]/40">
+                EL
+              </div>
+              <div>
+                <h4 class="font-serif text-base font-bold text-[#5A1713]">Lady Eleanor Vance</h4>
+                <p class="text-xs text-gray-500 font-sans">32 Yrs &bull; 5' 7" &bull; Select Tier</p>
+                <p class="text-xs text-gray-600 font-sans">Art Curator &bull; London &amp; Paris</p>
+              </div>
+            </div>
+
+            <div class="bg-[#FAF5EE] rounded-lg p-4 space-y-2 text-xs font-sans">
+              <h5 class="font-bold text-[#5A1713] uppercase text-[0.68rem]">Candidate Profile Highlights:</h5>
+              <p>&bull; <strong>Age:</strong> 32 Years (Within Candidate A's 28-36 Range ✓)</p>
+              <p>&bull; <strong>Height:</strong> 5' 7" (Within Candidate A's 5'4"-5'10" Range ✓)</p>
+              <p>&bull; <strong>Education:</strong> M.A. Courtauld Institute, London ✓</p>
+              <p>&bull; <strong>Location:</strong> London (Matches Candidate A's London Base ✓)</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- =========================================================================
+           VIEW 3: ACTIVE INTRODUCTIONS PIPELINE TABLE
+           ========================================================================= -->
+      <div id="adminTab-pipeline" class="admin-section-view space-y-6">
+        <div class="bg-white border border-[#C5A059]/30 rounded-xl p-6 shadow-sm overflow-x-auto">
+          
+          <div class="flex items-center justify-between border-b border-[#C5A059]/20 pb-4 mb-4">
+            <div>
+              <h2 class="text-xl font-serif text-[#5A1713] font-normal">Active Introductions &amp; Pipeline Table</h2>
+              <p class="text-xs text-gray-500 font-sans mt-0.5">Manage introduced candidate pairs and control private 1-on-1 chat access.</p>
+            </div>
+            <span class="text-xs font-sans font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+              ● 12 Active Matches Live
+            </span>
+          </div>
+
+          <table class="w-full text-left text-xs font-sans">
+            <thead>
+              <tr class="bg-[#FAF5EE] text-[#5A1713] uppercase font-bold text-[0.7rem] border-b border-[#C5A059]/30">
+                <th class="p-3">Match Pair</th>
+                <th class="p-3">Tier</th>
+                <th class="p-3">Intro Date</th>
+                <th class="p-3">Current Status</th>
+                <th class="p-3 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100" id="pipelineTableBody">
+              <tr>
+                <td class="p-3">
+                  <div class="font-bold text-[#5A1713]">Alexander Harrington (#VFE-8842) &amp; Yogesh Shetty (#VFE-9103)</div>
+                  <div class="text-[0.68rem] text-gray-400">New York &bull; Investment Banking</div>
+                </td>
+                <td class="p-3 font-bold text-[#5A1713]">Privé VIP</td>
+                <td class="p-3 text-gray-600">01 Jul 2026</td>
+                <td class="p-3">
+                  <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded font-bold border border-emerald-200">
+                    Chat Active &bull; Connected
+                  </span>
+                </td>
+                <td class="p-3 text-right space-x-2">
+                  <button class="px-2.5 py-1 bg-amber-50 text-amber-800 border border-amber-300 rounded font-bold hover:bg-amber-100">Pause Match</button>
+                  <button class="px-2.5 py-1 bg-rose-50 text-rose-700 border border-rose-200 rounded font-bold hover:bg-rose-100">Un-match</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="p-3">
+                  <div class="font-bold text-[#5A1713]">Alexander Harrington (#VFE-8842) &amp; Lady Eleanor Vance (#VFE-7721)</div>
+                  <div class="text-[0.68rem] text-gray-400">London &bull; Art Curator</div>
+                </td>
+                <td class="p-3 font-bold text-[#5A1713]">Privé VIP</td>
+                <td class="p-3 text-gray-600">30 Aug 2026</td>
+                <td class="p-3">
+                  <span class="px-2 py-0.5 bg-amber-50 text-amber-800 rounded font-bold border border-amber-200">
+                    Concierge Call Scheduled
+                  </span>
+                </td>
+                <td class="p-3 text-right space-x-2">
+                  <button class="px-2.5 py-1 bg-amber-50 text-amber-800 border border-amber-300 rounded font-bold hover:bg-amber-100">Pause Match</button>
+                  <button class="px-2.5 py-1 bg-rose-50 text-rose-700 border border-rose-200 rounded font-bold hover:bg-rose-100">Un-match</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+
+      <!-- =========================================================================
+           VIEW 4: INVOICES & BILLING GENERATOR (REAL DATABASE INVOICES)
+           ========================================================================= -->
+      <div id="adminTab-invoices" class="admin-section-view space-y-6">
+        
+        <!-- Invoices Top Summary Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="admin-kpi-card">
+            <div class="text-[0.7rem] uppercase tracking-wider font-sans text-gray-500 font-bold">Total Invoiced (YTD)</div>
+            <div class="text-2xl font-serif font-bold text-[#5A1713] mt-1" id="invTotalAmount">$17,700.00</div>
+            <div class="text-[0.68rem] text-emerald-600 font-sans mt-0.5">● Bespoke Retainers</div>
+          </div>
+          <div class="admin-kpi-card">
+            <div class="text-[0.7rem] uppercase tracking-wider font-sans text-gray-500 font-bold">Retainers Collected</div>
+            <div class="text-2xl font-serif font-bold text-emerald-800 mt-1" id="invPaidCount">1 Paid</div>
+            <div class="text-[0.68rem] text-emerald-600 font-sans mt-0.5">100% Settled via Wire</div>
+          </div>
+          <div class="admin-kpi-card">
+            <div class="text-[0.7rem] uppercase tracking-wider font-sans text-gray-500 font-bold">Pending Settlements</div>
+            <div class="text-2xl font-serif font-bold text-amber-700 mt-1" id="invPendingCount">0 Pending</div>
+            <div class="text-[0.68rem] text-gray-500 font-sans mt-0.5">Wire transfers in transit</div>
+          </div>
+        </div>
+
+        <!-- Invoices Table & Action Bar -->
+        <div class="bg-white border border-[#C5A059]/30 rounded-xl p-6 shadow-sm">
+          
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#C5A059]/20 pb-4 mb-4 gap-4">
+            <div>
+              <h2 class="text-xl font-serif text-[#5A1713] font-normal">Candidate Membership Invoices</h2>
+              <p class="text-xs text-gray-500 font-sans mt-0.5">Generate, issue, and download official Vows for Eternity retainer invoices.</p>
+            </div>
+            
+            <button id="openGenerateInvoiceBtn" class="px-5 py-2.5 bg-[#5A1713] text-[#FAF5EE] text-xs font-mulish-bold uppercase tracking-wider rounded-lg hover:bg-[#3F0E0B] transition-colors shadow flex items-center gap-1.5 cursor-pointer">
+              <span>+</span> Generate Luxury Invoice
+            </button>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs font-sans">
+              <thead>
+                <tr class="bg-[#FAF5EE] text-[#5A1713] uppercase font-bold text-[0.7rem] border-b border-[#C5A059]/30">
+                  <th class="p-3">Invoice #</th>
+                  <th class="p-3">Client / Member</th>
+                  <th class="p-3">Package Tier</th>
+                  <th class="p-3">Issued Date</th>
+                  <th class="p-3">Total Amount</th>
+                  <th class="p-3">Status</th>
+                  <th class="p-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100" id="invoicesTableBody">
+                <!-- Dynamically populated from /api/admin/invoices -->
+                <tr>
+                  <td class="p-3 font-mono font-bold text-[#5A1713]">INV163</td>
+                  <td class="p-3">
+                    <div class="font-bold text-[#332B45]">Anchit Jain</div>
+                    <div class="text-[0.68rem] text-gray-400">anchit@rogers.com</div>
+                  </td>
+                  <td class="p-3 font-bold text-[#5A1713]">Privé VIP</td>
+                  <td class="p-3 text-gray-600">Sep 1, 2026</td>
+                  <td class="p-3 font-bold text-[#5A1713]">₹16,744.00</td>
+                  <td class="p-3">
+                    <span class="px-2.5 py-0.5 bg-emerald-50 text-emerald-700 rounded-full font-bold border border-emerald-200">
+                      ● PAID
+                    </span>
+                  </td>
+                  <td class="p-3 text-right">
+                    <button class="px-3 py-1.5 bg-[#FAF5EE] text-[#5A1713] border border-[#C5A059]/40 rounded font-bold hover:bg-[#C5A059]/10" onclick="viewPrintInvoice(1)">
+                      🖨️ View &amp; Print
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       MODAL 1: GENERATE NEW TAX INVOICE (CUSTOM AMOUNT & MANUAL DETAILS)
+       ========================================================================= -->
+  <div id="invoiceModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white border border-[#C5A059]/40 rounded-2xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl space-y-5 my-8">
+      
+      <div class="flex items-center justify-between border-b border-[#C5A059]/20 pb-4">
+        <div>
+          <h3 class="font-serif text-xl text-[#5A1713] font-bold">Generate Official Tax Invoice</h3>
+          <p class="text-xs text-gray-500 font-sans mt-0.5">Manual client entry &amp; custom amount with 18% GST/VAT auto-calculation.</p>
+        </div>
+        <button id="closeInvoiceModalBtn" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center text-sm font-bold cursor-pointer">&times;</button>
+      </div>
+
+      <form id="createInvoiceForm" class="space-y-4 text-xs font-sans">
+        
+        <!-- Quick Autofill (Optional) -->
+        <div class="bg-amber-50/50 border border-amber-200/60 rounded-lg p-3">
+          <label class="block font-bold text-[#5A1713] uppercase text-[0.68rem] mb-1">Quick Autofill from Candidate Pool (Optional)</label>
+          <select id="invCandidateSelect" class="portal-input-field text-xs bg-white">
+            <option value="">— Enter Client Details Manually —</option>
+            <!-- Dynamically populated from /api/admin/candidates -->
+          </select>
+        </div>
+
+        <!-- Client Details (Manual) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block font-bold text-gray-700 uppercase text-[0.68rem] mb-1">Client Full Name *</label>
+            <input type="text" id="invClientName" required placeholder="e.g. Anchit Jain" class="portal-input-field text-xs">
+          </div>
+          <div>
+            <label class="block font-bold text-gray-700 uppercase text-[0.68rem] mb-1">Client Email Address *</label>
+            <input type="email" id="invClientEmail" required placeholder="e.g. anchit@rogers.com" class="portal-input-field text-xs">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block font-bold text-gray-700 uppercase text-[0.68rem] mb-1">Client Phone / WhatsApp</label>
+            <input type="text" id="invClientPhone" placeholder="e.g. +1 6474009099" class="portal-input-field text-xs">
+          </div>
+          <div>
+            <label class="block font-bold text-gray-700 uppercase text-[0.68rem] mb-1">Client Postal / Tax ID (Optional)</label>
+            <input type="text" id="invTaxId" placeholder="e.g. 91762" class="portal-input-field text-xs uppercase">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+          <div class="sm:col-span-2">
+            <label class="block font-bold text-gray-700 uppercase text-[0.68rem] mb-1">Complete Billing Address</label>
+            <input type="text" id="invBillingAddress" placeholder="e.g. Ontario, Canada, 91762" class="portal-input-field text-xs">
+          </div>
+          <div>
+            <label class="block font-bold text-gray-700 uppercase text-[0.68rem] mb-1">Place of Supply</label>
+            <select id="invPlaceOfSupply" class="portal-input-field text-xs">
+              <option value="Ontario, Canada">Ontario, Canada</option>
+              <option value="Maharashtra (27)">Maharashtra (27)</option>
+              <option value="Delhi (07)">Delhi (07)</option>
+              <option value="Karnataka (29)">Karnataka (29)</option>
+              <option value="New York, USA">New York, USA</option>
+              <option value="London, UK">London, UK</option>
+              <option value="International / Other">International / Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Service & Tier Selection -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+          <div class="sm:col-span-2">
+            <label class="block font-bold text-gray-700 uppercase text-[0.68rem] mb-1">Service Description</label>
+            <input type="text" id="invDescription" value="Match Making Service" class="portal-input-field text-xs">
+          </div>
+          <div>
+            <label class="block font-bold text-gray-700 uppercase text-[0.68rem] mb-1">Package Tier</label>
+            <select id="invTierSelect" class="portal-input-field text-xs">
+              <option value="Prive" data-usd="16744" data-inr="16744">Privé VIP</option>
+              <option value="Select" data-usd="8850" data-inr="737500">Select Tier</option>
+              <option value="Pride" data-usd="5900" data-inr="472000">Pride Tier</option>
+              <option value="Bespoke" data-usd="10000" data-inr="59000">Custom Bespoke</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Pricing Mode & Custom Gross Amount (Includes 18% GST/VAT) -->
+        <div class="bg-rose-50/40 border border-[#5A1713]/20 rounded-xl p-4 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-[#5A1713] uppercase text-[0.7rem] flex items-center gap-1.5">
+              <span>💰</span> Retainer Pricing &amp; GST Mode
+            </span>
+            <div class="flex items-center gap-2">
+              <label class="inline-flex items-center gap-1 text-[0.7rem] font-bold text-gray-700 cursor-pointer">
+                <input type="radio" name="invAmountMode" value="custom" id="modeCustom" checked class="text-[#5A1713]">
+                <span>Custom Total Amount</span>
+              </label>
+              <label class="inline-flex items-center gap-1 text-[0.7rem] font-bold text-gray-700 cursor-pointer ml-2">
+                <input type="radio" name="invAmountMode" value="tier" id="modeTier" class="text-[#5A1713]">
+                <span>Tier Defaults</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div>
+              <label class="block font-bold text-gray-700 uppercase text-[0.68rem] mb-1">
+                Total Amount Payable (Includes 18% GST/VAT) *
+              </label>
+              <div class="relative">
+                <span class="absolute left-3 top-2.5 text-gray-400 font-bold" id="invCurrencyPrefix">₹</span>
+                <input type="number" id="invCustomGrossInput" step="any" value="16744" class="portal-input-field text-xs pl-7 font-bold text-[#5A1713]">
+              </div>
+              <p class="text-[0.62rem] text-gray-500 mt-1">Enter gross total. System derives base + 18% GST.</p>
+            </div>
+            <div>
+              <label class="block font-bold text-gray-700 uppercase text-[0.68rem] mb-1">Billing Currency</label>
+              <select id="invCurrency" class="portal-input-field text-xs">
+                <option value="INR">INR (₹ - Indian Rupee)</option>
+                <option value="USD">USD ($ - United States Dollar)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Dynamic Tax Calculation Card -->
+          <div class="bg-white border border-[#C5A059]/30 rounded-lg p-3 space-y-1.5 text-xs">
+            <div class="flex justify-between items-center text-gray-600">
+              <span>Taxable Value (Base Retainer):</span>
+              <span class="font-bold text-gray-800" id="invBaseDisplay">₹14,189.83</span>
+            </div>
+            <div class="flex justify-between items-center text-gray-600">
+              <span>GST @ 18.0%:</span>
+              <span class="font-bold text-emerald-700" id="invTaxDisplay">₹2,554.17</span>
+            </div>
+            <div class="border-t border-[#C5A059]/30 pt-1.5 flex justify-between items-center font-bold text-[#5A1713]">
+              <span class="text-xs uppercase tracking-wider">Grand Total (Inclusive of Taxes):</span>
+              <span class="text-sm font-serif font-bold text-[#5A1713]" id="invTotalDisplay">₹16,744.00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Terms & Status -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block font-bold text-gray-700 uppercase text-[0.68rem] mb-1">Payment Method</label>
+            <select id="invPaymentMethod" class="portal-input-field text-xs">
+              <option value="On Receipt">On Receipt</option>
+              <option value="Bank Wire Transfer (NEFT / RTGS)">Bank Wire Transfer (NEFT / RTGS)</option>
+              <option value="International Wire (SWIFT / BIC)">International Wire (SWIFT / BIC)</option>
+              <option value="American Express / Centurion">American Express / Centurion</option>
+              <option value="Cashier Cheque / Banker's Draft">Cashier Cheque / Banker's Draft</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-gray-700 uppercase text-[0.68rem] mb-1">Payment Status</label>
+            <select id="invStatus" class="portal-input-field text-xs">
+              <option value="PAID">● PAID</option>
+              <option value="Pending Wire Transfer">● Pending Wire Transfer</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-gray-100 flex items-center justify-end gap-3">
+          <button type="button" id="cancelInvoiceBtn" class="px-4 py-2 border border-gray-300 text-gray-600 rounded-lg hover:bg-gray-50">Cancel</button>
+          <button type="submit" class="px-6 py-2.5 bg-[#5A1713] text-[#FAF5EE] font-mulish-bold uppercase tracking-wider rounded-lg hover:bg-[#3F0E0B] transition-colors shadow flex items-center gap-2">
+            <span>✨</span> Issue &amp; Save Tax Invoice
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 2: OFFICIAL LUXURY PRINTABLE TAX INVOICE (EXACT FORMAT MATCHING REFERENCE)
+       ========================================================================= -->
+  <div id="printInvoiceModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="max-w-3xl w-full my-6">
+      
+      <!-- Top Action Bar (hidden when printing) -->
+      <div class="flex items-center justify-between bg-white border border-[#C5A059]/40 rounded-t-xl px-6 py-3.5 print:hidden shadow-md">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+          <span class="text-xs font-sans font-bold text-[#5A1713] uppercase tracking-wider">
+            Official Invoice Preview &bull; Vows for Eternity
+          </span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="window.print()" class="px-5 py-2 bg-[#5A1713] text-[#FAF5EE] text-xs font-bold rounded-lg hover:bg-[#3F0E0B] flex items-center gap-1.5 shadow transition-all cursor-pointer">
+            <span>🖨️</span> Print / Save as PDF
+          </button>
+          <button id="closePrintModalBtn" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center text-sm font-bold cursor-pointer">&times;</button>
+        </div>
+      </div>
+
+      <!-- Printable Invoice Sheet with Translucent Watermark (Exact Reference Replica) -->
+      <div id="printableInvoiceDocument" class="vfe-invoice-sheet p-8 sm:p-12 text-[#1A202C]">
+        
+        <!-- Centered Translucent VFE Monogram Watermark -->
+        <div class="vfe-invoice-watermark">
+          <img src="images/vfe-monogram.png" alt="Vows for Eternity Monogram Watermark">
+        </div>
+
+        <div class="vfe-invoice-content">
+          
+          <!-- Top Section: Logo, Company Address, Invoice Meta -->
+          <div>
+            <div class="grid grid-cols-12 gap-4 items-start">
+              <!-- Left: Monogram Logo -->
+              <div class="col-span-3">
+                <img src="images/vfe-monogram.png" alt="Vows for Eternity" class="w-28 h-auto object-contain">
+              </div>
+
+              <!-- Middle: Company Details -->
+              <div class="col-span-5 text-xs text-gray-800 leading-snug space-y-0.5">
+                <h1 class="text-base font-bold text-gray-900 tracking-tight font-sans">Vows For Eternity</h1>
+                <p class="pt-1">1205 Maker Chambers V, Nariman Point</p>
+                <p>Mumbai, Maharashtra</p>
+                <p>400021</p>
+                <p>+91 22 6132 4567</p>
+                <p>billing@vowsforeternity.in</p>
+              </div>
+
+              <!-- Right: Invoice Metadata -->
+              <div class="col-span-4 text-right space-y-0.5 text-xs">
+                <div class="text-[0.68rem] font-bold tracking-wider text-gray-600 uppercase">INVOICE</div>
+                <div class="text-xs font-bold text-gray-900" id="printInvNumber">INV163</div>
+                
+                <div class="text-[0.68rem] font-bold tracking-wider text-gray-600 uppercase pt-2.5">DATE</div>
+                <div class="text-xs text-gray-900" id="printInvDate">Sep 1, 2026</div>
+
+                <div class="text-xs text-gray-900 pt-3" id="printInvDueDate">On Receipt</div>
+                <div class="text-xs font-bold text-gray-900 uppercase" id="printInvStatus">PAID</div>
+                <div class="text-xs font-bold text-gray-900" id="printInvHeaderTotal">INR ₹16,744.00</div>
+              </div>
+            </div>
+
+            <!-- Full-width Divider Line -->
+            <div class="border-b border-gray-300 my-6"></div>
+
+            <!-- BILL TO Section -->
+            <div class="text-xs space-y-0.5 text-gray-800">
+              <div class="text-[0.68rem] font-bold tracking-wider text-gray-700 uppercase">BILL TO</div>
+              <p class="font-bold text-sm text-gray-900 pt-1" id="printClientName">Anchit Jain</p>
+              <div id="printClientAddressLines" class="space-y-0.5">
+                <p>Ontario</p>
+                <p>Canada</p>
+                <p>91762</p>
+              </div>
+              <p id="printClientPhone">+1 6474009099</p>
+              <p id="printClientEmail">anchit@rogers.com</p>
+            </div>
+
+            <!-- Itemized Table -->
+            <div class="mt-8">
+              <table class="w-full text-xs">
+                <thead>
+                  <tr class="border-t-2 border-b border-gray-900 text-gray-900 font-bold uppercase text-[0.68rem]">
+                    <th class="py-2.5 text-left font-bold tracking-wider">DESCRIPTION</th>
+                    <th class="py-2.5 text-right font-bold tracking-wider">RATE</th>
+                    <th class="py-2.5 text-right pr-6 font-bold tracking-wider">QTY</th>
+                    <th class="py-2.5 text-right font-bold tracking-wider">AMOUNT</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-gray-300 text-gray-900">
+                    <td class="py-3.5 text-left font-normal" id="printDescription">Match Making Service</td>
+                    <td class="py-3.5 text-right font-normal" id="printRate">₹16,744.00</td>
+                    <td class="py-3.5 text-right pr-6 font-normal" id="printQty">1</td>
+                    <td class="py-3.5 text-right font-normal" id="printItemAmount">₹16,744.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Financial Subtotals & Total Block (Right Aligned) -->
+            <div class="flex justify-end mt-4">
+              <div class="w-72 text-xs space-y-1.5">
+                <div class="flex justify-between items-center text-gray-900">
+                  <span class="font-bold text-[0.68rem] uppercase tracking-wider">SUBTOTAL</span>
+                  <span class="font-normal" id="printSubtotal">₹16,744.00</span>
+                </div>
+                <div class="flex justify-between items-center text-gray-900">
+                  <span class="font-bold text-[0.68rem] uppercase tracking-wider">TAXABLE</span>
+                  <span class="font-normal" id="printTaxable">₹14,189.83</span>
+                </div>
+                <div class="flex justify-between items-center text-gray-900">
+                  <span class="font-bold text-[0.68rem] uppercase tracking-wider">GST (18%)</span>
+                  <span class="font-normal" id="printGst">inc ₹2,554.17</span>
+                </div>
+                <div class="border-b border-gray-300 my-2"></div>
+                <div class="flex justify-between items-center text-gray-900">
+                  <span class="font-bold text-[0.68rem] uppercase tracking-wider">TOTAL</span>
+                  <span class="font-normal" id="printTotal">₹16,744.00</span>
+                </div>
+                <div class="border-b border-gray-300 my-2"></div>
+                <div class="text-right space-y-0.5 pt-1">
+                  <div class="text-xs uppercase font-medium text-gray-900" id="printSummaryStatus">PAID</div>
+                  <div class="text-base font-bold text-gray-900" id="printGrandTotal">INR ₹16,744.00</div>
+                </div>
+                <div class="border-b border-gray-300 my-2"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Footer Note -->
+          <div class="mt-28 mb-4 text-center">
+            <p class="italic text-xs text-gray-600 font-sans" id="printNotes">
+              This is a digitally generated invoice and does not require a handwritten signature.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       STANDARDIZED MASTERPIECE FOOTER
+       ========================================================================= -->
+  <footer class="real-footer" style="border-top: 1px solid #C5A059;">
+    <div class="luxury-container" style="max-width: 1440px;">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div class="flex-1 space-y-1 font-sans text-xs">
+          <span class="text-[#FAF5EE]/80">Vows for Eternity Founder Concierge Admin Portal &bull; Confidential &amp; Proprietary</span>
+        </div>
+        <div class="flex-none text-center py-4 lg:py-0">
+          <a href="index.html" class="inline-block transition-transform duration-300 hover:scale-[1.03]">
+            <img src="images/vfe-logo.webp" alt="Vows for Eternity Logo" class="mx-auto" style="height: 50px; width: auto; object-fit: contain;">
+          </a>
+        </div>
+        <div class="flex-1 text-center lg:text-right font-sans text-xs">
+          <span class="text-[#FAF5EE]/70">New York | Mumbai | London | New Delhi</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const token = localStorage.getItem('vfe_token');
+      
+      // Auto-authenticate as admin if no session is present
+      async function ensureAdminAuth() {
+        if (!localStorage.getItem('vfe_token')) {
+          try {
+            const res = await fetch('/api/auth/login', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email: 'admin@vowsforeternity.in', password: 'admin123' })
+            });
+            const data = await res.json();
+            if (res.ok) {
+              localStorage.setItem('vfe_token', data.access_token);
+              sessionStorage.setItem('vfe_member_session', JSON.stringify(data.user));
+            }
+          } catch (e) {
+            console.warn('Admin auth init failed', e);
+          }
+        }
+      }
+
+      function getAuthHeaders() {
+        const t = localStorage.getItem('vfe_token');
+        return {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${t}`
+        };
+      }
+
+      // 1. Admin Tab Navigation
+      const adminTabs = document.querySelectorAll('.admin-nav-btn');
+      adminTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          adminTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          const targetTab = tab.getAttribute('data-admin-tab');
+
+          document.querySelectorAll('.admin-section-view').forEach(view => {
+            if (view.id === `adminTab-${targetTab}`) {
+              view.classList.add('active');
+            } else {
+              view.classList.remove('active');
+            }
+          });
+
+          if (targetTab === 'invoices') loadInvoices();
+          if (targetTab === 'pipeline') loadMatches();
+          if (targetTab === 'directory') loadCandidates();
+        });
+      });
+
+      // 2. Candidate Directory & Live Filtering
+      let allCandidates = [];
+
+      async function loadCandidates() {
+        try {
+          const res = await fetch('/api/admin/candidates', { headers: getAuthHeaders() });
+          if (res.ok) {
+            allCandidates = await res.json();
+            renderCandidateCards(allCandidates);
+            populateCandidateSelect(allCandidates);
+            updateKpiStats(allCandidates);
+          }
+        } catch (e) {
+          console.error('Failed to load candidates', e);
+        }
+      }
+
+      function updateKpiStats(candidates) {
+        const totalEl = document.getElementById('kpiTotalCandidates');
+        if (totalEl) totalEl.textContent = candidates.length;
+        const unmatchedEl = document.getElementById('kpiUnmatched');
+        if (unmatchedEl) unmatchedEl.textContent = Math.max(1, Math.floor(candidates.length / 3));
+      }
+
+      function renderCandidateCards(candidates) {
+        const grid = document.getElementById('candidateCardsGrid');
+        if (!grid) return;
+
+        if (candidates.length === 0) {
+          grid.innerHTML = `<div class="col-span-3 text-center py-12 text-gray-500 font-sans text-xs">No candidate profiles match the selected filters.</div>`;
+          return;
+        }
+
+        grid.innerHTML = candidates.map(c => {
+          const p = c.profile || {};
+          const initials = c.full_name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+          const tierBadgeClass = c.tier === 'Prive' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-amber-50 text-amber-800 border-amber-200';
+          
+          return `
+            <div class="bg-white border border-[#C5A059]/30 rounded-xl p-6 shadow-sm hover:border-[#5A1713] transition-all">
+              <div class="flex items-start gap-4">
+                <div class="w-14 h-14 rounded-full bg-[#5A1713] text-[#C5A059] flex items-center justify-center font-serif text-xl font-bold flex-shrink-0 border-2 border-[#C5A059]/30">
+                  ${initials}
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[0.65rem] font-sans font-bold text-[#5A1713] bg-[#5A1713]/10 px-2 py-0.5 rounded">
+                      ${c.candidate_ref || '#VFE-0000'}
+                    </span>
+                    <span class="text-[0.65rem] font-sans font-bold px-2 py-0.5 rounded border ${tierBadgeClass}">
+                      ${c.tier} VIP
+                    </span>
+                  </div>
+                  <h3 class="font-serif text-base text-[#5A1713] font-bold mt-1 truncate">${c.full_name}</h3>
+                  <p class="text-xs text-gray-500 font-sans">${p.age || 30} Yrs &bull; ${p.height || "5' 9\""} &bull; ${p.marital_status || "Never Married"}</p>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-gray-100 space-y-1.5 text-xs text-gray-600 font-sans">
+                <p><strong>Profession:</strong> ${p.profession || "Corporate Executive"}</p>
+                <p><strong>Education:</strong> ${p.education || "Master's Degree"}</p>
+                <p><strong>Location:</strong> ${p.city || "New York"}, ${p.country || "USA"}</p>
+              </div>
+
+              <div class="mt-5 pt-3 border-t border-[#C5A059]/20 flex items-center justify-between">
+                <button class="text-xs text-[#5A1713] font-bold hover:underline" onclick="alert('Candidate Bio:\\n\\n${(p.about_me || "").replace(/'/g, "\\'")}')">
+                  View Full Bio &rarr;
+                </button>
+                <button class="px-3 py-1.5 bg-[#5A1713] text-[#FAF5EE] text-[0.7rem] font-sans font-bold uppercase tracking-wider rounded hover:bg-[#3F0E0B] transition-colors" onclick="selectCandidateForMatch(${c.id})">
+                  Match Candidate
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      function filterCandidates() {
+        const q = document.getElementById('adminSearchInput').value.toLowerCase().trim();
+        const tier = document.getElementById('adminTierFilter').value;
+        const gender = document.getElementById('adminGenderFilter').value;
+        const age = document.getElementById('filterAge').value;
+        const marital = document.getElementById('filterMarital').value;
+        const community = document.getElementById('filterCommunity').value;
+        const location = document.getElementById('filterLocation').value;
+        const education = document.getElementById('filterEducation').value;
+        const income = document.getElementById('filterIncome').value;
+
+        const filtered = allCandidates.filter(c => {
+          const p = c.profile || {};
+          if (q && !c.full_name.toLowerCase().includes(q) && !(c.candidate_ref || '').toLowerCase().includes(q) && !(p.profession || '').toLowerCase().includes(q)) return false;
+          if (tier !== 'ALL' && !c.tier.toLowerCase().includes(tier.toLowerCase())) return false;
+          if (gender !== 'ALL' && p.gender !== gender) return false;
+          if (marital !== 'ALL' && p.marital_status !== marital) return false;
+          if (community !== 'ALL' && !(p.community || '').toLowerCase().includes(community.toLowerCase())) return false;
+          if (location !== 'ALL' && !(p.city || '').toLowerCase().includes(location.toLowerCase())) return false;
+          if (education !== 'ALL' && !(p.education || '').toLowerCase().includes(education.toLowerCase())) return false;
+          if (income !== 'ALL' && !(p.annual_income || '').toLowerCase().includes(income.toLowerCase())) return false;
+
+          if (age !== 'ALL') {
+            const a = p.age || 30;
+            if (age === '25-34' && (a < 25 || a > 34)) return false;
+            if (age === '35-44' && (a < 35 || a > 44)) return false;
+            if (age === '45+' && a < 45) return false;
+          }
+          return true;
+        });
+
+        renderCandidateCards(filtered);
+      }
+
+      // Filter listeners
+      ['adminSearchInput', 'adminTierFilter', 'adminGenderFilter', 'filterAge', 'filterMarital', 'filterCommunity', 'filterLocation', 'filterEducation', 'filterIncome'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('input', filterCandidates);
+        if (el) el.addEventListener('change', filterCandidates);
+      });
+
+      const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+      if (resetFiltersBtn) {
+        resetFiltersBtn.addEventListener('click', () => {
+          ['adminSearchInput', 'adminTierFilter', 'adminGenderFilter', 'filterAge', 'filterMarital', 'filterCommunity', 'filterLocation', 'filterEducation', 'filterIncome'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = id === 'adminSearchInput' ? '' : 'ALL';
+          });
+          filterCandidates();
+        });
+      }
+
+      // 3. Side-by-Side Matchmaker Selection & Trigger
+      let selectedMatchA = 2; // default Alexander
+      let selectedMatchB = 3; // default Yogesh
+
+      window.selectCandidateForMatch = function(id) {
+        selectedMatchB = id;
+        const candidate = allCandidates.find(c => c.id === id);
+        if (candidate) {
+          alert(`Selected candidate ${candidate.full_name} (${candidate.candidate_ref}) for Compatibility Matchmaker.\n\nOpening Matchmaker tab.`);
+          const matcherTabBtn = document.querySelector('[data-admin-tab="matcher"]');
+          if (matcherTabBtn) matcherTabBtn.click();
+        }
+      };
+
+      const createMatchBtn = document.getElementById('createMatchBtn');
+      if (createMatchBtn) {
+        createMatchBtn.addEventListener('click', async () => {
+          createMatchBtn.textContent = 'CONNECTING...';
+          createMatchBtn.disabled = true;
+
+          try {
+            const res = await fetch('/api/admin/match', {
+              method: 'POST',
+              headers: getAuthHeaders(),
+              body: JSON.stringify({
+                candidate_a_id: selectedMatchA,
+                candidate_b_id: selectedMatchB,
+                concierge_note: "Curated mutual introduction based on shared educational values and family synergy."
+              })
+            });
+            const data = await res.json();
+
+            createMatchBtn.textContent = '✓ Mutual Match Created!';
+            createMatchBtn.classList.remove('bg-[#5A1713]');
+            createMatchBtn.classList.add('bg-emerald-700');
+
+            setTimeout(() => {
+              alert(`✨ Mutual Introduction Successfully Created!\n\n${data.message}\n\n1-on-1 private chat is now unlocked inside portal.html.`);
+              createMatchBtn.textContent = '✨ Introduce Match';
+              createMatchBtn.classList.add('bg-[#5A1713]');
+              createMatchBtn.classList.remove('bg-emerald-700');
+              createMatchBtn.disabled = false;
+              loadMatches();
+            }, 300);
+          } catch (e) {
+            createMatchBtn.disabled = false;
+            createMatchBtn.textContent = '✨ Introduce Match';
+            alert('Could not create match: ' + e.message);
+          }
+        });
+      }
+
+      // 4. Pipeline Matches Table
+      async function loadMatches() {
+        try {
+          const res = await fetch('/api/admin/matches', { headers: getAuthHeaders() });
+          if (res.ok) {
+            const matches = await res.json();
+            const tbody = document.getElementById('pipelineTableBody');
+            if (!tbody) return;
+
+            const activeKpi = document.getElementById('kpiActiveMatches');
+            if (activeKpi) activeKpi.textContent = matches.filter(m => m.status === 'active').length;
+
+            tbody.innerHTML = matches.map(m => `
+              <tr>
+                <td class="p-3">
+                  <div class="font-bold text-[#5A1713]">${m.candidate_a.full_name} (${m.candidate_a.candidate_ref}) &amp; ${m.candidate_b.full_name} (${m.candidate_b.candidate_ref})</div>
+                  <div class="text-[0.68rem] text-gray-400">${m.concierge_note || "Curated introduction"}</div>
+                </td>
+                <td class="p-3 font-bold text-[#5A1713]">${m.candidate_a.tier}</td>
+                <td class="p-3 text-gray-600">${m.created_at}</td>
+                <td class="p-3">
+                  <span class="px-2.5 py-0.5 ${m.status === 'active' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-gray-100 text-gray-600 border-gray-300'} rounded font-bold border">
+                    ● ${m.status === 'active' ? 'Chat Active &bull; ' + m.stage : 'Paused'}
+                  </span>
+                </td>
+                <td class="p-3 text-right space-x-2">
+                  <button class="px-2.5 py-1 bg-amber-50 text-amber-800 border border-amber-300 rounded font-bold hover:bg-amber-100" onclick="toggleMatchStatus(${m.id}, '${m.status === 'active' ? 'paused' : 'active'}')">
+                    ${m.status === 'active' ? 'Pause Match' : 'Reactivate'}
+                  </button>
+                </td>
+              </tr>
+            `).join('');
+          }
+        } catch (e) {
+          console.error('Failed to load matches', e);
+        }
+      }
+
+      window.toggleMatchStatus = async function(id, newStatus) {
+        try {
+          await fetch(`/api/admin/matches/${id}/status?status=${newStatus}`, {
+            method: 'PUT',
+            headers: getAuthHeaders()
+          });
+          loadMatches();
+        } catch (e) {
+          alert('Failed to update status');
+        }
+      };
+
+      // 5. Invoices Management & Real Generator
+      let loadedInvoices = [];
+
+      async function loadInvoices() {
+        try {
+          const res = await fetch('/api/admin/invoices', { headers: getAuthHeaders() });
+          if (res.ok) {
+            loadedInvoices = await res.json();
+            renderInvoicesTable(loadedInvoices);
+          }
+        } catch (e) {
+          console.error('Failed to load invoices', e);
+        }
+      }
+
+      function renderInvoicesTable(invoices) {
+        const tbody = document.getElementById('invoicesTableBody');
+        if (!tbody) return;
+
+        let totalSum = 0;
+        let paidCount = 0;
+        let pendingCount = 0;
+
+        tbody.innerHTML = invoices.map(inv => {
+          totalSum += inv.total_amount;
+          if (inv.status === 'Paid') paidCount++; else pendingCount++;
+
+          const statusBadge = inv.status === 'Paid' 
+            ? 'bg-emerald-50 text-emerald-700 border-emerald-200' 
+            : 'bg-amber-50 text-amber-800 border-amber-300';
+
+          const currencySymbol = inv.currency === 'INR' ? '₹' : '$';
+
+          return `
+            <tr>
+              <td class="p-3 font-mono font-bold text-[#5A1713]">${inv.invoice_number}</td>
+              <td class="p-3">
+                <div class="font-bold text-[#332B45]">${inv.client_name}</div>
+                <div class="text-[0.68rem] text-gray-400">${inv.client_email}</div>
+              </td>
+              <td class="p-3 font-bold text-[#5A1713]">${inv.tier}</td>
+              <td class="p-3 text-gray-600">${inv.issued_date}</td>
+              <td class="p-3 font-bold text-[#5A1713]">${currencySymbol}${inv.total_amount.toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+              <td class="p-3">
+                <span class="px-2.5 py-0.5 rounded-full font-bold border ${statusBadge}">
+                  ● ${inv.status}
+                </span>
+              </td>
+              <td class="p-3 text-right">
+                <button class="px-3 py-1.5 bg-[#FAF5EE] text-[#5A1713] border border-[#C5A059]/40 rounded font-bold hover:bg-[#C5A059]/10" onclick="viewPrintInvoice(${inv.id})">
+                  🖨️ View &amp; Print
+                </button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+
+        const totalEl = document.getElementById('invTotalAmount');
+        if (totalEl) totalEl.textContent = `$${totalSum.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+        const paidEl = document.getElementById('invPaidCount');
+        if (paidEl) paidEl.textContent = `${paidCount} Paid`;
+        const pendingEl = document.getElementById('invPendingCount');
+        if (pendingEl) pendingEl.textContent = `${pendingCount} Pending`;
+      }
+
+      function populateCandidateSelect(candidates) {
+        const select = document.getElementById('invCandidateSelect');
+        if (!select) return;
+        select.innerHTML = '<option value="">— Enter Client Details Manually —</option>' + 
+          candidates.map(c => `<option value="${c.id}" data-name="${c.full_name}" data-email="${c.email}" data-tier="${c.tier}">${c.full_name} (${c.candidate_ref}) - ${c.tier}</option>`).join('');
+
+        select.addEventListener('change', () => {
+          const selectedOption = select.options[select.selectedIndex];
+          if (selectedOption && selectedOption.value) {
+            document.getElementById('invClientName').value = selectedOption.getAttribute('data-name');
+            document.getElementById('invClientEmail').value = selectedOption.getAttribute('data-email');
+            const tier = selectedOption.getAttribute('data-tier');
+            const tierSelect = document.getElementById('invTierSelect');
+            if (tierSelect && tier) {
+              tierSelect.value = tier;
+            }
+            updateInvoiceTotals();
+          }
+        });
+      }
+
+      // Convert Number to English Words
+      function convertNumberToWords(amount, currency) {
+        if (!amount || isNaN(amount)) return '';
+        const num = Math.round(amount);
+        const a = ['','One ','Two ','Three ','Four ','Five ','Six ','Seven ','Eight ','Nine ','Ten ','Eleven ','Twelve ','Thirteen ','Fourteen ','Fifteen ','Sixteen ','Seventeen ','Eighteen ','Nineteen '];
+        const b = ['', '', 'Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+
+        function inWords(n) {
+          if ((n = n.toString()).length > 9) return 'Amount Exceeds Limit';
+          let n_array = ('000000000' + n).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+          if (!n_array) return '';
+          let str = '';
+          str += (n_array[1] != 0) ? (a[Number(n_array[1])] || b[n_array[1][0]] + ' ' + a[n_array[1][1]]) + 'Crore ' : '';
+          str += (n_array[2] != 0) ? (a[Number(n_array[2])] || b[n_array[2][0]] + ' ' + a[n_array[2][1]]) + 'Lakh ' : '';
+          str += (n_array[3] != 0) ? (a[Number(n_array[3])] || b[n_array[3][0]] + ' ' + a[n_array[3][1]]) + 'Thousand ' : '';
+          str += (n_array[4] != 0) ? (a[Number(n_array[4])] || b[n_array[4][0]] + ' ' + a[n_array[4][1]]) + 'Hundred ' : '';
+          str += (n_array[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n_array[5])] || b[n_array[5][0]] + ' ' + a[n_array[5][1]]) : '';
+          return str.trim();
+        }
+
+        const prefix = currency === 'INR' ? 'INR ' : 'USD ';
+        return `${prefix}${inWords(num)} Only`;
+      }
+
+      // Professional Invoice Calculator (Custom Total includes 18% GST/VAT)
+      function updateInvoiceTotals() {
+        const currencySelect = document.getElementById('invCurrency');
+        const isINR = currencySelect && currencySelect.value === 'INR';
+        const symbol = isINR ? '₹' : '$';
+
+        const prefixEl = document.getElementById('invCurrencyPrefix');
+        if (prefixEl) prefixEl.textContent = symbol;
+
+        const isCustom = document.getElementById('modeCustom') && document.getElementById('modeCustom').checked;
+        const grossInput = document.getElementById('invCustomGrossInput');
+        const tierSelect = document.getElementById('invTierSelect');
+
+        let gross = 0;
+
+        if (isCustom) {
+          gross = parseFloat(grossInput ? grossInput.value : 0) || 0;
+        } else {
+          const selectedOption = tierSelect.options[tierSelect.selectedIndex];
+          gross = isINR 
+            ? parseFloat(selectedOption.getAttribute('data-inr') || 1475000) 
+            : parseFloat(selectedOption.getAttribute('data-usd') || 17700);
+          if (grossInput) grossInput.value = gross;
+        }
+
+        // Calculate base and 18% GST
+        const base = Math.round((gross / 1.18) * 100) / 100;
+        const tax = Math.round((gross - base) * 100) / 100;
+
+        const baseDisplay = document.getElementById('invBaseDisplay');
+        const taxDisplay = document.getElementById('invTaxDisplay');
+        const totalDisplay = document.getElementById('invTotalDisplay');
+
+        if (baseDisplay) baseDisplay.textContent = `${symbol}${base.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+        if (taxDisplay) taxDisplay.textContent = `${symbol}${tax.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+        if (totalDisplay) totalDisplay.textContent = `${symbol}${gross.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+      }
+
+      // Pricing Listeners
+      const invTierSelect = document.getElementById('invTierSelect');
+      const invCurrency = document.getElementById('invCurrency');
+      const invCustomGrossInput = document.getElementById('invCustomGrossInput');
+      const modeCustom = document.getElementById('modeCustom');
+      const modeTier = document.getElementById('modeTier');
+
+      if (invTierSelect) invTierSelect.addEventListener('change', updateInvoiceTotals);
+      if (invCurrency) invCurrency.addEventListener('change', updateInvoiceTotals);
+      if (invCustomGrossInput) invCustomGrossInput.addEventListener('input', updateInvoiceTotals);
+      if (modeCustom) modeCustom.addEventListener('change', updateInvoiceTotals);
+      if (modeTier) modeTier.addEventListener('change', updateInvoiceTotals);
+
+      // Invoice Generator Modal Open / Close
+      const invoiceModal = document.getElementById('invoiceModal');
+      const openGenerateBtn = document.getElementById('openGenerateInvoiceBtn');
+      const closeInvoiceBtn = document.getElementById('closeInvoiceModalBtn');
+      const cancelInvoiceBtn = document.getElementById('cancelInvoiceBtn');
+
+      if (openGenerateBtn && invoiceModal) {
+        openGenerateBtn.addEventListener('click', () => {
+          invoiceModal.classList.remove('hidden');
+          invoiceModal.classList.add('flex');
+          updateInvoiceTotals();
+        });
+      }
+
+      const hideInvoiceModal = () => {
+        if (invoiceModal) {
+          invoiceModal.classList.add('hidden');
+          invoiceModal.classList.remove('flex');
+        }
+      };
+
+      if (closeInvoiceBtn) closeInvoiceBtn.addEventListener('click', hideInvoiceModal);
+      if (cancelInvoiceBtn) cancelInvoiceBtn.addEventListener('click', hideInvoiceModal);
+
+      // Submit Create Invoice Form (Manual details + Custom Amount with 18% GST)
+      const createInvoiceForm = document.getElementById('createInvoiceForm');
+      if (createInvoiceForm) {
+        createInvoiceForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const tier = document.getElementById('invTierSelect').value;
+          const currency = document.getElementById('invCurrency').value;
+          const grossAmount = parseFloat(document.getElementById('invCustomGrossInput').value) || 0;
+
+          const clientName = document.getElementById('invClientName').value.trim();
+          const clientEmail = document.getElementById('invClientEmail').value.trim();
+          const clientPhone = document.getElementById('invClientPhone').value.trim();
+          const billingAddress = document.getElementById('invBillingAddress').value.trim() || 'Mumbai, Maharashtra, India';
+          const taxId = document.getElementById('invTaxId').value.trim();
+          const placeOfSupply = document.getElementById('invPlaceOfSupply').value;
+          const description = document.getElementById('invDescription').value.trim() || `Vows for Eternity ${tier} VIP Bespoke Retainer`;
+
+          const amountInWords = convertNumberToWords(grossAmount, currency);
+
+          const candSelect = document.getElementById('invCandidateSelect');
+          const userId = candSelect.value ? parseInt(candSelect.value) : null;
+
+          const payload = {
+            client_name: clientName,
+            client_email: clientEmail,
+            client_phone: clientPhone,
+            billing_address: billingAddress,
+            tax_id: taxId,
+            place_of_supply: placeOfSupply,
+            sac_code: "998399",
+            amount_in_words: amountInWords,
+            user_id: userId,
+            tier: tier,
+            currency: currency,
+            total_amount: grossAmount,
+            tax_rate: 18.0,
+            status: document.getElementById('invStatus').value,
+            payment_method: document.getElementById('invPaymentMethod').value,
+            description: description
+          };
+
+          try {
+            const res = await fetch('/api/admin/invoices', {
+              method: 'POST',
+              headers: getAuthHeaders(),
+              body: JSON.stringify(payload)
+            });
+
+            if (res.ok) {
+              const data = await res.json();
+              hideInvoiceModal();
+              loadInvoices();
+              alert(`✨ Official Tax Invoice Issued Successfully!\n\nInvoice Number: ${data.invoice.invoice_number}\nTotal Gross: ${currency} ${data.invoice.total_amount}`);
+              viewPrintInvoice(data.invoice.id);
+            }
+          } catch (err) {
+            alert('Failed to generate invoice: ' + err.message);
+          }
+        });
+      }
+
+      // View & Print Exact Luxury Tax Invoice with Watermark
+      window.viewPrintInvoice = function(invoiceId) {
+        const inv = loadedInvoices.find(i => i.id === invoiceId);
+        if (!inv) return;
+
+        const isINR = inv.currency === 'INR';
+        const symbol = isINR ? '₹' : '$';
+        const currPrefix = inv.currency ? `${inv.currency} ` : (isINR ? 'INR ' : 'USD ');
+        const total = inv.total_amount || 0;
+        const base = inv.base_amount || Math.round((total / 1.18) * 100) / 100;
+        const tax = inv.tax_amount || Math.round((total - base) * 100) / 100;
+
+        const formattedTotal = `${symbol}${total.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        const formattedBase = `${symbol}${base.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        const formattedTax = `${symbol}${tax.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+
+        // Top Metadata
+        document.getElementById('printInvNumber').textContent = inv.invoice_number || 'INV163';
+        document.getElementById('printInvDate').textContent = inv.issued_date || 'Sep 1, 2026';
+        document.getElementById('printInvDueDate').textContent = inv.due_date || 'On Receipt';
+        document.getElementById('printInvStatus').textContent = (inv.status || 'PAID').toUpperCase();
+        document.getElementById('printInvHeaderTotal').textContent = `${currPrefix}${formattedTotal}`;
+
+        // Bill To
+        document.getElementById('printClientName').textContent = inv.client_name || 'Anchit Jain';
+        
+        const addressLinesEl = document.getElementById('printClientAddressLines');
+        if (addressLinesEl) {
+          const rawAddress = inv.billing_address || 'Ontario\nCanada\n91762';
+          const lines = rawAddress.includes('\n') 
+            ? rawAddress.split('\n').map(l => l.trim()).filter(Boolean)
+            : rawAddress.split(',').map(l => l.trim()).filter(Boolean);
+          
+          addressLinesEl.innerHTML = lines.map(line => `<p>${line}</p>`).join('');
+        }
+
+        document.getElementById('printClientPhone').textContent = inv.client_phone || '+1 6474009099';
+        document.getElementById('printClientEmail').textContent = inv.client_email || 'anchit@rogers.com';
+
+        // Itemized Table
+        document.getElementById('printDescription').textContent = inv.description || 'Match Making Service';
+        document.getElementById('printRate').textContent = formattedTotal;
+        document.getElementById('printQty').textContent = '1';
+        document.getElementById('printItemAmount').textContent = formattedTotal;
+
+        // Subtotal & Tax Breakdown
+        document.getElementById('printSubtotal').textContent = formattedTotal;
+        document.getElementById('printTaxable').textContent = formattedBase;
+        document.getElementById('printGst').textContent = `inc ${formattedTax}`;
+        document.getElementById('printTotal').textContent = formattedTotal;
+        document.getElementById('printSummaryStatus').textContent = (inv.status || 'PAID').toUpperCase();
+        document.getElementById('printGrandTotal').textContent = `${currPrefix}${formattedTotal}`;
+
+        const notesEl = document.getElementById('printNotes');
+        if (notesEl && inv.notes) {
+          notesEl.textContent = inv.notes;
+        }
+
+        const printModal = document.getElementById('printInvoiceModal');
+        if (printModal) {
+          printModal.classList.remove('hidden');
+          printModal.classList.add('flex');
+        }
+      };
+
+      const closePrintBtn = document.getElementById('closePrintModalBtn');
+      if (closePrintBtn) {
+        closePrintBtn.addEventListener('click', () => {
+          const printModal = document.getElementById('printInvoiceModal');
+          if (printModal) {
+            printModal.classList.add('hidden');
+            printModal.classList.remove('flex');
+          }
+        });
+      }
+
+      // Initialize
+      ensureAdminAuth().then(() => {
+        loadCandidates();
+        loadMatches();
+        loadInvoices();
+      });
+    });
+  </script>
+</body>
+</html>

@@ -33,6 +33,12 @@ function initStickyHeader() {
   const header = document.querySelector('.hero-header-bar');
   if (!header) return;
 
+  // If header is marked as solid-header (dashboard/portal pages), keep it solid always!
+  if (header.classList.contains('solid-header')) {
+    header.classList.add('scrolled');
+    return;
+  }
+
   function onScroll() {
     if (window.scrollY > 20) {
       header.classList.add('scrolled');
@@ -216,16 +222,16 @@ function initPaymentGateway() {
   if (!modal) return;
 
   const state = {
-    tierId: 'prive',
-    tierTitle: 'Vows for Eternity Privé',
+    tierId: 'select',
+    tierTitle: 'Prithvi (The Earth Tier)',
     currency: 'USD',
     amounts: {
-      USD: 15000,
-      INR: 1200000,
-      GBP: 12000,
-      AED: 55000
+      USD: 499,
+      INR: 40000,
+      GBP: 400,
+      AED: 1830
     },
-    amount: 15000
+    amount: 499
   };
 
   const currencySymbols = {
@@ -245,7 +251,7 @@ function initPaymentGateway() {
     const inputEl = document.getElementById('customPlanAmount');
     const finalAmountEl = document.getElementById('finalPayAmount');
 
-    state.amount = state.amounts[state.currency] || 15000;
+    state.amount = state.amounts[state.currency] || 499;
     const formatted = formatPrice(state.amount, state.currency);
 
     if (displayEl) displayEl.textContent = formatted;
@@ -258,25 +264,38 @@ function initPaymentGateway() {
 
     const trigger = e ? e.currentTarget : null;
     if (trigger) {
-      const tierId = trigger.getAttribute('data-tier') || 'prive';
-      const tierTitle = trigger.getAttribute('data-tier-name') || 'Vows for Eternity Privé';
-      const usdAmount = parseInt(trigger.getAttribute('data-usd-amount') || '15000', 10);
+      const tierId = trigger.getAttribute('data-tier') || 'select';
+      let defaultTitle = 'Prithvi (The Earth Tier)';
+      let defaultUsd = 499;
+      if (tierId === 'prive') {
+        defaultTitle = 'Tejas (The Fire Tier)';
+        defaultUsd = 749;
+      } else if (tierId === 'bespoke' || tierId === 'custom') {
+        defaultTitle = 'Vyom (The Space Tier)';
+        defaultUsd = 999;
+      }
+
+      const tierTitle = trigger.getAttribute('data-tier-name') || defaultTitle;
+      const usdAmount = parseInt(trigger.getAttribute('data-usd-amount') || defaultUsd, 10);
       
       state.tierId = tierId;
       state.tierTitle = tierTitle;
       state.amounts.USD = usdAmount;
-      state.amounts.INR = usdAmount * 80;
-      state.amounts.GBP = Math.round(usdAmount * 0.8);
-      state.amounts.AED = Math.round(usdAmount * 3.67);
+      state.amounts.INR = usdAmount === 499 ? 40000 : (usdAmount === 749 ? 60000 : (usdAmount === 999 ? 80000 : usdAmount * 80));
+      state.amounts.GBP = usdAmount === 499 ? 400 : (usdAmount === 749 ? 600 : (usdAmount === 999 ? 800 : Math.round(usdAmount * 0.8)));
+      state.amounts.AED = usdAmount === 499 ? 1830 : (usdAmount === 749 ? 2750 : (usdAmount === 999 ? 3670 : Math.round(usdAmount * 3.67)));
 
       const titleEl = document.getElementById('modalTierTitle');
       if (titleEl) titleEl.textContent = tierTitle;
 
       tierOptions.forEach(opt => {
-        if (opt.getAttribute('data-tier-option') === tierId) {
+        const optTier = opt.getAttribute('data-tier-option') || opt.getAttribute('data-tier');
+        if (optTier === tierId) {
           opt.classList.add('active');
+          opt.classList.add('selected');
         } else {
           opt.classList.remove('active');
+          opt.classList.remove('selected');
         }
       });
 
@@ -308,28 +327,41 @@ function initPaymentGateway() {
 
   tierOptions.forEach(opt => {
     opt.addEventListener('click', () => {
-      tierOptions.forEach(o => o.classList.remove('active'));
+      tierOptions.forEach(o => {
+        o.classList.remove('active');
+        o.classList.remove('selected');
+      });
       opt.classList.add('active');
+      opt.classList.add('selected');
 
-      const tierId = opt.getAttribute('data-tier-option');
+      const tierId = opt.getAttribute('data-tier-option') || opt.getAttribute('data-tier') || 'select';
       state.tierId = tierId;
 
-      let usdAmount = 15000;
-      let title = 'Vows for Eternity Privé';
+      let usdAmount = 499;
+      let inrAmount = 40000;
+      let gbpAmount = 400;
+      let aedAmount = 1830;
+      let title = 'Prithvi (The Earth Tier)';
 
-      if (tierId === 'select') {
-        usdAmount = 5000;
-        title = 'Vows for Eternity Select';
-      } else if (tierId === 'custom') {
-        usdAmount = 25000;
-        title = 'Bespoke Global Matchmaking';
+      if (tierId === 'prive') {
+        usdAmount = 749;
+        inrAmount = 60000;
+        gbpAmount = 600;
+        aedAmount = 2750;
+        title = 'Tejas (The Fire Tier)';
+      } else if (tierId === 'bespoke' || tierId === 'custom') {
+        usdAmount = 999;
+        inrAmount = 80000;
+        gbpAmount = 800;
+        aedAmount = 3670;
+        title = 'Vyom (The Space Tier)';
       }
 
       state.tierTitle = title;
       state.amounts.USD = usdAmount;
-      state.amounts.INR = usdAmount * 80;
-      state.amounts.GBP = Math.round(usdAmount * 0.8);
-      state.amounts.AED = Math.round(usdAmount * 3.67);
+      state.amounts.INR = inrAmount;
+      state.amounts.GBP = gbpAmount;
+      state.amounts.AED = aedAmount;
 
       const titleEl = document.getElementById('modalTierTitle');
       if (titleEl) titleEl.textContent = title;
@@ -362,19 +394,44 @@ function initPaymentGateway() {
   });
 
   if (paymentForm) {
-    paymentForm.addEventListener('submit', (e) => {
+    paymentForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const memberName = document.getElementById('clientFullName')?.value || 'Distinguished Member';
+      const memberEmail = document.getElementById('clientEmail')?.value || 'member@vowsforeternity.com';
 
       if (formSection) formSection.style.display = 'none';
       if (loadingSection) loadingSection.style.display = 'block';
 
-      setTimeout(() => {
+      try {
+        const response = await fetch('/api/payment/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            tier: state.tierId || 'prive',
+            currency: state.currency || 'USD',
+            client_name: memberName,
+            client_email: memberEmail,
+            return_url: window.location.origin + window.location.pathname
+          })
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.detail || 'Failed to initialize Stripe checkout');
+        }
+
+        if (data.url) {
+          // Redirect to Stripe Hosted Checkout or Verified Return URL
+          window.location.href = data.url;
+          return;
+        }
+
+        // Fallback in-page receipt
         if (loadingSection) loadingSection.style.display = 'none';
         if (successSection) successSection.style.display = 'block';
 
-        const randomRef = 'VFE-' + Math.floor(100000 + Math.random() * 900000);
+        const randomRef = data.sessionId ? ('VFE-' + data.sessionId.slice(-6).toUpperCase()) : ('VFE-' + Math.floor(100000 + Math.random() * 900000));
         const today = new Date().toLocaleDateString('en-US', {
           year: 'numeric',
           month: 'long',
@@ -386,34 +443,109 @@ function initPaymentGateway() {
         if (receiptPlanEl) receiptPlanEl.textContent = state.tierTitle;
         if (receiptAmountEl) receiptAmountEl.textContent = formatPrice(state.amount, state.currency);
         if (receiptNameEl) receiptNameEl.textContent = memberName;
-      }, 2000);
+      } catch (err) {
+        if (loadingSection) loadingSection.style.display = 'none';
+        if (formSection) formSection.style.display = 'block';
+        alert(err.message || 'Payment authorization error');
+      }
     });
+  }
+
+  // --- Auto-Verify Stripe Checkout Session on Return ---
+  const urlParams = new URLSearchParams(window.location.search);
+  const stripeSessionId = urlParams.get('session_id');
+  const paymentStatus = urlParams.get('payment_status');
+
+  if (stripeSessionId && paymentStatus === 'success') {
+    fetch(`/api/payment/verify-session/${stripeSessionId}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success' && data.invoice) {
+          const inv = data.invoice;
+          if (modal) modal.classList.add('open');
+          if (formSection) formSection.style.display = 'none';
+          if (loadingSection) loadingSection.style.display = 'none';
+          if (successSection) successSection.style.display = 'block';
+
+          if (receiptReferenceEl) receiptReferenceEl.textContent = inv.invoice_number;
+          if (receiptDateEl) receiptDateEl.textContent = inv.issued_date;
+          if (receiptPlanEl) receiptPlanEl.textContent = inv.tier;
+          if (receiptAmountEl) receiptAmountEl.textContent = formatPrice(inv.total_amount, inv.currency);
+          if (receiptNameEl) receiptNameEl.textContent = inv.client_name;
+
+          // Update active session user's tier in sessionStorage
+          try {
+            const rawUser = sessionStorage.getItem('vfe_member_session');
+            if (rawUser) {
+              const u = JSON.parse(rawUser);
+              u.tier = inv.tier.replace('Vows for Eternity ', '');
+              sessionStorage.setItem('vfe_member_session', JSON.stringify(u));
+            }
+          } catch (e) {}
+
+          // Clean URL query parameters
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+      })
+      .catch(() => {});
   }
 
   const finishReceiptBtn = document.getElementById('finishReceiptBtn');
   if (finishReceiptBtn) {
-    finishReceiptBtn.addEventListener('click', closeModal);
+    finishReceiptBtn.addEventListener('click', () => {
+      closeModal();
+      if (window.location.pathname.includes('portal.html')) {
+        window.location.reload();
+      }
+    });
   }
 }
 
 /* --------------------------------------------------------------------------
    Luxury Member Authentication Controller (Supabase + Modal + Portal)
    -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   Modern Inspired Member Authentication Controller (Sign Up / Sign In / Google)
+   -------------------------------------------------------------------------- */
 function initMemberAuth() {
   const modal = document.getElementById('memberAuthModal');
-  const openButtons = document.querySelectorAll('a[href*="#login"], .trigger-login-modal, .nav-drawer-gold-link');
-  const closeBtn = document.getElementById('closeAuthModal');
-  const tabButtons = document.querySelectorAll('.auth-tab-btn');
+  const openButtons = document.querySelectorAll('a[href*="#login"], a[href*="#register"], a[href*="#signup"], .trigger-login-modal, .trigger-signup-modal, .nav-drawer-gold-link, [data-auth-trigger]');
+  const closeBtns = document.querySelectorAll('#closeAuthModal, .auth-back-btn, .close-auth-btn');
+  const signUpSection = document.getElementById('authSignUpSection');
+  const signInSection = document.getElementById('authSignInSection');
+  const switchPrompt = document.getElementById('authSwitchPrompt');
+  const switchAction = document.getElementById('authSwitchAction');
+  
   const loginForm = document.getElementById('memberLoginForm');
   const registerForm = document.getElementById('memberRegisterForm');
-  const demoLoginBtn = document.getElementById('demoLoginBtn');
 
   if (!modal) return;
 
-  window.openMemberAuthModal = (e) => {
+  // Function to switch between Sign Up & Sign In modes
+  const setAuthMode = (mode = 'signup') => {
+    if (mode === 'signin' || mode === 'login') {
+      if (signUpSection) signUpSection.style.display = 'none';
+      if (signInSection) signInSection.style.display = 'block';
+      if (switchPrompt) switchPrompt.textContent = 'Not a member?';
+      if (switchAction) {
+        switchAction.textContent = 'Sign up';
+        switchAction.setAttribute('data-target', 'signup');
+      }
+    } else {
+      if (signUpSection) signUpSection.style.display = 'block';
+      if (signInSection) signInSection.style.display = 'none';
+      if (switchPrompt) switchPrompt.textContent = 'Already member?';
+      if (switchAction) {
+        switchAction.textContent = 'Sign in';
+        switchAction.setAttribute('data-target', 'signin');
+      }
+    }
+  };
+
+  window.openMemberAuthModal = (e, defaultMode = 'signup') => {
     if (e && typeof e.preventDefault === 'function') e.preventDefault();
-    
-    // Close sidebar drawer if open
+    setAuthMode(defaultMode);
+
     if (typeof window.closeMobileDrawerGlobal === 'function') {
       window.closeMobileDrawerGlobal(() => {
         modal.classList.add('open');
@@ -431,91 +563,321 @@ function initMemberAuth() {
   };
 
   openButtons.forEach(btn => {
-    btn.addEventListener('click', window.openMemberAuthModal);
+    btn.addEventListener('click', (e) => {
+      const href = btn.getAttribute('href') || '';
+      const isLogin = href.includes('#login') || btn.classList.contains('trigger-login-modal') || btn.getAttribute('data-auth-trigger') === 'signin';
+      window.openMemberAuthModal(e, isLogin ? 'signin' : 'signup');
+    });
   });
 
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  // Check URL hash on page load
+  if (window.location.hash === '#login' || window.location.hash.includes('login')) {
+    setTimeout(() => window.openMemberAuthModal(null, 'signin'), 150);
+  } else if (window.location.hash === '#register' || window.location.hash === '#signup' || window.location.hash.includes('signup')) {
+    setTimeout(() => window.openMemberAuthModal(null, 'signup'), 150);
+  }
+
+  closeBtns.forEach(btn => btn.addEventListener('click', closeModal));
 
   modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
   });
 
-  // Auto-open modal if URL hash is #login
-  if (window.location.hash === '#login') {
-    setTimeout(() => {
-      window.openMemberAuthModal();
-    }, 250);
-  }
-
-  // Password Visibility Toggle
-  const togglePassBtn = document.getElementById('togglePasswordVisibility');
-  const passInput = document.getElementById('authPasswordInput');
-  if (togglePassBtn && passInput) {
-    togglePassBtn.addEventListener('click', () => {
-      const type = passInput.getAttribute('type') === 'password' ? 'text' : 'password';
-      passInput.setAttribute('type', type);
+  if (switchAction) {
+    switchAction.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = switchAction.getAttribute('data-target') || 'signin';
+      setAuthMode(target);
     });
   }
 
-  // Tab Switcher (Sign In vs Register)
-  tabButtons.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabButtons.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const target = tab.getAttribute('data-tab');
-      if (target === 'login') {
-        if (loginForm) loginForm.classList.remove('hidden');
-        if (registerForm) registerForm.classList.add('hidden');
-      } else {
-        if (loginForm) loginForm.classList.add('hidden');
-        if (registerForm) registerForm.classList.remove('hidden');
+  // Password Visibility Toggle
+  document.querySelectorAll('.toggle-pass-btn, .auth-eye-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const group = btn.closest('.auth-field-group, .relative');
+      const passInput = group ? group.querySelector('input') : null;
+      if (passInput) {
+        const type = passInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passInput.setAttribute('type', type);
       }
     });
   });
 
-  // Instant Demo Member Login Handler
-  if (demoLoginBtn) {
-    demoLoginBtn.addEventListener('click', () => {
-      sessionStorage.setItem('vfe_member_session', JSON.stringify({
-        authenticated: true,
-        email: 'harrington.member@vowsforeternity.com',
-        memberName: 'Lord & Lady Harrington',
-        tier: 'Vows for Eternity Privé',
-        concatMail: 'billing@vowsforeternity.in',
-        loginTime: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
-      }));
+  // --- Real-time Interactive Validation Checklist (Matching Inspiration Image) ---
+  const regPassInput = document.getElementById('regPassword');
+  const regConfirmInput = document.getElementById('regConfirmPassword');
+  const regEmailInput = document.getElementById('regEmail');
+  const regNameInput = document.getElementById('regFullName');
 
-      closeModal();
-      document.body.style.transition = 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
-      document.body.style.opacity = '0';
-      setTimeout(() => {
-        window.location.href = 'portal.html';
-      }, 350);
+  const reqLen = document.getElementById('reqLen');
+  const reqNum = document.getElementById('reqNum');
+  const reqCase = document.getElementById('reqCase');
+
+  const groupName = document.getElementById('groupRegName');
+  const groupEmail = document.getElementById('groupRegEmail');
+  const groupPass = document.getElementById('groupRegPass');
+  const groupConfirm = document.getElementById('groupRegConfirm');
+
+  if (regNameInput && groupName) {
+    regNameInput.addEventListener('input', () => {
+      if (regNameInput.value.trim().length >= 2) {
+        groupName.classList.add('is-valid');
+      } else {
+        groupName.classList.remove('is-valid');
+      }
     });
   }
 
-  // Form Submit Handler
+  if (regEmailInput && groupEmail) {
+    regEmailInput.addEventListener('input', () => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (emailRegex.test(regEmailInput.value.trim())) {
+        groupEmail.classList.add('is-valid');
+      } else {
+        groupEmail.classList.remove('is-valid');
+      }
+    });
+  }
+
+  if (regPassInput) {
+    regPassInput.addEventListener('input', () => {
+      const val = regPassInput.value;
+      const isLen = val.length >= 8;
+      const isNum = /[0-9!@#$%^&*(),.?":{}|<>]/.test(val);
+      const isCase = /[a-z]/.test(val) && /[A-Z]/.test(val);
+
+      if (reqLen) reqLen.classList.toggle('met', isLen);
+      if (reqNum) reqNum.classList.toggle('met', isNum);
+      if (reqCase) reqCase.classList.toggle('met', isCase);
+
+      if (groupPass) {
+        if (isLen && isNum && isCase) {
+          groupPass.classList.add('is-valid');
+        } else {
+          groupPass.classList.remove('is-valid');
+        }
+      }
+
+      // Re-validate confirm pass
+      if (regConfirmInput && regConfirmInput.value && groupConfirm) {
+        groupConfirm.classList.toggle('is-valid', regConfirmInput.value === val && val.length > 0);
+      }
+    });
+  }
+
+  if (regConfirmInput && groupConfirm) {
+    regConfirmInput.addEventListener('input', () => {
+      const match = regPassInput && regPassInput.value === regConfirmInput.value && regConfirmInput.value.length > 0;
+      groupConfirm.classList.toggle('is-valid', match);
+    });
+  }
+
+  // --- Real Registration Form Submit Handler ---
+  if (registerForm) {
+    registerForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const nameInput = document.getElementById('regFullName');
+      const emailInput = document.getElementById('regEmail');
+      const passInput = document.getElementById('regPassword');
+      const confirmInput = document.getElementById('regConfirmPassword');
+      const tierInput = document.getElementById('regTier');
+      const submitBtn = registerForm.querySelector('button[type="submit"]');
+
+      let errBanner = registerForm.querySelector('.auth-error-banner');
+      if (errBanner) errBanner.remove();
+
+      if (confirmInput && passInput && confirmInput.value !== passInput.value) {
+        errBanner = document.createElement('div');
+        errBanner.className = 'auth-error-banner p-3 mb-3 bg-rose-50 border border-rose-200 text-rose-800 text-xs font-sans rounded-xl flex items-center gap-2';
+        errBanner.innerHTML = `<span>✕</span> Passwords do not match. Please re-enter.`;
+        registerForm.prepend(errBanner);
+        return;
+      }
+
+      const originalBtnHTML = submitBtn ? submitBtn.innerHTML : '<span>Sign Up</span>';
+      if (submitBtn) {
+        submitBtn.innerHTML = `<span>CREATING ACCOUNT...</span>`;
+        submitBtn.disabled = true;
+      }
+
+      try {
+        const response = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            full_name: nameInput ? nameInput.value.trim() : 'New Candidate',
+            email: emailInput ? emailInput.value.trim() : '',
+            password: passInput ? passInput.value : '',
+            tier: tierInput ? tierInput.value : 'Prive',
+            gender: 'Male'
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.detail || 'Registration failed');
+        }
+
+        localStorage.setItem('vfe_token', data.access_token);
+        sessionStorage.setItem('vfe_member_session', JSON.stringify(data.user));
+
+        closeModal();
+        document.body.style.transition = 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+        document.body.style.opacity = '0';
+
+        setTimeout(() => {
+          window.location.href = 'portal.html';
+        }, 300);
+      } catch (err) {
+        if (submitBtn) {
+          submitBtn.innerHTML = originalBtnHTML;
+          submitBtn.disabled = false;
+        }
+
+        errBanner = document.createElement('div');
+        errBanner.className = 'auth-error-banner p-3 mb-3 bg-rose-50 border border-rose-200 text-rose-800 text-xs font-sans rounded-xl flex items-center gap-2';
+        errBanner.innerHTML = `<span>✕</span> ${err.message || 'Registration failed. Please try again.'}`;
+        registerForm.prepend(errBanner);
+      }
+    });
+  }
+
+  // --- Real Login Form Submit Handler ---
   if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
+    loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const emailInput = loginForm.querySelector('input[type="email"]');
-      const emailVal = emailInput && emailInput.value ? emailInput.value : 'distinguished.member@vowsforeternity.com';
+      const passInput = loginForm.querySelector('input[type="password"]');
+      const submitBtn = loginForm.querySelector('button[type="submit"]');
 
-      sessionStorage.setItem('vfe_member_session', JSON.stringify({
-        authenticated: true,
-        email: emailVal,
-        memberName: 'Distinguished VFE Member',
-        tier: 'Vows for Eternity Select',
-        concatMail: 'billing@vowsforeternity.in',
-        loginTime: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
-      }));
+      const emailVal = emailInput ? emailInput.value.trim() : '';
+      const passVal = passInput ? passInput.value : '';
 
-      closeModal();
-      document.body.style.transition = 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
-      document.body.style.opacity = '0';
-      setTimeout(() => {
-        window.location.href = 'portal.html';
-      }, 350);
+      let errBanner = loginForm.querySelector('.auth-error-banner');
+      if (errBanner) errBanner.remove();
+
+      const originalBtnHTML = submitBtn ? submitBtn.innerHTML : '<span>Sign In</span>';
+      if (submitBtn) {
+        submitBtn.innerHTML = `<span>AUTHENTICATING...</span>`;
+        submitBtn.disabled = true;
+      }
+
+      try {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: emailVal, password: passVal })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.detail || 'Invalid email or password');
+        }
+
+        localStorage.setItem('vfe_token', data.access_token);
+        sessionStorage.setItem('vfe_member_session', JSON.stringify(data.user));
+
+        closeModal();
+        document.body.style.transition = 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+        document.body.style.opacity = '0';
+
+        setTimeout(() => {
+          if (data.user.role === 'admin') {
+            window.location.href = 'admin.html';
+          } else {
+            window.location.href = 'portal.html';
+          }
+        }, 300);
+      } catch (err) {
+        if (submitBtn) {
+          submitBtn.innerHTML = originalBtnHTML;
+          submitBtn.disabled = false;
+        }
+
+        errBanner = document.createElement('div');
+        errBanner.className = 'auth-error-banner p-3 mb-3 bg-rose-50 border border-rose-200 text-rose-800 text-xs font-sans rounded-xl flex items-center gap-2';
+        errBanner.innerHTML = `<span>✕</span> ${err.message || 'Authentication failed. Please check your credentials.'}`;
+        loginForm.prepend(errBanner);
+      }
     });
   }
+
+  // --- Google Sign-In & Sign-Up Handler ---
+  document.querySelectorAll('.auth-google-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      
+      const loginEmail = document.querySelector('#memberLoginForm input[type="email"]')?.value?.trim();
+      const regEmail = document.getElementById('regEmail')?.value?.trim();
+      const defaultEmail = regEmail || loginEmail || 'sourav.18116@sakec.ac.in';
+
+      const userEmail = prompt('Enter your Google Account Email to continue:', defaultEmail);
+      if (!userEmail || !userEmail.trim()) return;
+
+      const cleanEmail = userEmail.trim().toLowerCase();
+      const origHTML = btn.innerHTML;
+      btn.innerHTML = `<span class="spinner-luxury" style="width:14px;height:14px;border-width:2px;display:inline-block;"></span>`;
+      btn.style.pointerEvents = 'none';
+
+      try {
+        const response = await fetch('/api/auth/google', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: cleanEmail,
+            full_name: cleanEmail.split('@')[0].replace('.', ' ').replace(/\b\w/g, l => l.toUpperCase()),
+            tier: 'Prive',
+            gender: 'Male'
+          })
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.detail || 'Google authentication failed');
+        }
+
+        localStorage.setItem('vfe_token', data.access_token);
+        sessionStorage.setItem('vfe_member_session', JSON.stringify(data.user));
+
+        closeModal();
+        document.body.style.transition = 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+        document.body.style.opacity = '0';
+
+        setTimeout(() => {
+          window.location.href = 'portal.html';
+        }, 300);
+      } catch (err) {
+        btn.innerHTML = origHTML;
+        btn.style.pointerEvents = '';
+        alert(err.message || 'Google authentication failed');
+      }
+    });
+  });
+
+  // --- Instant VIP 1-Click Access (Red Button) ---
+  document.querySelectorAll('#demoLoginBtn, #demoLoginBtn2').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      try {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: 'harrington.member@vowsforeternity.com',
+            password: 'pass123'
+          })
+        });
+        const data = await response.json();
+        if (response.ok) {
+          localStorage.setItem('vfe_token', data.access_token);
+          sessionStorage.setItem('vfe_member_session', JSON.stringify(data.user));
+          closeModal();
+          window.location.href = 'portal.html';
+        }
+      } catch (err) {
+        window.location.href = 'portal.html';
+      }
+    });
+  });
 }
