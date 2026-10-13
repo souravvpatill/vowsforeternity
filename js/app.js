@@ -222,16 +222,16 @@ function initPaymentGateway() {
   if (!modal) return;
 
   const state = {
-    tierId: 'select',
-    tierTitle: 'Prithvi (The Earth Tier)',
+    tierId: 'prive',
+    tierTitle: 'Vows for Eternity Privé',
     currency: 'USD',
     amounts: {
-      USD: 499,
-      INR: 40000,
-      GBP: 400,
-      AED: 1830
+      USD: 15000,
+      INR: 1200000,
+      GBP: 12000,
+      AED: 55000
     },
-    amount: 499
+    amount: 15000
   };
 
   const currencySymbols = {
@@ -251,7 +251,7 @@ function initPaymentGateway() {
     const inputEl = document.getElementById('customPlanAmount');
     const finalAmountEl = document.getElementById('finalPayAmount');
 
-    state.amount = state.amounts[state.currency] || 499;
+    state.amount = state.amounts[state.currency] || 15000;
     const formatted = formatPrice(state.amount, state.currency);
 
     if (displayEl) displayEl.textContent = formatted;
@@ -264,38 +264,25 @@ function initPaymentGateway() {
 
     const trigger = e ? e.currentTarget : null;
     if (trigger) {
-      const tierId = trigger.getAttribute('data-tier') || 'select';
-      let defaultTitle = 'Prithvi (The Earth Tier)';
-      let defaultUsd = 499;
-      if (tierId === 'prive') {
-        defaultTitle = 'Tejas (The Fire Tier)';
-        defaultUsd = 749;
-      } else if (tierId === 'bespoke' || tierId === 'custom') {
-        defaultTitle = 'Vyom (The Space Tier)';
-        defaultUsd = 999;
-      }
-
-      const tierTitle = trigger.getAttribute('data-tier-name') || defaultTitle;
-      const usdAmount = parseInt(trigger.getAttribute('data-usd-amount') || defaultUsd, 10);
+      const tierId = trigger.getAttribute('data-tier') || 'prive';
+      const tierTitle = trigger.getAttribute('data-tier-name') || 'Vows for Eternity Privé';
+      const usdAmount = parseInt(trigger.getAttribute('data-usd-amount') || '15000', 10);
       
       state.tierId = tierId;
       state.tierTitle = tierTitle;
       state.amounts.USD = usdAmount;
-      state.amounts.INR = usdAmount === 499 ? 40000 : (usdAmount === 749 ? 60000 : (usdAmount === 999 ? 80000 : usdAmount * 80));
-      state.amounts.GBP = usdAmount === 499 ? 400 : (usdAmount === 749 ? 600 : (usdAmount === 999 ? 800 : Math.round(usdAmount * 0.8)));
-      state.amounts.AED = usdAmount === 499 ? 1830 : (usdAmount === 749 ? 2750 : (usdAmount === 999 ? 3670 : Math.round(usdAmount * 3.67)));
+      state.amounts.INR = usdAmount * 80;
+      state.amounts.GBP = Math.round(usdAmount * 0.8);
+      state.amounts.AED = Math.round(usdAmount * 3.67);
 
       const titleEl = document.getElementById('modalTierTitle');
       if (titleEl) titleEl.textContent = tierTitle;
 
       tierOptions.forEach(opt => {
-        const optTier = opt.getAttribute('data-tier-option') || opt.getAttribute('data-tier');
-        if (optTier === tierId) {
+        if (opt.getAttribute('data-tier-option') === tierId) {
           opt.classList.add('active');
-          opt.classList.add('selected');
         } else {
           opt.classList.remove('active');
-          opt.classList.remove('selected');
         }
       });
 
@@ -327,41 +314,28 @@ function initPaymentGateway() {
 
   tierOptions.forEach(opt => {
     opt.addEventListener('click', () => {
-      tierOptions.forEach(o => {
-        o.classList.remove('active');
-        o.classList.remove('selected');
-      });
+      tierOptions.forEach(o => o.classList.remove('active'));
       opt.classList.add('active');
-      opt.classList.add('selected');
 
-      const tierId = opt.getAttribute('data-tier-option') || opt.getAttribute('data-tier') || 'select';
+      const tierId = opt.getAttribute('data-tier-option');
       state.tierId = tierId;
 
-      let usdAmount = 499;
-      let inrAmount = 40000;
-      let gbpAmount = 400;
-      let aedAmount = 1830;
-      let title = 'Prithvi (The Earth Tier)';
+      let usdAmount = 15000;
+      let title = 'Vows for Eternity Privé';
 
-      if (tierId === 'prive') {
-        usdAmount = 749;
-        inrAmount = 60000;
-        gbpAmount = 600;
-        aedAmount = 2750;
-        title = 'Tejas (The Fire Tier)';
-      } else if (tierId === 'bespoke' || tierId === 'custom') {
-        usdAmount = 999;
-        inrAmount = 80000;
-        gbpAmount = 800;
-        aedAmount = 3670;
-        title = 'Vyom (The Space Tier)';
+      if (tierId === 'select') {
+        usdAmount = 5000;
+        title = 'Vows for Eternity Select';
+      } else if (tierId === 'custom') {
+        usdAmount = 25000;
+        title = 'Bespoke Global Matchmaking';
       }
 
       state.tierTitle = title;
       state.amounts.USD = usdAmount;
-      state.amounts.INR = inrAmount;
-      state.amounts.GBP = gbpAmount;
-      state.amounts.AED = aedAmount;
+      state.amounts.INR = usdAmount * 80;
+      state.amounts.GBP = Math.round(usdAmount * 0.8);
+      state.amounts.AED = Math.round(usdAmount * 3.67);
 
       const titleEl = document.getElementById('modalTierTitle');
       if (titleEl) titleEl.textContent = title;

@@ -1019,31 +1019,31 @@ stripe.api_key = STRIPE_SECRET_KEY
 
 TIER_CONFIG = {
     "select": {
-        "title": "Prithvi (The Earth Tier)",
-        "name": "Prithvi",
-        "USD": 499,
-        "INR": 40000,
-        "GBP": 400,
-        "AED": 1830,
-        "description": "Personalised, concierge-led search for an intentional approach to finding a life partner"
+        "title": "Vows for Eternity Select",
+        "name": "Select",
+        "USD": 5000,
+        "INR": 400000,
+        "GBP": 4000,
+        "AED": 18350,
+        "description": "12 Months Curated Matchmaking & Dedicated Relationship Consultant"
     },
     "prive": {
-        "title": "Tejas (The Fire Tier)",
-        "name": "Tejas",
-        "USD": 749,
-        "INR": 60000,
-        "GBP": 600,
-        "AED": 2750,
-        "description": "Guided collaborative search with regular strategy check-ins as your journey unfolds"
+        "title": "Vows for Eternity Privé VIP",
+        "name": "Prive",
+        "USD": 15000,
+        "INR": 1200000,
+        "GBP": 12000,
+        "AED": 55000,
+        "description": "Founder-Led Confidential Matchmaking, Global Search & Priority Introductions"
     },
     "bespoke": {
-        "title": "Vyom (The Space Tier)",
-        "name": "Vyom",
-        "USD": 999,
-        "INR": 80000,
-        "GBP": 800,
-        "AED": 3670,
-        "description": "Highest-level partnership with deep executive oversight and dedicated relationship coaching"
+        "title": "Bespoke Global Matchmaking",
+        "name": "Bespoke",
+        "USD": 25000,
+        "INR": 2000000,
+        "GBP": 20000,
+        "AED": 91750,
+        "description": "Unrestricted Worldwide Search, Senior Board Advisory & Private Concierge"
     }
 }
 
